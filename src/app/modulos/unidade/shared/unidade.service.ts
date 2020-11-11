@@ -1,0 +1,54 @@
+import { Unidade } from './unidade';
+import { HttpClient } from '@angular/common/http';
+import { environment } from './../../../../environments/environment';
+import { Injectable } from '@angular/core';
+
+import { tap, take } from 'rxjs/operators';
+
+@Injectable({
+  providedIn: 'root'
+})
+export class UnidadeService {
+
+  private readonly API = `${environment.API}/atendeFacil/api/unidade`;
+
+  constructor(private http: HttpClient) { }
+
+  listUnidade(){
+    return this.http.get<Unidade[]>(`${this.API}`).pipe(
+      take(1)
+    );
+  }
+
+  loadById(id){
+      return this.http.get(`${this.API}/${id}`).pipe(
+        take(1)
+      );
+  }
+
+  private create(unidade){
+      return this.http.post(`${this.API}`, unidade).pipe(
+        take(1)
+      )
+  }
+
+  private update(unidade){
+    return this.http.put(`${this.API}/${unidade.id}`, unidade).pipe(
+      take(1)
+    )
+  }
+
+  save(unidade){
+      if(unidade.id){
+          return this.update(unidade);
+      } else {
+          return this.create(unidade);    
+      }
+  }
+
+  remove(id){
+    return this.http.delete(`${this.API}/${id}`).pipe(
+      take(1)
+    )
+  }
+}

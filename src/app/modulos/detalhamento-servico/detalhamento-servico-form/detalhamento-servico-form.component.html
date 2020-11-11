@@ -1,0 +1,83 @@
+<div class="col-12">
+    <nav>
+      <ol class="breadcrumb">
+        <li class="breadcrumb-item"><a routerLink="/">Início</a></li>
+        <li class="breadcrumb-item"><a routerLink="/unidades">Listagem</a></li>
+        <li class="breadcrumb-item active">Detalhamento Servico</li>
+      </ol>
+    </nav>
+    <div *ngIf ="mostrarMens" class="alert alert-success" role="alert">
+      <button type="button" class="close" data-dismiss="alert" aria-label="Fechar">
+        <span aria-hidden="true">&times;</span>
+      </button>
+      Operação realizada com sucesso!!!
+    </div>
+    <div class="row mb-4">
+      <div class="col-md">
+        <h1 class="h3 border-left pl-2">
+          Cadastro de Detalhamento de Serviço
+        </h1>
+      </div>
+      <div class="col-md">
+        <button type="button" routerLink="/detalhamentoservico" class="btn btn-warning float-right">
+          <i class="fas fa-backward"></i>&nbsp;Voltar
+        </button>
+      </div>
+    </div>
+    <form class="needs-validation" novalidate [formGroup]="detalhamentoServicoForm">
+      <div class="card">
+        <div class="card-header">
+          Formulário para cadastro de Detalhes de Serviço
+        </div>
+        <div class="card-body">
+          <div class="form-row col-md-12">
+            <div class="form-group col-md-1">
+              <label for="id">ID:</label>
+              <input
+                type="text"
+                class="form-control"
+                id="id"
+                formControlName="id"
+                readonly
+              />
+            </div>
+            <div class="form-group col-md-3">
+              <label for="descricao">Descrição:</label>
+              <input
+                type="text"
+                class="form-control"
+                id="descricao"
+                formControlName="descricao"
+              />
+            </div>
+            <div class="form-group col-md-5">
+              <label for="det">Detalhamento:</label>
+              <input
+                type="text"
+                class="form-control"
+                id="del"
+                formControlName="detalhamento"
+              />
+            </div>
+            <div class="form-group col-md-3">
+              <div formGroupName="servico">
+              <label for="comboServ">Serviço:</label>
+              <select class="form-control" id="comboServ" formControlName="id">
+                  <option *ngFor="let servico of servicos" [value]="servico.id">{{servico.descricao}}</option>
+              </select>
+            </div>
+          </div>
+          </div>
+        </div>
+      </div>
+    </form>
+    <div>
+      <button
+        type="submit"
+        (click)="onSumit()"
+        class="btn btn-success float-right mt-2"
+      >
+      <i class="fas fa-save"></i> &nbsp;Salvar
+      </button>
+    </div>
+  </div>
