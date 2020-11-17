@@ -1,5 +1,6 @@
 import { FormGroup, FormBuilder } from '@angular/forms';
 import { Component, OnInit } from '@angular/core';
+import { ServidorService } from '../shared/servidor.service';
 
 @Component({
   selector: 'app-servidor-form',
@@ -9,15 +10,30 @@ import { Component, OnInit } from '@angular/core';
 export class ServidorFormComponent implements OnInit {
 
   mostrarMens: boolean = false;
-  servForn: FormGroup;
+  servForm: FormGroup;
 
-  constructor(private fb: FormBuilder) { }
+  constructor(private fb: FormBuilder,
+              private servidorService: ServidorService) { }
 
   ngOnInit(): void {
 
-    this.servForn = this.fb.group({
-      
+    this.servForm = this.fb.group({
+      matricula: ["", []],
+      nome: ["", []],
+      cpf: ["", []],
+      lotacao: ["", []],
+      telefone: ["", []],
+      email: ["", []],
+      statusServidor: ["", []]
     });
+  }
+
+  onSubmit(){
+    if(this.servForm.valid){
+      this.servidorService.create(this.servForm.value).subscribe(
+          sussess => { this.mostrarMens = true }
+      );
+    }
   }
 
 }

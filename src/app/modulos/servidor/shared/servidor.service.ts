@@ -32,5 +32,11 @@ export class ServidorService {
       take(1)
     );
   }
+
+  create(servidor){
+    return this.http.post(`${this.API}`, servidor).pipe(
+      take(1)
+    );
+  }
   
 }

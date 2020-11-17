@@ -14,7 +14,7 @@
     <div class="row mb-4">
       <div class="col-md">
         <h1 class="h3 border-left pl-2">
-          Cadastro do contribuiunte
+          Cadastro do servidor
         </h1>
       </div>
       <div class="col-md">
@@ -30,7 +30,16 @@
         </div>
         <div class="card-body">
           <div class="form-row col-md-12">
-            <div class="form-group col-md-8">
+            <div class="form-group col-md-2">
+                <label for="mat">Matricula:</label>
+                <input
+                  type="text"
+                  class="form-control"
+                  id="nome"
+                  formControlName="matricula"
+                />
+              </div>
+            <div class="form-group col-md-6">
               <label for="nome">Nome:</label>
               <input
                 type="text"
@@ -40,49 +49,53 @@
               />
             </div>
             <div class="form-group col-md-4">
-              <label for="cpf">CPF/CNPJ:</label>
+              <label for="cpf">CPF:</label>
               <input
                 type="text"
                 class="form-control"
                 id="cpf"
-                formControlName="cpfCnpj"
+                formControlName="cpf"
               />
             </div>
             </div>
             <div class="form-row col-md-12">
-                <div class="form-group col-md-8">
-                <label for="email">Email:</label>
+                <div class="form-group col-md-6">
+                <label for="lot">Lotação:</label>
                 <input
                     type="text"
                     class="form-control"
-                    id="email"
-                    formControlName="email"
+                    id="lot"
+                    formControlName="lotacao"
                 />
                 </div>
-                <div class="form-group col-md-4">
+                <div class="form-group col-md-3">
+                    <label for="email">Email:</label>
+                    <input
+                        type="text"
+                        class="form-control"
+                        id="email"
+                        formControlName="email"
+                    />
+                </div>
+                <div class="form-group col-md-3">
                     <label for="fone">Telefone: </label>
                     <input
                         type="text"
                         class="form-control"
                         id="fone"
-                        formControlName="fone"
+                        formControlName="telefone"
                     />
                 </div>
           </div>
           <div class="form-row col-md-12">
-            <div class="form-group col-md-4">
-                <label for="senha">Senha:</label>
-                <input
-                    type="password"
-                    class="form-control"
-                    id="senha"
-                    formControlName="senha"
-                    placeholder="Senha com 6 digitos"
-                />
-            </div>
-          </div>
-          <div class="col-md-12" style="font-size: 10pt; margin-top: -17px;">
-                Senha deve conter 6 digitos.
+            <div class="form-group col-md-2">
+                <label for="obs">Status:</label>
+                <select class="form-control" id="status" name="status" formControlName="statusServidor">
+                  <option value="" selected>Escolha uma opção</option>
+                  <option value="Ativo">Ativo</option>
+                  <option value="Inativo">Inativo</option>
+                </select>
+              </div>
           </div>
         </div>
       </div>
@@ -91,10 +104,10 @@
       <button
         type="submit"
         class="btn btn-success float-right mt-2"
-        data-toggle="modal" 
-        data-target="#myModal"
+        (click)="onSubmit()"
       >
       <i class="fas fa-save"></i> &nbsp;Salvar
       </button>
     </div>  
   </div>
+
