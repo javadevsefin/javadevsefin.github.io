@@ -1,0 +1,57 @@
+<div class="col-12">
+    <nav>
+      <ol class="breadcrumb">
+        <li class="breadcrumb-item"><a routerLink="/">Início</a></li>
+        <li class="breadcrumb-item active">Listagem</li>
+      </ol>
+    </nav>
+    <div class="row mb-4">
+      <div class="col-md">
+        <h1 class="h3 border-left pl-2">
+          Listagem de Acessos
+        </h1>
+      </div>
+      <div class="col-md">
+        <button type="button" routerLink="new" class="btn btn-success float-right">
+          <i class="fas fa-user-plus"></i> Cadastrar acesso
+        </button>
+      </div>
+    </div>
+     <div class="col-12">
+      <table class="table table-hover" style="box-shadow: 5px 5px 10px #000;">
+        <thead>
+          <tr class="bg-success text-light">
+            <th>Matrícula</th>
+            <th>Nome</th>
+            <th>Unidade</th>
+            <th>Função</th>
+            <th>Ações</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let acesso of acessos">
+            <td>
+              <strong>{{orgao.id}}</strong>
+            </td>
+            <td>
+                {{orgao.codigo}}
+            </td>
+            <td>
+                {{orgao.sigla}}
+            </td>
+            <td>
+                {{orgao.descricao}}
+            </td>
+            <td>
+              <!--a [routerLink]="[2, 'edit']" class="btn btn-outline-info btn-sm">Editar</a-->
+              <button (click)="onEdit(orgao.id)" class="btn btn-outline-info btn-sm"><i class="far fa-edit"></i></button>
+              <button (click)="pegaDados(orgao.id, orgao.descricao)" data-toggle="modal" data-target="#ModalExclusao" class="btn btn-outline-danger btn-sm"><i class="far fa-trash-alt"></i></button>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+     </div>
+  </div>
+
+
+

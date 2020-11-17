@@ -37,13 +37,14 @@ export class ContribuinteService {
         take(1)
     );
   }
+  
 
   buscaAvancada(nome, cpfCnpj){
     
     const httpParams =new HttpParams()
     .set("nome", nome)
-    .set("cpfCnpj", cpfCnpj)
-    const url = this.API+ "/buscar" + "?" + httpParams;
+    .set("cpfCnpj", cpfCnpj);
+    const url = this.API+ "/buscar?" + httpParams;
 
   return this.http.get<Contribuinte[]>(url).pipe(
     take(1)

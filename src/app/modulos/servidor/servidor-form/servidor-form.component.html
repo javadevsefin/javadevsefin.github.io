@@ -1,0 +1,100 @@
+<div class="col-12">
+    <nav>
+      <ol class="breadcrumb">
+        <li class="breadcrumb-item"><a routerLink="/">Início</a></li>
+        <li class="breadcrumb-item active">Cadastro de Servidor</li>
+      </ol>
+    </nav>
+    <div *ngIf ="mostrarMens" class="alert alert-success" role="alert">
+      <a type="button" class="close" data-dismiss="alert" aria-label="Fechar">
+        <span aria-hidden="true">&times;</span>
+      </a>
+      Operação realizada com sucesso!!!
+    </div>
+    <div class="row mb-4">
+      <div class="col-md">
+        <h1 class="h3 border-left pl-2">
+          Cadastro do contribuiunte
+        </h1>
+      </div>
+      <div class="col-md">
+        <button type="button" routerLink="/servidor" class="btn btn-warning float-right">
+          <i class="fas fa-backward"></i>&nbsp;Voltar
+        </button>
+      </div>
+    </div>
+    <form class="needs-validation" novalidate [formGroup]="servForm">
+      <div class="card" style="box-shadow: 5px 5px 10px #000;">
+        <div class="card-header">
+          Formulário para cadastro de servidor
+        </div>
+        <div class="card-body">
+          <div class="form-row col-md-12">
+            <div class="form-group col-md-8">
+              <label for="nome">Nome:</label>
+              <input
+                type="text"
+                class="form-control"
+                id="nome"
+                formControlName="nome"
+              />
+            </div>
+            <div class="form-group col-md-4">
+              <label for="cpf">CPF/CNPJ:</label>
+              <input
+                type="text"
+                class="form-control"
+                id="cpf"
+                formControlName="cpfCnpj"
+              />
+            </div>
+            </div>
+            <div class="form-row col-md-12">
+                <div class="form-group col-md-8">
+                <label for="email">Email:</label>
+                <input
+                    type="text"
+                    class="form-control"
+                    id="email"
+                    formControlName="email"
+                />
+                </div>
+                <div class="form-group col-md-4">
+                    <label for="fone">Telefone: </label>
+                    <input
+                        type="text"
+                        class="form-control"
+                        id="fone"
+                        formControlName="fone"
+                    />
+                </div>
+          </div>
+          <div class="form-row col-md-12">
+            <div class="form-group col-md-4">
+                <label for="senha">Senha:</label>
+                <input
+                    type="password"
+                    class="form-control"
+                    id="senha"
+                    formControlName="senha"
+                    placeholder="Senha com 6 digitos"
+                />
+            </div>
+          </div>
+          <div class="col-md-12" style="font-size: 10pt; margin-top: -17px;">
+                Senha deve conter 6 digitos.
+          </div>
+        </div>
+      </div>
+    </form>
+    <div>
+      <button
+        type="submit"
+        class="btn btn-success float-right mt-2"
+        data-toggle="modal" 
+        data-target="#myModal"
+      >
+      <i class="fas fa-save"></i> &nbsp;Salvar
+      </button>
+    </div>  
+  </div>

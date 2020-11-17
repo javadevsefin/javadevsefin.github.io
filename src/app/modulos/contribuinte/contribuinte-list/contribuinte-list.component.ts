@@ -23,7 +23,7 @@ export class ContribuinteListComponent implements OnInit {
               private fb: FormBuilder) { }
 
   ngOnInit(): void {
-    this.listContribuinte();
+    //this.listContribuinte();
 
     this.contribuinteForm = this.fb.group({
         nome: ['',[]],
@@ -40,9 +40,11 @@ export class ContribuinteListComponent implements OnInit {
   onEdit(id){
    this.router.navigate(['editar', id], { relativeTo: this.route});
   }
+
   onDelete(){
 
   }
+
   pegaDados(id, descricao){
 
   }
@@ -51,6 +53,7 @@ export class ContribuinteListComponent implements OnInit {
 
     let nome = this.contribuinteForm.get('nome').value;
     let cpfCnpj = this.contribuinteForm.get('cpfCnpj').value;
+
     this.contribuinteService.buscaAvancada(nome, cpfCnpj).subscribe(
       dados=>this.contribuintes = dados
     );
@@ -86,9 +89,7 @@ export class ContribuinteListComponent implements OnInit {
      let p3 = str.substring(5, 8);
      let p4 = str.substring(8, 12);
      let p5 = str.substring(12, 14);
-
       cnpj = p1 + "." + p2 + "." + p3 + "/" + p4 + "-" + p5;
-
       return cnpj;
     }
 }

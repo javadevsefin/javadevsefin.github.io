@@ -7,6 +7,8 @@ import {  } from './modulos/detalhamento-servico/detalhamento-servico.module';
 import {  } from './modulos/grade/grade.module';
 import {  } from './modulos/agendamento/agendamento.module';
 import {  } from './modulos/contribuinte/contribuinte.module';
+import {  } from './modulos/acesso/acesso.module';
+import {  } from './modulos/servidor/servidor.module';
 
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
@@ -20,7 +22,9 @@ const routes: Routes = [
   { path: 'detalhamentoservico', loadChildren: './modulos/detalhamento-servico/detalhamento-servico.module#DetalhamentoServicoModule'},
   { path: 'grade', loadChildren: './modulos/grade/grade.module#GradeModule' },
   { path: 'agendamento', loadChildren: './modulos/agendamento/agendamento.module#AgendamentoModule' },
-  { path: 'contribuinte', loadChildren: './modulos/contribuinte/contribuinte.module#ContribuinteModule'}
+  { path: 'contribuinte', loadChildren: './modulos/contribuinte/contribuinte.module#ContribuinteModule'},
+  { path: 'acesso', loadChildren: './modulos/acesso/acesso.module#AcessoModule' },
+  { path: 'servidor', loadChildren:  './modulos/servidor/servidor.module#ServidorModule'}
 ];
 
 @NgModule({
