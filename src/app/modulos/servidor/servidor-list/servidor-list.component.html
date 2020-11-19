@@ -58,6 +58,7 @@
             <th>CPF/CNPJ</th>
             <th>E-mail</th>
             <th>Telefone</th>
+            <th>Status</th>
             <th>Ações</th>
           </tr>
         </thead>
@@ -78,15 +79,61 @@
             <td>
                 {{servidor.telefone}}
            </td>
+           <td>
+             {{ servidor.statusServidor}}
+           </td>
             <td>
               <button (click)="onEdit(servidor.matricula)" class="btn btn-outline-info btn-sm"><i class="far fa-edit"></i></button>
-              <button (click)="pegaDados(unidade.id ,unidade.descricao)" data-toggle="modal" data-target="#ModalExclusao" class="btn btn-outline-danger btn-sm"><i class="far fa-trash-alt"></i></button>
+              <button (click)="pegaDados(servidor.matricula ,servidor.nome)" data-toggle="modal" data-target="#ModalExclusao" class="btn btn-outline-danger btn-sm"><i class="fas fa-user-alt-slash"></i></button>
             </td>
           </tr>
         </tbody>
       </table>
     </div>
     </div>
+    <!-- Modal -->
+    <div
+      class="modal fade"
+      id="ModalExclusao"
+      tabindex="-1"
+      role="dialog"
+      aria-labelledby="TituloModalCentralizado"
+      aria-hidden="true"
+    >
+          <div class="modal-dialog modal-dialog-centered" role="document">
+            <div class="modal-content">
+              <div class="modal-header">
+                <h5 class="modal-title" id="TituloModalCentralizado">
+                  Vamos lá!
+                </h5>
+              </div>
+              <div class="modal-body" style="font-weight: bold;">
+                  Deseja intativar este o servidor: {{_descricao}} ?
+              </div>
+              <div  class="d-flex justify-content-center">
+                <div class="col-md-12">
+                  <div *ngIf ="mostrarMens"  style="text-align: center;"  class="col-10 alert alert-danger" role="alert">
+                    <span> Servidor inativado com sucesso! </span>
+                  </div>
+                </div>
+              </div>
+              <div class="modal-footer">
+                <button
+                  type="button"
+                  class="btn btn-danger"
+                  
+                  data-dismiss="modal"
+                >
+                  <i class="fas fa-window-close"></i>&nbsp;Fechar
+                </button>
+                <button class="btn btn-success" (click)="onDelete()">
+                  <i class="fas fa-save"></i> &nbsp;Inativar
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+        <!--Fim da modal-->
 
 
 

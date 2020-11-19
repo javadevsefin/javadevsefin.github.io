@@ -1,3 +1,4 @@
+import { Router, ActivatedRoute } from '@angular/router';
 import { ServidorService } from './../shared/servidor.service';
 import { FormGroup, FormBuilder } from '@angular/forms';
 import { Component, OnInit } from '@angular/core';
@@ -13,10 +14,13 @@ export class ServidorListComponent implements OnInit {
 
   servidorForm: FormGroup
   _descricao: String;
-  mostrarMens: string;
+  _matricula: String;
+  mostrarMens: boolean = false;
   servidores: Servidor[];
 
   constructor(private fb: FormBuilder, 
+              private router: Router,
+              private route: ActivatedRoute,
               private servidorService: ServidorService ) { }
 
   ngOnInit(): void {
@@ -59,4 +63,21 @@ export class ServidorListComponent implements OnInit {
     return cpf
    }
 
+   onEdit(id){
+      this.router.navigate(['editar', id], {relativeTo: this.route});  
+   }
+
+   pegaDados(matricula, descricao){
+
+      this._matricula = matricula;
+      this._descricao = descricao;
+
+      
+   }
+
+   onDelete(){
+      this.servidorService.remove(this._matricula).subscribe(
+        success => { this.mostrarMens = true }
+      );
+   }
 }

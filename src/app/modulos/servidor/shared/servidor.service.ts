@@ -19,6 +19,12 @@ export class ServidorService {
     );
   }
 
+  loadByMatricula(matricula){
+    return this.http.get(`${this.API}/${matricula}`).pipe(
+      take(1)
+    );
+  }
+
   pesquisaAvancada(matricula, nome, cpf){
 
     const httpParams = new HttpParams()
@@ -33,10 +39,29 @@ export class ServidorService {
     );
   }
 
-  create(servidor){
+  private create(servidor){
     return this.http.post(`${this.API}`, servidor).pipe(
       take(1)
     );
   }
-  
+
+  private update(servidor){
+    return this.http.put(`${this.API}/${servidor.matricula}`, servidor).pipe(
+      take(1)
+    );
+  }
+
+  save(servidor){
+    if(servidor.matricula){
+      return this.update(servidor)
+    } else {
+      return this.create(servidor)
+    }
+  }  
+
+  remove(id){
+    return this.http.get(`${this.API}/status/${id}` ).pipe(
+      take(1)
+    );
+  }
 }
