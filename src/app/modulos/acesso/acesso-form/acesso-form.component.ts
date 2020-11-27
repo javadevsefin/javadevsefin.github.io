@@ -1,3 +1,4 @@
+import { ActivatedRoute } from '@angular/router';
 import { ServidorService } from './../../servidor/shared/servidor.service';
 import { Role } from './../shared/role';
 import { AcessoService } from './../shared/acesso.service';
@@ -29,20 +30,39 @@ export class AcessoFormComponent implements OnInit {
   constructor(private fb: FormBuilder,
               private unidadeService: UnidadeService,
               private acessoService: AcessoService,
-              private servidorService: ServidorService) { }
+              private servidorService: ServidorService,
+              private route: ActivatedRoute) { }
 
   ngOnInit(): void {
 
     this.comboBox();
 
+    const routeParams = this.route.snapshot.params;
+
+    if(routeParams.id != null){
+      this.acessoService.loadById(routeParams.id).subscribe((acesso: any)=>{
+        this.updateAcessoForm(acesso)
+      });
+    }
+
     this.acessoForm = this.fb.group({
       
-      id: ['', []],
-      servidor: ['', []],
-      unidade: ['', []],
-      role: ['', []],
+      id: [null, []],
+      servidor: this.fb.group({
+        matricula: ['', []]
+      }),
+      unidade: this.fb.group({
+        id: ['', []]
+      }),
+      role: this.fb.group({
+        id: ['', []]
+      }),
       senha: ['', []]
     });
+  }
+
+  updateAcessoForm(acesso){
+    this.acessoForm.patchValue(acesso);
   }
 
   comboBox(){
@@ -88,11 +108,13 @@ export class AcessoFormComponent implements OnInit {
     return senha
   }
 
-  onSubmit(){
+  onSubmit(){ 
 
-    this.acessoForm.get('id').setValue(this.acessoForm.get('matricula').value);
-    this.confirmar();
-    console.log(this.acessoForm.value);
-    
+    if(this.acessoForm.valid){
+       this.acessoService.save(this.acessoForm.value).subscribe(
+          success => { this.mostrarMens = true }
+        );
+      }
+    this.acessoForm.reset();
   }
 }

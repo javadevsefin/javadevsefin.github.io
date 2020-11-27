@@ -1,5 +1,5 @@
 import { ActivatedRoute } from '@angular/router';
-import { FormGroup, FormBuilder } from '@angular/forms';
+import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { Component, OnInit } from '@angular/core';
 import { ServidorService } from '../shared/servidor.service';
 
@@ -28,13 +28,13 @@ export class ServidorFormComponent implements OnInit {
     }
 
     this.servForm = this.fb.group({
-      matricula: ["", []],
-      nome: ["", []],
-      cpf: ["", []],
-      lotacao: ["", []],
-      telefone: ["", []],
-      email: ["", []],
-      statusServidor: ["", []]
+      matricula: ["", [Validators.required]],
+      nome: ["", [Validators.required]],
+      cpf: ["", [Validators.required]],
+      lotacao: ["", [Validators.required]],
+      telefone: ["", [Validators.required]],
+      email: ["", [Validators.required, Validators.email]],
+      statusServidor: ["", [Validators.required]]
     });
   }
 

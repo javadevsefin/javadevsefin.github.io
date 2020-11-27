@@ -32,28 +32,28 @@
         <div class="card-body">
           <div class="form-row col-md-12">
             <div class="form-group col-md-1">
-              <label for="mat">Matricula:</label>
-              <input type="text" class="form-control" id="mat" formControlName="id" readonly/>
+              <label for="mat">ID:</label>
+              <input type="text" class="form-control" id="id" formControlName="id" readonly/>
             </div>
-            <div class="form-group col-md-5">
+            <div class="form-group col-md-5" formGroupName="servidor">
               <label for="servidor">Servidor:</label>
-                <select class="form-control" id="servidor" formControlName="servidor">
+                <select class="form-control" id="servidor" formControlName="matricula">
                     <option value="" selected>Escolha o servidor</option>
-                    <option *ngFor="let servidor of servidores" [value]="servidor.nome">{{servidor.nome}}</option>
+                    <option *ngFor="let servidor of servidores" [value]="servidor.matricula">{{servidor.nome}}</option>
                 </select>
             </div>
-            <div class="form-group col-md-4">
+            <div class="form-group col-md-4" formGroupName="unidade">
               <label for="uni">Unidade:</label>
-              <select class="form-control" id="uni" formControlName="unidade">
+              <select class="form-control" id="uni" formControlName="id">
                 <option value="" selected>Escolha a unidade</option>
-                <option *ngFor="let unidade of unidades" [value]="unidade.descricao">{{unidade.descricao}}</option>
+                <option *ngFor="let unidade of unidades" [value]="unidade.id">{{unidade.descricao}}</option>
             </select>
             </div>
-            <div class="form-group col-md-2">
+            <div class="form-group col-md-2" formGroupName="role">
               <label for="role">Função:</label>
-              <select class="form-control" id="role" formControlName="role">
+              <select class="form-control" id="role" formControlName="id">
                   <option value="" selected>Escolha a função</option>
-                  <option *ngFor="let role of roles" [value]="role.descricao">{{role.descricao}}</option>
+                  <option *ngFor="let role of roles" [value]="role.id">{{role.descricao}}</option>
               </select>
             </div>
           </div>
@@ -76,4 +76,7 @@
       </button>
     </div>
   </div>
+  <pre>
+    {{ acessoForm.value | json }}
+  </pre>
 

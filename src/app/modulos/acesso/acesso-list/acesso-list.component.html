@@ -31,20 +31,20 @@
         <tbody>
           <tr *ngFor="let acesso of acessos">
             <td>
-              <strong>{{orgao.id}}</strong>
+                {{acesso.id}}
             </td>
             <td>
-                {{orgao.codigo}}
+                {{acesso.servidor.nome}}
             </td>
             <td>
-                {{orgao.sigla}}
+                {{acesso.unidade.descricao}}
             </td>
             <td>
-                {{orgao.descricao}}
+                {{acesso.role.descricao}}
             </td>
             <td>
               <!--a [routerLink]="[2, 'edit']" class="btn btn-outline-info btn-sm">Editar</a-->
-              <button (click)="onEdit(orgao.id)" class="btn btn-outline-info btn-sm"><i class="far fa-edit"></i></button>
+              <button (click)="onEdit(acesso.id)" class="btn btn-outline-info btn-sm"><i class="far fa-edit"></i></button>
               <button (click)="pegaDados(orgao.id, orgao.descricao)" data-toggle="modal" data-target="#ModalExclusao" class="btn btn-outline-danger btn-sm"><i class="far fa-trash-alt"></i></button>
             </td>
           </tr>

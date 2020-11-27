@@ -101,11 +101,7 @@
       </div>
     </form>
     <div>
-      <button
-        type="submit"
-        class="btn btn-success float-right mt-2"
-        (click)="onSubmit()"
-      >
+      <button type="submit" class="btn btn-success float-right mt-2" (click)="onSubmit()" [disabled]="!servForm.valid">
       <i class="fas fa-save"></i> &nbsp;Salvar
       </button>
     </div>  
