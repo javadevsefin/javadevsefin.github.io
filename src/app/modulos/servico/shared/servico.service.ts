@@ -9,7 +9,6 @@ import { Servico } from './servico';
 })
 export class ServicoService {
 
-  
   private readonly API = `${environment.API}/atendeFacil/api/servico`;
 
   constructor(private http: HttpClient) { }

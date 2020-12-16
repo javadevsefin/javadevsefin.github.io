@@ -1,3 +1,4 @@
+import { AuthGuard } from './modulos/guard/auth-guard';
 import {  } from './modulos/unidade/unidade.module';
 import {  } from './modulos/orgao/orgao.module';
 import {  } from './modulos/guiche/guiche.module';
@@ -10,23 +11,32 @@ import {  } from './modulos/contribuinte/contribuinte.module';
 import {  } from './modulos/acesso/acesso.module';
 import {  } from './modulos/servidor/servidor.module';
 import {  } from './modulos/perfil-atendimento/perfil-atendimento.module';
+import {  } from './modulos/ativacao/ativacao.module';
+import {  } from './modulos/atendimento/atendimento.module';
+import {  } from './modulos/painel/painel.module'; 
+import {  } from './modulos/login/login.module';
+
 
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 
 const routes: Routes = [
-  { path: 'unidade', loadChildren: './modulos/unidade/unidade.module#UnidadeModule' },
-  { path: 'orgao', loadChildren: './modulos/orgao/orgao.module#OrgaoModule' },
-  { path: 'guiche', loadChildren: './modulos/guiche/guiche.module#GuicheModule' },
-  { path: 'calendario', loadChildren: './modulos/calendario/calendario.module#CalendarioModule'},
-  { path: 'servico', loadChildren: './modulos/servico/servico.module#ServicoModule' },
-  { path: 'detalhamentoservico', loadChildren: './modulos/detalhamento-servico/detalhamento-servico.module#DetalhamentoServicoModule'},
-  { path: 'grade', loadChildren: './modulos/grade/grade.module#GradeModule' },
-  { path: 'agendamento', loadChildren: './modulos/agendamento/agendamento.module#AgendamentoModule' },
-  { path: 'contribuinte', loadChildren: './modulos/contribuinte/contribuinte.module#ContribuinteModule'},
-  { path: 'acesso', loadChildren: './modulos/acesso/acesso.module#AcessoModule' },
-  { path: 'servidor', loadChildren:  './modulos/servidor/servidor.module#ServidorModule'},
-  { path: 'perfilatendimento', loadChildren: './modulos/perfil-atendimento/perfil-atendimento.module#PerfilAtendimentoModule'}
+  { path: 'unidade', loadChildren: './modulos/unidade/unidade.module#UnidadeModule', canActivate:[AuthGuard]},
+  { path: 'orgao', loadChildren: './modulos/orgao/orgao.module#OrgaoModule', canActivate:[AuthGuard]},
+  { path: 'guiche', loadChildren: './modulos/guiche/guiche.module#GuicheModule', canActivate:[AuthGuard]},
+  { path: 'calendario', loadChildren: './modulos/calendario/calendario.module#CalendarioModule', canActivate:[AuthGuard]},
+  { path: 'servico', loadChildren: './modulos/servico/servico.module#ServicoModule', canActivate:[AuthGuard]},
+  { path: 'detalhamentoservico', loadChildren: './modulos/detalhamento-servico/detalhamento-servico.module#DetalhamentoServicoModule', canActivate:[AuthGuard]},
+  { path: 'grade', loadChildren: './modulos/grade/grade.module#GradeModule', canActivate:[AuthGuard]},
+  { path: 'agendamento', loadChildren: './modulos/agendamento/agendamento.module#AgendamentoModule', canActivate:[AuthGuard]},
+  { path: 'contribuinte', loadChildren: './modulos/contribuinte/contribuinte.module#ContribuinteModule', canActivate:[AuthGuard]},
+  { path: 'acesso', loadChildren: './modulos/acesso/acesso.module#AcessoModule', canActivate:[AuthGuard]},
+  { path: 'servidor', loadChildren:  './modulos/servidor/servidor.module#ServidorModule', canActivate:[AuthGuard]},
+  { path: 'perfilatendimento', loadChildren: './modulos/perfil-atendimento/perfil-atendimento.module#PerfilAtendimentoModule', canActivate:[AuthGuard]},
+  { path: 'ativacao', loadChildren: './modulos/ativacao/ativacao.module#AtivacaoModule', canActivate:[AuthGuard]},
+  { path: 'atendimento', loadChildren: './modulos/atendimento/atendimento.module#AtendimentoModule', canActivate:[AuthGuard]},
+  { path: 'painel', loadChildren: './modulos/painel/painel.module#PainelModule', canActivate:[AuthGuard]},
+  { path: 'login', loadChildren: './modulos/login/login.module#LoginModule' }
 ];
 
 @NgModule({

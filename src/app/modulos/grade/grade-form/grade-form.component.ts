@@ -18,8 +18,7 @@ import { Component, OnInit } from '@angular/core';
 export class GradeFormComponent implements OnInit {
 
   gradeForm: FormGroup;
-  mostrarMens: boolean = false;
-
+  mostrarMens: boolean = false
   servicos: Servico[];
   unidades: Unidade[];
   calendarios: Calendario[];

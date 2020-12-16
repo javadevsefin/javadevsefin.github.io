@@ -107,7 +107,8 @@
             </td>
             <td>
               <!--a [routerLink]="[2, 'edit']" class="btn btn-outline-info btn-sm">Editar</a-->
-              <button (click)="onEdit(grade.id)" class="btn btn-outline-info btn-sm" data-toggle="tooltip" data-placement="top" title="Editar grade de atendimento?"><i class="far fa-edit"></i></button>
+              <button (click)="onEdit(grade.id)" class="btn btn-outline-info btn-sm" data-toggle="tooltip" 
+              data-placement="top" title="Editar grade de atendimento?" [disabled]="grade.gerado == 'g'"><i class="far fa-edit"></i></button>
               <button (click)="gerarAgendamento(grade.id)" class="btn btn-outline-success btn-sm" 
               data-toggle="tooltip" data-placement="top" title="Gerar vagas de agendamento?"><i class="fas fa-list-ol"></i></button>
             </td>
