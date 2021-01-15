@@ -21,7 +21,14 @@ export class AppComponent implements OnInit {
   visConf: boolean = false;
   visRel: boolean = false;
   visPan: boolean = false;
-  
+  visUp: boolean = false;
+  p01: boolean = false;
+  p02: boolean = false;
+  p03: boolean = false;
+  p04: boolean = false;
+  p05: boolean = false;
+  p06: boolean = false;
+
   constructor(private globalService: GlobalService,
               private router: Router){
 
@@ -47,7 +54,7 @@ export class AppComponent implements OnInit {
 
     this.globalService.gTipo.subscribe(
       tipo => { this.role = tipo
-        
+
         if(tipo === "Administrador"){
           this.visGrade = true
           this.visRecep = true
@@ -56,6 +63,13 @@ export class AppComponent implements OnInit {
           this.visConf =  true
           this.visRel = true
           this.visPan = true
+          this.visUp = true
+          this.p01 = true
+          this.p02 = true
+          this.p03 = true
+          this.p04 = true
+          this.p05 = true
+          this.p06 = true
         } else if(tipo === "Operador"){
           this.visGrade = true
           this.visRecep = false
@@ -81,7 +95,7 @@ export class AppComponent implements OnInit {
           this.visRel = true
           this.visPan = true
         } else if(tipo === "Apoio Administrativo"){
-          this.visGrade = false
+          this.visGrade = true
           this.visRecep = false
           this.visAtend = false
           this.visCont = false
@@ -112,7 +126,7 @@ export class AppComponent implements OnInit {
           this.visConf =  false
           this.visRel = false
           this.visPan = false
-        } else if (tipo === "Painel"){
+        } else if (tipo === "Painel01"){
           this.visGrade = false
           this.visRecep = false
           this.visAtend = false
@@ -120,13 +134,57 @@ export class AppComponent implements OnInit {
           this.visConf =  false
           this.visRel = false
           this.visPan = true
+          this.p01 = true
+        } else if (tipo === "Painel02"){
+          this.visGrade = false
+          this.visRecep = false
+          this.visAtend = false
+          this.visCont = false
+          this.visConf =  false
+          this.visRel = false
+          this.visPan = true
+          this.p02 = true
+        } else if (tipo === "Painel03"){
+          this.visGrade = false
+          this.visRecep = false
+          this.visAtend = false
+          this.visCont = false
+          this.visConf =  false
+          this.visRel = false
+          this.visPan = true
+          this.p03 = true
+        } else if (tipo === "Painel04"){
+          this.visGrade = false
+          this.visRecep = false
+          this.visAtend = false
+          this.visCont = false
+          this.visConf =  false
+          this.visRel = false
+          this.visPan = true
+          this.p04 = true
+        } else if (tipo === "Painel05"){
+          this.visGrade = false
+          this.visRecep = false
+          this.visAtend = false
+          this.visCont = false
+          this.visConf =  false
+          this.visRel = false
+          this.visPan = true
+          this.p05 = true
+        } else if (tipo === "Painel06"){
+          this.visGrade = false
+          this.visRecep = false
+          this.visAtend = false
+          this.visCont = false
+          this.visConf =  false
+          this.visRel = false
+          this.visPan = true
+          this.p06 = true
         }
-
       }
-      
     );
 
-    this.router.navigate(['/login']); 
+    this.router.navigate(['/login']);
   }
 
   exit(){

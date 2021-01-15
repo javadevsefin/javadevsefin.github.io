@@ -1,12 +1,13 @@
 import { tap, take } from 'rxjs/operators';
 import { Calendario } from './calendario';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpParams } from '@angular/common/http';
 import { environment } from './../../../../environments/environment';
 import { Injectable } from '@angular/core';
 
 @Injectable({
   providedIn: 'root'
 })
+
 export class CalendarioService {
 
   private readonly API = `${environment.API}/atendeFacil/api/calendario`;
@@ -17,6 +18,39 @@ export class CalendarioService {
     return this.http.get<Calendario[]>(`${this.API}`).pipe(
         take(1)
     )
+  }
+
+  buscaAvancada(dataInicial, dataFinal, statusCalendario, observacao){
+    const httpParams = new HttpParams()
+    .set("dataInicial", dataInicial)
+    .set("dataFinal", dataFinal)
+    .set("statusCalendario", statusCalendario)
+    .set("observacao", observacao);
+
+    const url = this.API + "/buscar?" + httpParams;
+
+    return this.http.get<Calendario[]>(url).pipe(
+      take(1)
+    );
+  }
+
+  inativarDias(dataInicial, dataFinal){
+
+    const httpParams = new HttpParams()
+    .set("dataInicial", dataInicial)
+    .set("dataFinal", dataFinal)
+
+    const url = this.API + "/inativarDias?"+ httpParams;
+
+    return this.http.get(url).pipe(
+        take(1)
+    );
+  }
+
+  listarDiasAtivos(){
+    return this.http.get<Calendario[]>(`${this.API}/diasAtivos`).pipe(
+      take(1)
+    );
   }
 
   loadById(id){

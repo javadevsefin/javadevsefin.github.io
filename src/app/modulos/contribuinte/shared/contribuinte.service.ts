@@ -15,7 +15,6 @@ export class ContribuinteService {
 
   listContribuinte(){
     return this.http.get<Contribuinte[]>(`${this.API}`).pipe(
-      tap(console.log),
       take(1)
     );
   }

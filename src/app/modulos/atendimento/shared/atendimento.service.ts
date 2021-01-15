@@ -85,8 +85,7 @@ export class AtendimentoService {
 
   listarFilaEspera(matricula, unidade){
     return this.http.get<Fila[]>(`${this.API}/fila/espera/${matricula}/${unidade}`).pipe(
-      take(1),
-      tap(console.log)
+      take(1)
     );
   }
 

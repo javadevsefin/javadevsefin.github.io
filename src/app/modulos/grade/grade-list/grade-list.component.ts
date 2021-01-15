@@ -1,3 +1,4 @@
+import { GlobalService } from './../../shared/global.service';
 import { Router, ActivatedRoute } from '@angular/router';
 import { ServicoService } from './../../servico/shared/servico.service';
 import { UnidadeService } from './../../unidade/shared/unidade.service';
@@ -31,7 +32,8 @@ export class GradeListComponent implements OnInit {
               private unidadeService: UnidadeService,
               private servicoService: ServicoService,
               private router: Router,
-              private route: ActivatedRoute 
+              private route: ActivatedRoute,
+              private globalService: GlobalService 
               ) { }
 
   ngOnInit(): void {
@@ -113,7 +115,8 @@ export class GradeListComponent implements OnInit {
   }
   
   comboBox(){
-    this.unidadeService.listUnidade().subscribe(
+    
+    this.unidadeService.listUnidadeGenerica(this.globalService.getRole(), this.globalService.getUnidadeId()).subscribe(
       dados=> this.unidades = dados
     );
     this.servicoService.listServico().subscribe(

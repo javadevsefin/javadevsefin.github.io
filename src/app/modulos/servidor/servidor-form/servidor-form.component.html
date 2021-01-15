@@ -14,7 +14,7 @@
     <div class="row mb-4">
       <div class="col-md">
         <h1 class="h3 border-left pl-2">
-          Cadastro do servidor
+          Cadastro do Servidor
         </h1>
       </div>
       <div class="col-md">
@@ -26,7 +26,7 @@
     <form class="needs-validation" novalidate [formGroup]="servForm">
       <div class="card" style="box-shadow: 5px 5px 10px #000;">
         <div class="card-header">
-          Formulário para cadastro de servidor
+          Formulário para Cadastro de Servidor
         </div>
         <div class="card-body">
           <div class="form-row col-md-12">
@@ -101,9 +101,13 @@
       </div>
     </form>
     <div>
-      <button type="submit" class="btn btn-success float-right mt-2" (click)="onSubmit()" [disabled]="!servForm.valid">
-      <i class="fas fa-save"></i> &nbsp;Salvar
+      <button *ngIf="btnSave" type="submit" class="btn btn-success float-right mt-2" (click)="onSubmit()" [disabled]="!servForm.valid">
+        <i class="fas fa-save"></i> &nbsp;Salvar
+      </button>
+      <button *ngIf="btnUpdate" type="submit" class="btn btn-success float-right mt-2" (click)="onUpdate()" [disabled]="!servForm.valid">
+        <i class="fas fa-save"></i> &nbsp;Alterar
       </button>
     </div>  
   </div>
+  
 

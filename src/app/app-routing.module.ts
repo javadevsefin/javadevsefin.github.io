@@ -13,9 +13,10 @@ import {  } from './modulos/servidor/servidor.module';
 import {  } from './modulos/perfil-atendimento/perfil-atendimento.module';
 import {  } from './modulos/ativacao/ativacao.module';
 import {  } from './modulos/atendimento/atendimento.module';
-import {  } from './modulos/painel/painel.module'; 
+import {  } from './modulos/painel/painel.module';
 import {  } from './modulos/login/login.module';
-
+import {  } from './modulos/relatorios/relatorios.module';
+import {  } from './modulos/upload/upload.module';
 
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
@@ -36,7 +37,9 @@ const routes: Routes = [
   { path: 'ativacao', loadChildren: './modulos/ativacao/ativacao.module#AtivacaoModule', canActivate:[AuthGuard]},
   { path: 'atendimento', loadChildren: './modulos/atendimento/atendimento.module#AtendimentoModule', canActivate:[AuthGuard]},
   { path: 'painel', loadChildren: './modulos/painel/painel.module#PainelModule', canActivate:[AuthGuard]},
-  { path: 'login', loadChildren: './modulos/login/login.module#LoginModule' }
+  { path: 'relatorios', loadChildren: './modulos/relatorios/relatorios.module#RelatoriosModule',  canActivate:[AuthGuard]},
+  { path: 'upload', loadChildren: './modulos/upload/upload.module#UploadModule', canActivate:[AuthGuard]},
+  { path: 'login', loadChildren: './modulos/login/login.module#LoginModule'}
 ];
 
 @NgModule({

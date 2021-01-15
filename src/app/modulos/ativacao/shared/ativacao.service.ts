@@ -15,15 +15,13 @@ export class AtivacaoService {
 
   senhaById(id){
     return this.http.get(`${this.API}/agendamento/senha/${id}`).pipe(
-      tap(console.log),
       take(1)
     );
   }
 
   listarFilaAtivados(unidade){
     return this.http.get<Fila[]>(`${this.API}/fila/ativados/${unidade}`).pipe(
-      take(1),
-      tap(console.log)
+      take(1)
     );
   }
 

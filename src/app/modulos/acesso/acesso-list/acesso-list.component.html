@@ -13,7 +13,7 @@
       </div>
       <div class="col-md">
         <button type="button" routerLink="new" class="btn btn-success float-right">
-          <i class="fas fa-user-plus"></i> Cadastrar acesso
+          <i class="fas fa-user-plus"></i> Cadastrar Acesso
         </button>
       </div>
     </div>
@@ -21,7 +21,7 @@
       <table class="table table-hover" style="box-shadow: 5px 5px 10px #000;">
         <thead>
           <tr class="bg-success text-light">
-            <th>Matrícula</th>
+            <th>ID</th>
             <th>Nome</th>
             <th>Unidade</th>
             <th>Função</th>
@@ -43,7 +43,6 @@
                 {{acesso.role.descricao}}
             </td>
             <td>
-              <!--a [routerLink]="[2, 'edit']" class="btn btn-outline-info btn-sm">Editar</a-->
               <button (click)="onEdit(acesso.id)" class="btn btn-outline-info btn-sm"><i class="far fa-edit"></i></button>
               <button (click)="pegaDados(orgao.id, orgao.descricao)" data-toggle="modal" data-target="#ModalExclusao" class="btn btn-outline-danger btn-sm"><i class="far fa-trash-alt"></i></button>
             </td>

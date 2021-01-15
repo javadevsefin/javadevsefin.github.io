@@ -15,7 +15,6 @@ export class GradeService {
 
   listGrade(){
     return this.http.get<Grade[]>(`${this.API}`).pipe(
-      tap(console.log),
       take(1)
     )
   }
@@ -32,12 +31,10 @@ export class GradeService {
        .set("unidade", unidade)
        .set("dataInicial", dataInicial)
        .set("dataFinal", dataFinal)
-       .set("servico", servico)
-       const url = this.API + "/buscar" + "?" + httParams;
-       console.log(url);
-       //`${this.API}/buscar` + "?" + httParams
+       .set("servico", servico);
+       const url = this.API + "/buscar?" + httParams;
+       
        return this.http.get<Grade[]>(url).pipe(
-         tap(console.log),
          take(1)
        );
   }

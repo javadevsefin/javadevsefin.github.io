@@ -46,10 +46,12 @@ export class LoginFormComponent implements OnInit {
         this.globalService.setMatricula(dados.servidor.matricula),
         this.globalService.setNome(dados.servidor.nome),
         this.globalService.setRole(dados.role.descricao),
+        this.globalService.setUnidadeId(dados.unidade.id),
         this.globalService.setUnidade(dados.unidade.descricao),
         this.globalService.getMatricula(),  
         this.globalService.getNome(),
         this.globalService.getRole(),
+        this.globalService.getUnidadeId(),
         this.globalService.getUnidade()
         }  
     }, (error: any) => { this.msgError = true });

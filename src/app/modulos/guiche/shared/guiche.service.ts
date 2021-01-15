@@ -23,7 +23,6 @@ export class GuicheService {
 
   loadById(id){
     return this.http.get(`${this.API}/${id}`).pipe(
-      tap(console.log),
       take(1)
     );
   }

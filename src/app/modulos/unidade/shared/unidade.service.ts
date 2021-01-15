@@ -1,5 +1,5 @@
 import { Unidade } from './unidade';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpParams } from '@angular/common/http';
 import { environment } from './../../../../environments/environment';
 import { Injectable } from '@angular/core';
 
@@ -16,6 +16,19 @@ export class UnidadeService {
 
   listUnidade(){
     return this.http.get<Unidade[]>(`${this.API}`).pipe(
+      take(1)
+    );
+  }
+
+  listUnidadeGenerica(role, unidadeId){
+    
+    const httpParams = new HttpParams()
+    .set("role", role)
+    .set("unidadeId", unidadeId)
+
+    const url = this.API + "/unidadeGenerica?" + httpParams;
+
+    return this.http.get<Unidade[]>(url).pipe(
       take(1)
     );
   }

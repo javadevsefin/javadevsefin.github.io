@@ -1,3 +1,4 @@
+import { GlobalService } from './../../shared/global.service';
 import { ActivatedRoute } from '@angular/router';
 import { GradeService } from './../shared/grade.service';
 import { CalendarioService } from './../../calendario/shared/calendario.service';
@@ -33,7 +34,8 @@ export class GradeFormComponent implements OnInit {
               private unidadeService: UnidadeService,
               private calendarioService: CalendarioService,
               private gradeService: GradeService,
-              private route: ActivatedRoute) { }
+              private route: ActivatedRoute,
+              private globalService: GlobalService) { }
 
   ngOnInit(): void {
 
@@ -147,11 +149,11 @@ export class GradeFormComponent implements OnInit {
   }
 
   comboBox(){
-      this.calendarioService.listCalendario().subscribe(
+      this.calendarioService.listarDiasAtivos().subscribe(
         dados=> this.calendarios = dados
       );
 
-      this.unidadeService.listUnidade().subscribe(
+      this.unidadeService.listUnidadeGenerica(this.globalService.getRole(), this.globalService.getUnidadeId()).subscribe(
         dados=> this.unidades = dados
       );
 

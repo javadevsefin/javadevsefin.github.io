@@ -17,7 +17,61 @@
         </button>
       </div>
     </div>
-     <div class="col-12">
+    <form class="needs-validation" novalidate [formGroup]="calForm">
+    <div class="col-12 mb-2">
+      <button class="btn btn-info mb-2" type="button" data-toggle="collapse" data-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample">
+          Pesquisar Calendário de Atendimento
+      </button>
+      <div class="collapse " id="collapseExample">
+      <div style="box-shadow: 5px 5px 10px #000;" class="card">
+      <div class="card-header">
+         <div class="row col-12 ml-1">
+          <label for="nDoTermo">Filtro para Listagem do Calendário de Atendimento</label>
+        </div>
+      </div>
+      <div class="card-body">
+      <div class="row col-12">
+        <div class="form-group col-md-2">
+          <label for="dataIn">Data Inicial:</label>
+          <input id="dataIn" type="date" class="form-control" formControlName="dataInicial"/>
+        </div>
+        <div class="form-group col-md-2">
+          <label for="dataOut">Data Final:</label>
+          <input id="dataOut" type="date" class="form-control" formControlName="dataFinal"/>
+        </div>
+        <div class="form-group col-md-3">
+          <label for="obs">Observação:</label>
+          <select class="form-control" id="obs" name="observacao" formControlName="observacao">
+            <option value="" selected>Escolha uma opção</option>
+            <option value="Normal">Normal</option>
+            <option value="Sábado">Sábado</option>
+            <option value="Feriado">Feriado</option>
+            <option value="Ponto Facultativo">Ponto facultativo</option>
+            <option value="Cancelado">Cancelado</option>
+          </select>
+        </div>
+        <div class="form-group col-md-2">
+          <label for="obs">Status:</label>
+          <select class="form-control" id="status" name="status" formControlName="statusCalendario">
+            <option value="" selected>Escolha uma opção</option>
+            <option value="Ativo">Ativo</option>
+            <option value="Inativo">Inativo</option>
+          </select>
+        </div>
+        <div class="row col-12">
+          <div class="col-2">
+            <button (click)="pesquisar()" class="btn btn-info float-left" >
+              <i class="fas fa-search"></i> Pesquisar
+            </button>
+          </div>
+        </div>
+        </div>
+      </div>
+      </div>
+    </div>
+    </div>
+  </form>
+     <div class="col-12" *ngIf="calendarios">
       <table class="table table-hover" style="box-shadow: 5px 5px 10px #000;">
         <thead>
           <tr class="bg-success text-light">
@@ -37,7 +91,6 @@
             <td>{{calendario.observacao}}</td>
             <td>{{calendario.statusCalendario}}</td>
             <td>
-              <!--a [routerLink]="[2, 'edit']" class="btn btn-outline-info btn-sm">Editar</a-->
               <button (click)="onEdit(calendario.id)" class="btn btn-outline-info btn-sm"><i class="far fa-edit"></i></button>
               <button (click)="pegaDados(calendario.id, calendario.dia)" data-toggle="modal" data-target="#ModalExclusao" class="btn btn-outline-danger btn-sm"><i class="far fa-trash-alt"></i></button>
             </td>
@@ -45,7 +98,7 @@
         </tbody>
       </table>
      </div>
-      <!-- Modal -->
+    <!-- Modal -->
     <div
     class="modal fade"
     id="ModalExclusao"
@@ -60,14 +113,6 @@
           <h5 class="modal-title" id="TituloModalCentralizado">
             Vamos lá!
           </h5>
-          <!--button
-            type="button"
-            class="close"
-            data-dismiss="modal"
-            aria-label="Fechar"
-          >
-            <span aria-hidden="true">&times;</span>
-          </button-->
         </div>
         <div class="modal-body" style="font-weight: bold;">
             Deseja excluir o registro do guichê: {{_dia}} ?

@@ -2,19 +2,19 @@
     <nav>
       <ol class="breadcrumb">
         <li class="breadcrumb-item"><a routerLink="/">Início</a></li>
-        <li class="breadcrumb-item active">Cadastro do Perfil de atendimento</li>
+        <li class="breadcrumb-item active">Cadastro do Perfil de Atendimento</li>
       </ol>
     </nav>
     <div *ngIf ="mostrarMens" class="alert alert-success" role="alert">
       <a type="button" class="close" data-dismiss="alert" aria-label="Fechar">
         <span aria-hidden="true">&times;</span>
       </a>
-      Operação realizada com sucesso!!!
+       Operação realizada com sucesso!!!
     </div>
     <div class="row mb-4">
       <div class="col-md">
         <h1 class="h3 border-left pl-2">
-          Perfil de atendimento
+          Perfil de Atendimento
         </h1>
       </div>
       <div class="col-md">
@@ -26,7 +26,7 @@
     <form class="needs-validation" novalidate [formGroup]="perfilForm">
       <div class="card" style="box-shadow: 5px 5px 10px #000;">
         <div class="card-header">
-          Formulário para cadastro do Perfil de Atendimento
+          Formulário para Cadastro do Perfil de Atendimento
         </div>
         <div class="card-body">
             <div class="form-row col-md-12">
@@ -48,10 +48,10 @@
                     <div class="form-row col-md-12">
                         <div class="form-group col-md-12">
                             <label for="detalheServico">Detalhamento de Serviços:</label>
-                            <select multiple class="form-control" id="detalheServico" formControlName="servico">
+                            <select multiple class="form-control" id="detalheServico" formControlName="servico" size="10">
                                 <option *ngFor="let delServico of delServicos" [value]="delServico.id">{{delServico.descricao}}</option>
                             </select>
-                            <small id="emailHelp" class="form-text text-muted">Para multipla selação mantenha a tecla Ctrl pressionada.</small>
+                            <small class="form-text text-muted">Para multipla seleção mantenha a tecla Ctrl pressionada.</small>
                         </div>
                     </div>
                 </div>
@@ -65,7 +65,7 @@
                             <th>Unidade</th>
                             <th>Tipo</th>
                             <th>Detalhamento</th>
-                            <th>Serviço</th>                            
+                            <th>Serviço</th>
                             <th>Ações</th>
                           </tr>
                         </thead>
@@ -89,7 +89,7 @@
                             <td>
                                 {{perfilAtendimento.servico}}
                             </td>
-                            <td> 
+                            <td>
                               <button (click)="onDelete(perfilAtendimento.id)" data-toggle="modal" data-target="#ModalExclusao" class="btn btn-outline-danger btn-sm"><i class="far fa-trash-alt"></i></button>
                             </td>
                           </tr>
@@ -104,7 +104,7 @@
       <button type="submit" class="btn btn-success float-right mt-2" (click)="onSubmit()">
       <i class="fas fa-save"></i> &nbsp;Salvar
       </button>
-    </div>  
+    </div>
   </div>
- 
+
 

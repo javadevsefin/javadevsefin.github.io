@@ -2,7 +2,7 @@ import { GlobalService } from './../../shared/global.service';
 import { Router } from '@angular/router';
 import { AppComponent } from './../../../app.component';
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup } from '@angular/forms';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { AtendimentoService } from '../shared/atendimento.service';
 
 @Component({
@@ -15,6 +15,7 @@ export class InicialAtendimentoFormComponent implements OnInit {
   getNome: string;
   getMatricula: string;
   inicialAtendForm: FormGroup;
+  msgError: boolean = false;
 
   constructor(private globalService: GlobalService,
               private fb: FormBuilder,
@@ -28,8 +29,8 @@ export class InicialAtendimentoFormComponent implements OnInit {
 
     this.inicialAtendForm = this.fb.group({
       matricula: ['', []],
-      statusAtendimento: ['', []],
-      guiche: ['', []]
+      statusAtendimento: ['', [Validators.required]],
+      guiche: ['', [Validators.required]]
     });
 
     this.inicialAtendForm.get('matricula').setValue(this.getMatricula);
@@ -42,9 +43,9 @@ export class InicialAtendimentoFormComponent implements OnInit {
       let gui = this.inicialAtendForm.get('guiche').value;
 
       this.atendimentoService.createAtendente(mat, sta, gui).subscribe(
-        success => {console.log("deu certo!")}
+        success => {console.log("deu certo!"), this.router.navigate(['atendimento/listaAtendimento'])},
+        error => { this.msgError = true }
       );
     }
-      this.router.navigate(['atendimento/listaAtendimento']);
   }
 }

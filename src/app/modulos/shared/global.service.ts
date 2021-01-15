@@ -12,6 +12,7 @@ export class GlobalService {
  private nome: string;
  private role: string;
  private unidade: string;
+ private unidadeId: number;
 
   private readonly API = `${environment.API}/atendeFacil/api`; 
 
@@ -48,7 +49,9 @@ export class GlobalService {
     .set("senha", senha);
 
     const url = this.API+ "/acesso/logar?" + httpParams;
-    return this.http.get(url);
+    return this.http.get(url).pipe(
+      take(1)
+    );
   }
 
   //GETTER END SETTER
@@ -75,6 +78,14 @@ export class GlobalService {
    getRole(){
      return this.role;
    }
+
+   setUnidadeId(unidadeId: number){
+    this.unidadeId = unidadeId;
+   }
+
+   getUnidadeId(){
+    return this.unidadeId;
+  }
 
    setUnidade(unidade: string){
       this.unidade = unidade;

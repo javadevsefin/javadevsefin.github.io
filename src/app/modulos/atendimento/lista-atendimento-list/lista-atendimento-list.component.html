@@ -9,7 +9,7 @@
     <div class="row mb-4">
       <div class="col-md">
         <h1 class="h3 border-left pl-2">
-          Listagem de atendimento
+          Listagem de Atendimento
         </h1>
       </div>
     </div>
@@ -22,7 +22,7 @@
             <th>Status da Fila/<br/>Status do Agendamento</th>
             <th>Senha/Data/Horário</th>
             <th>Nome/<br/>CPF/CNPJ</th>
-            <th>Serviço/<br/>Detalhamento de Serviço</th>
+            <th>Serviço/<br/>Detalhamento de Serviço/<br/>Unidade</th>
             <th>Ação</th>
           </tr>
         </thead>
@@ -33,7 +33,7 @@
             <td>{{ fila.statusFila }}<br/>{{ fila.statusAgendamento }}</td>
             <td>{{ fila.senha }}<br/>{{ globalService.formatarDate(fila.data) }}<br/> {{ fila. horario }} </td>
             <td>{{ fila.nome }}<br/>{{ globalService.formatarPessoas(fila.cpfCnpj) }}</td>
-            <td>{{ fila.servico }}<br/>{{ fila.detalhamentoServico }}</td>
+            <td>{{ fila.servico }}<br/>{{ fila.detalhamentoServico }}<br/>{{ fila.unidade }}</td>
             <td ><button class="btn btn-success" (click)="pegarFila(fila.id)">ATENDER</button></td>
           </tr>
         </tbody>

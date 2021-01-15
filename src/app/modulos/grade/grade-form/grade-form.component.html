@@ -10,7 +10,7 @@
       <a type="button" class="close" data-dismiss="alert" aria-label="Fechar">
         <span aria-hidden="true">&times;</span>
       </a>
-      Operação realizada com sucesso!!!
+        Operação realizada com sucesso!!!
     </div>
     <div class="row mb-4">
       <div class="col-md">
@@ -45,7 +45,7 @@
               <div formGroupName="calendario">
               <label for="calendario">Calendário:</label>
               <select  class="form-control" id="calendario" formControlName="id">
-                <option *ngFor="let calendario of calendarios" [value]="calendario.id">{{formatarDate(calendario.dia)}}</option>
+                <option *ngFor="let calendario of calendarios" [value]="calendario.id">{{formatarDate(calendario.dia) + " - " + calendario.observacao }}</option>
               </select>
             </div>
             </div>

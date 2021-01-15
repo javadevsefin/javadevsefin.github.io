@@ -24,4 +24,65 @@ export class PainelService {
       take(1)
     );
   }
+
+  findByPainelB(){
+    return this.http.get<Painel[]>(`${this.API}/02`).pipe(
+      take(1)
+    );
+  }
+
+  findByChamadaB(){
+    return this.http.get(`${this.API}/02/chamada`).pipe(
+      take(1)
+    );
+  }
+
+  findByPainelC(){
+    return this.http.get<Painel[]>(`${this.API}/03`).pipe(
+      take(1)
+    );
+  }
+
+  findByChamadaC(){
+    return this.http.get(`${this.API}/03/chamada`).pipe(
+      take(1)
+    );
+  }
+
+  findByPainelD(){
+    return this.http.get<Painel[]>(`${this.API}/04`).pipe(
+      take(1)
+    );
+  }
+
+  findByChamadaD(){
+    return this.http.get(`${this.API}/04/chamada`).pipe(
+      take(1)
+    );
+  }
+
+  findByPainelE(){
+    return this.http.get<Painel[]>(`${this.API}/05`).pipe(
+      take(1)
+    );
+  }
+
+  findByChamadaE(){
+    return this.http.get(`${this.API}/05/chamada`).pipe(
+      take(1)
+    );
+  }
+
+  findByPainelF(){
+    return this.http.get<Painel[]>(`${this.API}/06`).pipe(
+      take(1)
+    );
+  }
+
+  findByChamadaF(){
+    return this.http.get(`${this.API}/06/chamada`).pipe(
+      take(1)
+    );
+  }
+
 }

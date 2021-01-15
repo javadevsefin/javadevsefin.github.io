@@ -7,9 +7,9 @@
       </ol>
     </nav>
     <div *ngIf ="mostrarMens" class="alert alert-success" role="alert">
-      <button type="button" class="close" data-dismiss="alert" aria-label="Fechar">
+      <a type="button" class="close" data-dismiss="alert" aria-label="Fechar">
         <span aria-hidden="true">&times;</span>
-      </button>
+      </a>
       Operação realizada com sucesso!!!
     </div>
     <div class="row mb-4">
@@ -84,8 +84,7 @@
         tabindex="-1"
         role="dialog"
         aria-labelledby="TituloModalCentralizado"
-        aria-hidden="true"
-      >
+        aria-hidden="true">
       <div class="modal-dialog modal-dialog-centered" role="document">
           <div class="modal-content">
             <div class="modal-header">
@@ -140,11 +139,7 @@
                        </div>
                     </div>
                   <div class="modal-footer">
-                    <button
-                      type="button"
-                      class="btn btn-danger"
-                      data-dismiss="modal"
-                    >
+                    <button type="button" class="btn btn-danger" data-dismiss="modal">
                       <i class="fas fa-window-close"></i>&nbsp;Fechar
                     </button>
                     <button class="btn btn-success" (click)="confirmar(id)" *ngIf="ger == 'n' ">
@@ -156,13 +151,7 @@
             </div>
             <!--Fim da modal-->         
             </div>
-    <button
-      type="submit"
-      id="modal"
-      class="btn btn-success float-right mt-3"
-      data-toggle="modal" data-target="#ModalSalvar"
-      *ngIf="ger == 'n' "
-        > 
-        <i class="fas fa-save"></i> &nbsp;Gerar Agendamento
+            <button type="submit" id="modal" class="btn btn-success float-right mt-3" data-toggle="modal" data-target="#ModalSalvar" *ngIf="ger == 'n' "> 
+                <i class="fas fa-save"></i> &nbsp;Gerar Agendamento
             </button>
-  </div>
+        </div>

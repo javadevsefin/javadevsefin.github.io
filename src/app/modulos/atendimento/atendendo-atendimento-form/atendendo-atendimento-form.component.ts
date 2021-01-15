@@ -1,3 +1,5 @@
+import { PainelService } from './../../painel/shared/painel.service';
+import { PainelAListFormComponent } from './../../painel/painel-a-list-form/painel-a-list-form.component';
 import { DetalhamentoServicoService } from './../../detalhamento-servico/shared/detalhamento-servico.service';
 import { DetalhamentoServico } from './../../detalhamento-servico/shared/detalhamento-servico';
 import { AtendimentoService } from './../shared/atendimento.service';
@@ -96,11 +98,11 @@ export class AtendendoAtendimentoFormComponent implements OnInit {
     let servidor = this.atendimentoForm.get('servidor').value;
 
     this.atendimentoService.createChamar(fila, servidor).subscribe(
-      success => { console.log("Deu certo")}
-    );
+      success => { console.log("Deu certo")});
     this.btnComecar = true;
     this.btnFinalizar = true;
     this.cont = this.cont + 1;
+    
   }
 
   onStart(){

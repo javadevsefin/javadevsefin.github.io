@@ -39,25 +39,17 @@ export class ServidorService {
     );
   }
 
-  private create(servidor){
+  create(servidor){
     return this.http.post(`${this.API}`, servidor).pipe(
       take(1)
     );
   }
 
-  private update(servidor){
+  update(servidor){
     return this.http.put(`${this.API}/${servidor.matricula}`, servidor).pipe(
       take(1)
     );
   }
-
-  save(servidor){
-    if(servidor.matricula){
-      return this.update(servidor)
-    } else {
-      return this.create(servidor)
-    }
-  }  
 
   remove(id){
     return this.http.get(`${this.API}/status/${id}` ).pipe(

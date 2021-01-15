@@ -1,3 +1,4 @@
+import { take } from 'rxjs/operators';
 import { GlobalService } from './../../shared/global.service';
 import { PainelService } from './../shared/painel.service';
 import { Component, OnInit } from '@angular/core';
@@ -24,6 +25,8 @@ export class PainelAListFormComponent implements OnInit {
   data: string;
   hora: string;
   prioridade: string;
+  n: number = 10800;
+  status: string = "Ligado";
 
   constructor(private painelService: PainelService,
               private globalService: GlobalService) { }
@@ -31,10 +34,20 @@ export class PainelAListFormComponent implements OnInit {
   ngOnInit(): void {
 
     const tempo = interval(5000);
-    tempo.subscribe((t)=>{
+
+    const periodo = tempo.pipe(take(this.n));
+
+    periodo.subscribe((t)=>{
+      console.log("Chamando");
       this.listarPainelA();
       this.listarChamada();
+      
     });
+  }
+
+  desligar(){
+    this.n = 3;
+    this.status = "Desligado";
   }
 
   listarChamada(){
