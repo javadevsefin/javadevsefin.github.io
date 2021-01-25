@@ -98,7 +98,7 @@ export class AppComponent implements OnInit {
           this.visGrade = true
           this.visRecep = false
           this.visAtend = false
-          this.visCont = false
+          this.visCont = true
           this.visConf =  false
           this.visRel = false
           this.visPan = true
@@ -106,15 +106,15 @@ export class AppComponent implements OnInit {
           this.visGrade = true
           this.visRecep = false
           this.visAtend = false
-          this.visCont = false
+          this.visCont = true
           this.visConf =  false
-          this.visRel = false
-          this.visPan = true
+          this.visRel = true
+          this.visPan = false
         } else if(tipo === "Recepção/Informação"){
           this.visGrade = false
           this.visRecep = true
           this.visAtend = false
-          this.visCont = false
+          this.visCont = true
           this.visConf =  false
           this.visRel = false
           this.visPan = true
@@ -122,7 +122,7 @@ export class AppComponent implements OnInit {
           this.visGrade = false
           this.visRecep = false
           this.visAtend = true
-          this.visCont = false
+          this.visCont = true
           this.visConf =  false
           this.visRel = false
           this.visPan = false

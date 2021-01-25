@@ -61,9 +61,9 @@
           <div class="form-row col-md-12">
             <div class="form-group col-md-2">
               <label for="inter">Intervalo de aten. (Minutos):</label>
-              <input id="inter" 
-                     type="number" 
-                     class="form-control" 
+              <input id="inter"
+                     type="number"
+                     class="form-control"
                      formControlName="intervalo"
                      (blur)="calcula()"/>
             </div>
@@ -90,7 +90,7 @@
           </div>
           <div class="form-row col-md-12 d-flex justify-content-center">
             <div class="form-group col-md-3">
-            <div class="card" style="box-shadow: 5px 5px 10px #000;">	
+            <div class="card" style="box-shadow: 5px 5px 10px #000;">
               <div class="card-header">
                     Resumo da grade.
                    </div>
@@ -108,9 +108,9 @@
                   Total de atendimento:&#160;<strong id="totAtend" style="color: Black;">{{ totAtend }}</strong>
                 </div>
                 <div class="form-row col-md-12 d-flex justify-content-center">
-                  Intervalo:&#160;<strong id="corrVaga" style="color: Black;">{{ corrVaga }}</strong><strong>&#160;min</strong> 
+                  Intervalo:&#160;<strong id="corrVaga" style="color: Black;">{{ corrVaga }}</strong><strong>&#160;min</strong>
                 </div>
-              </div>	
+              </div>
             </div>
             </div>
           </div>
@@ -118,14 +118,7 @@
       </div>
     </form>
         <!-- Modal -->
-        <div
-        class="modal fade"
-        id="ModalSalvar"
-        tabindex="-1"
-        role="dialog"
-        aria-labelledby="TituloModalCentralizado"
-        aria-hidden="true"
-      >
+        <div class="modal fade" id="ModalSalvar" tabindex="-1" role="dialog" aria-labelledby="TituloModalCentralizado" aria-hidden="true">
         <div class="modal-dialog modal-dialog-centered" role="document">
           <div class="modal-content">
             <div class="modal-header">
@@ -158,13 +151,8 @@
       </div>
       <!--Fim da modal-->
     <div>
-      <button
-        type="submit"
-        id="modal"
-        class="btn btn-success float-right mt-2"
-        data-toggle="modal" data-target="#ModalSalvar"
-      > 
-      <i class="fas fa-save"></i> &nbsp;Salvar
+      <button type="button" id="modal" class="btn btn-success float-right mt-2" data-toggle="modal" data-target="#ModalSalvar">
+        <i class="fas fa-save"></i> &nbsp;Salvar
       </button>
     </div>
- 
+

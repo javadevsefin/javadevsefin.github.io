@@ -12,7 +12,8 @@ import { Servidor } from '../../servidor/shared/servidor';
 @Component({
   selector: 'app-acesso-form',
   templateUrl: './acesso-form.component.html',
-  styleUrls: ['./acesso-form.component.css']
+  styleUrls: ['./acesso-form.component.css'],
+  preserveWhitespaces: true
 })
 export class AcessoFormComponent implements OnInit {
 
@@ -22,11 +23,11 @@ export class AcessoFormComponent implements OnInit {
   unidades: Unidade[];
   roles: Role[];
   matricula: string;
-  servidor: string;  
-  unidade: string; 
+  servidor: string;
+  unidade: string;
   role: string;
   senha: string;
-  
+
 
 
   constructor(private fb: FormBuilder,
@@ -48,7 +49,7 @@ export class AcessoFormComponent implements OnInit {
     }
 
     this.acessoForm = this.fb.group({
-      
+
       id: [null, []],
       servidor: this.fb.group({
         matricula: ['', []]
@@ -104,14 +105,18 @@ export class AcessoFormComponent implements OnInit {
 
       let cp: string = this.acessoForm.get('servidor').value;
       let p2 = cp.substring(0, 3);
-      
+
       senha = p1 + p2;
     }
     return senha
   }
 
-  onSubmit(){ 
+  onUpdatePass(){
+    this.acessoForm.get('senha').setValue('ati2021');
+    this.onSubmit();
+  }
 
+  onSubmit(){
     if(this.acessoForm.valid){
        this.acessoService.save(this.acessoForm.value).subscribe(
           success => { this.mostrarMens = true }

@@ -14,16 +14,16 @@ export class GlobalService {
  private unidade: string;
  private unidadeId: number;
 
-  private readonly API = `${environment.API}/atendeFacil/api`; 
+  private readonly API = `${environment.API}/atendeFacil/api`;
 
   private loggedInStatus: boolean = false;
- 
+
   mostrarMenuEmitter = new EventEmitter<boolean>();
   gUser = new EventEmitter<string>();
   gTipo = new EventEmitter<string>();
   gMatricula = new EventEmitter<string>();
   gUnidade = new EventEmitter<string>();
-  
+
   constructor(private http: HttpClient) { }
 
   setLoggedIn(value: boolean){
@@ -49,6 +49,20 @@ export class GlobalService {
     .set("senha", senha);
 
     const url = this.API+ "/acesso/logar?" + httpParams;
+    return this.http.get(url).pipe(
+      take(1)
+    );
+  }
+
+  alterarSenha(matricula, senha, novaSenha, confirmarNovaSenha){
+
+    const httpParams =new HttpParams()
+    .set("matricula", matricula)
+    .set("senha", senha)
+    .set("novaSenha", novaSenha)
+    .set("confirmarNovaSenha", confirmarNovaSenha);
+
+    const url = this.API+ "/acesso/alterarSenha?" + httpParams;
     return this.http.get(url).pipe(
       take(1)
     );
@@ -101,7 +115,7 @@ export class GlobalService {
 			 let dia = data.substring(8,10);
 			 let mes = data.substring(5,7);
        let ano = data.substring(0,4);
-       
+
        if(dia.length == 1){
         dia = "0" + dia;
      }
@@ -132,16 +146,16 @@ export class GlobalService {
     let res: string;
     if(pfj.length == 11 ){
       res = this.formatarCpf(pfj);
-    } 
+    }
 
     if(pfj.length == 14 ){
       res = this.formatarCnpj(pfj);
-    } 
+    }
     return res;
   }
 
   formatarCpf(cpf){
-    let str:string = cpf; 
+    let str:string = cpf;
     let p1 = str.substring(0, 3);
     let p2 = str.substring(3, 6);
     let p3 = str.substring(6, 9);

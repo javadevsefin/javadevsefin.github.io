@@ -60,21 +60,21 @@
           <div class="form-row col-md-12">
             <div class="form-group col-md-2">
               <label for="senha">Senha:</label>
-              <input type="text" class="form-control" id="senha" formControlName="senha" />
+              <input type="password" class="form-control" id="senha" formControlName="senha" />
             </div>
           </div>
         </div>
       </div>
     </form>
-    <div>
-      <button
-        type="submit"
-        class="btn btn-success float-right mt-2"
-        (click)="onSubmit()"
-      >
-      <i class="fas fa-save"></i> &nbsp;Salvar
+    <div class="float-right mt-2">
+      <button type="submit" class="btn btn-primary" (click)="onUpdatePass()">
+        <i class="fas fa-key"></i> &nbsp;Re-definir Senha
+      </button>
+      <button type="submit" class="btn btn-success" (click)="onSubmit()">
+        <i class="fas fa-save"></i>&nbsp;Salvar
       </button>
     </div>
   </div>
- 
+
+
 
