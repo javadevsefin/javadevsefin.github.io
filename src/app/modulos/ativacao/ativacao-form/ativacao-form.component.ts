@@ -73,13 +73,22 @@ export class AtivacaoFormComponent implements OnInit {
     this.ativaForm.patchValue(senha);
   }
 
+  reclassificarPrioridade(){
+    let identificador = this.ativaForm.get('identificador').value;
+    let prioridade = this.ativaForm.get('prioridade').value;
+
+    this.ativacaoService.reclassificarPrioridade(identificador, prioridade).subscribe(
+        success => { "FOI" }
+    );
+  }
+
   formatarDate(data: string){
     let dataCompleta = "";
-		
+
 			 let dia = data.substring(8,10);
 			 let mes = data.substring(5,7);
        let ano = data.substring(0,4);
-       
+
        if(dia.length == 1){
         dia = "0" + dia;
      }
@@ -88,7 +97,7 @@ export class AtivacaoFormComponent implements OnInit {
        mes = "0" + mes
      }
        dataCompleta = dia+"/"+mes+"/"+ano
-    
+
 		 return dataCompleta;
   }
 
@@ -96,16 +105,16 @@ export class AtivacaoFormComponent implements OnInit {
     let res: string;
     if(pfj.length == 11 ){
       res = this.formatarCpf(pfj);
-    } 
+    }
 
     if(pfj.length == 14 ){
       res = this.formatarCnpj(pfj);
-    } 
+    }
     return res;
   }
 
   formatarCpf(cpf){
-    let str:string = cpf; 
+    let str:string = cpf;
     let p1 = str.substring(0, 3);
     let p2 = str.substring(3, 6);
     let p3 = str.substring(6, 9);
@@ -133,7 +142,7 @@ export class AtivacaoFormComponent implements OnInit {
       this.ativacaoService.updateAgendamento(this.ativaForm.get('id').value).subscribe(
         success => { this.onSubmit() }
       );
-      
+
     }
 
     onSubmit(){

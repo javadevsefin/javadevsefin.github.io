@@ -11,7 +11,7 @@ import { Component, OnInit } from '@angular/core';
 export class AtivacaoListComponent implements OnInit {
 
   constructor(private ativacaoService: AtivacaoService,
-              private globalService: GlobalService) { }
+              public globalService: GlobalService) { }
 
   filas: Fila[];
 
@@ -25,5 +25,5 @@ export class AtivacaoListComponent implements OnInit {
     );
   }
 
-  
+
 }
