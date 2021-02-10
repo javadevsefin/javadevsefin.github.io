@@ -1,3 +1,4 @@
+import { GlobalService } from './../../shared/global.service';
 import { ServicoService } from './../shared/servico.service';
 import { Component, OnInit } from '@angular/core';
 import { Servico } from '../shared/servico';
@@ -18,7 +19,8 @@ export class ServicoListComponent implements OnInit {
 
   constructor(private servicoService: ServicoService,
               private router: Router,
-              private route: ActivatedRoute) { }
+              private route: ActivatedRoute,
+              private globalService: GlobalService) { }
 
   ngOnInit(): void {
     this.listarServico();
@@ -40,6 +42,8 @@ export class ServicoListComponent implements OnInit {
   }
 
   onDelete(){
-
+    this.servicoService.remove(this._id).subscribe(
+      sucess=> { this.globalService.removeShow('Excluido com Sucesso!', 'Serviço')}
+    );
   }
 }

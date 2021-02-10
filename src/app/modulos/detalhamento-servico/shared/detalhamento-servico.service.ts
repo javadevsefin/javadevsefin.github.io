@@ -45,5 +45,4 @@ export class DetalhamentoServicoService {
           return this.update(detServico);
       }
   }
-
 }

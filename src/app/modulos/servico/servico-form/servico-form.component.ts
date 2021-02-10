@@ -1,3 +1,4 @@
+import { GlobalService } from './../../shared/global.service';
 import { OrgaoService } from './../../orgao/shared/orgao.service';
 import { ServicoService } from './../shared/servico.service';
 import { FormGroup, FormBuilder } from '@angular/forms';
@@ -16,16 +17,17 @@ export class ServicoFormComponent implements OnInit {
   mostrarMens: boolean = false;
   orgaos: Orgao[];
 
-  
+
 
   constructor(private fb: FormBuilder,
               private servicoService: ServicoService,
               private orgaoService: OrgaoService,
-              private route: ActivatedRoute) { }
+              private route: ActivatedRoute,
+              private globalService: GlobalService) { }
 
   ngOnInit(): void {
     this.comboBox();
-    
+
     const routeParans = this.route.snapshot.params;
     if(routeParans.id != null){
         this.servicoService.loadById(routeParans.id).subscribe((servico:any)=>{
@@ -57,10 +59,10 @@ export class ServicoFormComponent implements OnInit {
   onSumit(){
       if(this.servicoForm.valid){
         this.servicoService.save(this.servicoForm.value).subscribe(
-            success => { this.mostrarMens = true }
+            success => { this.globalService.saveShow('Salvo com Sucesso', 'Serviço') }
         )
       }
       this.servicoForm.reset();
-  }  
+  }
 
 }

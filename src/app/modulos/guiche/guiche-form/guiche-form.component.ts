@@ -1,3 +1,4 @@
+import { GlobalService } from './../../shared/global.service';
 import { GuicheService } from './../shared/guiche.service';
 import { FormBuilder, FormGroup } from '@angular/forms';
 import { Component, OnInit } from '@angular/core';
@@ -15,7 +16,8 @@ export class GuicheFormComponent implements OnInit {
 
   constructor(private fb: FormBuilder,
               private guicheService: GuicheService,
-              private route: ActivatedRoute ) { }
+              private route: ActivatedRoute,
+              private globalService: GlobalService ) { }
 
   ngOnInit(): void {
     const routeParans = this.route.snapshot.params;
@@ -38,7 +40,7 @@ export class GuicheFormComponent implements OnInit {
     onSumit(){
       if(this.guicheForm.valid){
         this.guicheService.save(this.guicheForm.value).subscribe(
-          success => {this.mostrarMens = true }
+          success => { this.globalService.saveShow('Salvo com Sucesso!', 'Guichê') }
         );
       }
       this.guicheForm.reset();

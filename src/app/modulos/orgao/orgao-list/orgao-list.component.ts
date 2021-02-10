@@ -1,3 +1,4 @@
+import { GlobalService } from './../../shared/global.service';
 import { ActivatedRoute, Router } from '@angular/router';
 import { OrgaoService } from './../shared/orgao.service';
 import { Component, OnInit } from '@angular/core';
@@ -18,7 +19,8 @@ export class OrgaoListComponent implements OnInit {
 
   constructor(private orgaoService: OrgaoService,
               private router: Router,
-              private route: ActivatedRoute) { }
+              private route: ActivatedRoute,
+              private globalService: GlobalService) { }
 
   ngOnInit(): void {
     this.listOrgao();
@@ -31,7 +33,7 @@ export class OrgaoListComponent implements OnInit {
   }
 
   onEdit(id){
-    this.router.navigate(['editar', id], {relativeTo: this.route});  
+    this.router.navigate(['editar', id], {relativeTo: this.route});
   }
 
   pegaDados(id, descricao){
@@ -41,7 +43,7 @@ export class OrgaoListComponent implements OnInit {
 
   onDelete(){
     this.orgaoService.remove(this._id).subscribe(
-      success=>{this.mostrarMens = true, this.listOrgao()}
+      success=>{this.globalService.removeShow('Excluido com Sucesso!', 'Orgão'), this.listOrgao()}
     );
   }
 }

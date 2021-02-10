@@ -27,9 +27,9 @@
       <div class="card-header">
          <div class="row col-12 ml-1">
           <label for="nDoTermo">Filtro para listagem das grades de atendiemento:</label>
-        </div>	
+        </div>
       </div>
-      <div class="card-body">	
+      <div class="card-body">
       <div class="row col-12">
         <div class="form-group col-md-2">
           <label for="dataIn">Data Inicial:</label>
@@ -38,7 +38,7 @@
         <div class="form-group col-md-2">
           <label for="dataOut">Data Final:</label>
           <input id="dataOut" type="date" class="form-control" formControlName="dataFinal"/>
-        </div> 
+        </div>
         <div class="form-group col-md-4">
           <label for="unidade">Unidades:</label>
           <select  class="form-control" id="unidade" formControlName="unidade">
@@ -53,7 +53,7 @@
                 <option *ngFor="let servico of servicos" [value]="servico.descricao">{{servico.descricao}}</option>
             </select>
         </div>
-        <div class="row col-12"> 
+        <div class="row col-12">
           <div class="col-2">
             <button (click)="pesquisar()" class="btn btn-info float-left" >
               <i class="fas fa-search"></i> Pesquisar
@@ -86,7 +86,7 @@
         <tbody>
           <tr *ngFor="let grade of grades">
             <td><strong>{{ grade.id }}</strong></td>
-            <td>{{ formatarDate(grade.calendario.dia) }}</td>
+            <td>{{ grade.calendario.dia | date: 'dd/MM/yyyy'}}</td>
             <td>{{ grade.horaInicial }}</td>
             <td>{{ grade.horaFinal }}</td>
             <td>{{ grade.intervalo }}</td>
@@ -102,22 +102,18 @@
                 <i class="far fa-hourglass"></i>
               </button>
               <button type="button" class="btn btn-success" data-toggle="tooltip" data-placement="top" title="Vagas geradas!" *ngIf="grade.gerado == 'g' ">
-                <i class="fa fa-thumbs-o-up" aria-hidden="true"></i> 
+                <i class="fa fa-thumbs-o-up" aria-hidden="true"></i>
               </button>
             </td>
             <td>
-              <!--a [routerLink]="[2, 'edit']" class="btn btn-outline-info btn-sm">Editar</a-->
-              <button (click)="onEdit(grade.id)" class="btn btn-outline-info btn-sm" data-toggle="tooltip" 
+              <button (click)="onEdit(grade.id)" class="btn btn-outline-info btn-sm" data-toggle="tooltip"
               data-placement="top" title="Editar grade de atendimento?" [disabled]="grade.gerado == 'g'"><i class="far fa-edit"></i></button>
-              <button (click)="gerarAgendamento(grade.id)" class="btn btn-outline-success btn-sm" 
+              <button (click)="gerarAgendamento(grade.id)" class="btn btn-outline-success btn-sm"
               data-toggle="tooltip" data-placement="top" title="Gerar vagas de agendamento?"><i class="fas fa-list-ol"></i></button>
             </td>
           </tr>
         </tbody>
       </table>
     </div>
- <!-- <pre>
-    {{ buscaForm.value | json }}  
-    </pre> --> 
   </div>
 

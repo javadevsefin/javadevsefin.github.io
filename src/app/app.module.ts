@@ -5,6 +5,9 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { HttpClientModule } from '@angular/common/http';
 
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { ToastrModule }  from 'ngx-toastr';
+
 
 @NgModule({
   declarations: [
@@ -13,7 +16,13 @@ import { HttpClientModule } from '@angular/common/http';
   imports: [
     BrowserModule,
     AppRoutingModule,
-    HttpClientModule
+    HttpClientModule,
+    BrowserAnimationsModule,
+    ToastrModule.forRoot({
+      timeOut: 3000,
+      progressBar: true,
+      progressAnimation:'increasing'
+    })
   ],
   providers: [],
   bootstrap: [AppComponent]

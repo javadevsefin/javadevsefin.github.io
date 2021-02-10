@@ -10,9 +10,9 @@ import { AgendamentoService } from '../shared/agendamento.service';
 })
 export class AgendamentoUpFormComponent implements OnInit {
 
-  mostrarMens: boolean = false;
   agenUpForm: FormGroup;
   dataFormatada;
+
   constructor(private route: ActivatedRoute,
               private fb: FormBuilder,
               private agendamentoService: AgendamentoService) { }
@@ -84,22 +84,4 @@ export class AgendamentoUpFormComponent implements OnInit {
     this.agenUpForm.patchValue(agendamento);
   }
 
-  formatarDate(data: string){
-    let dataCompleta = "";
-		
-			 let dia = data.substring(8,10);
-			 let mes = data.substring(5,7);
-       let ano = data.substring(0,4);
-       
-       if(dia.length == 1){
-        dia = "0" + dia;
-     }
-
-     if(mes.length == 1){
-       mes = "0" + mes
-     }
-       dataCompleta = dia+"/"+mes+"/"+ano
-    
-		 return dataCompleta;
-  }
 }

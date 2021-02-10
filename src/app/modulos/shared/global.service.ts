@@ -2,6 +2,7 @@ import { tap, take } from 'rxjs/operators';
 import { environment } from './../../../environments/environment';
 import { HttpClient, HttpParams } from '@angular/common/http';
 import { EventEmitter, Injectable } from '@angular/core';
+import { ToastrService } from 'ngx-toastr';
 
 @Injectable({
   providedIn: 'root'
@@ -24,7 +25,8 @@ export class GlobalService {
   gMatricula = new EventEmitter<string>();
   gUnidade = new EventEmitter<string>();
 
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient,
+              private toastr: ToastrService) { }
 
   setLoggedIn(value: boolean){
     this.loggedInStatus = value;
@@ -189,4 +191,13 @@ export class GlobalService {
       }
        return dataCompleta;
     }
+
+    saveShow(mensagem: string, titulo: string){
+      this.toastr.success(mensagem, titulo);
+    }
+
+    removeShow(mensagem: string, titulo: string){
+      this.toastr.error(mensagem, titulo);
+    }
+
 }

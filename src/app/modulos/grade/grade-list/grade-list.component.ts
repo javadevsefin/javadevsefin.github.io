@@ -33,11 +33,11 @@ export class GradeListComponent implements OnInit {
               private servicoService: ServicoService,
               private router: Router,
               private route: ActivatedRoute,
-              private globalService: GlobalService 
+              private globalService: GlobalService
               ) { }
 
   ngOnInit(): void {
-    //this.listGrade();
+
     this.comboBox();
 
     this.buscaForm = this.fb.group({
@@ -84,38 +84,8 @@ export class GradeListComponent implements OnInit {
     return dataFinal;
   }
 
-  formatarData(data: string) {
-		let dataCompleta = "";
-		if(data != null) {
-			 let dia = data.substring(0,2);
-			 let mes = data.substring(2,4);
-			 let ano = data.substring(4,8);
-       dataCompleta = dia+"/"+mes+"/"+ano
-    }
-    if(dataCompleta == "//"){
-      dataCompleta = ""
-    }
-		 return dataCompleta;
-  }
-
-  formatarDate(data: string){
-    let dataCompleta = "";
-			 let dia = data.substring(8,10);
-			 let mes = data.substring(5,7);
-       let ano = data.substring(0,4);
-       
-       if(dia.length == 1){
-        dia = "0" + dia;
-     }
-     if(mes.length == 1){
-       mes = "0" + mes
-     }
-     dataCompleta = dia+"/"+mes+"/"+ano
-		 return dataCompleta;
-  }
-  
   comboBox(){
-    
+
     this.unidadeService.listUnidadeGenerica(this.globalService.getRole(), this.globalService.getUnidadeId()).subscribe(
       dados=> this.unidades = dados
     );

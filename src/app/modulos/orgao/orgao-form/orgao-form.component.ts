@@ -1,3 +1,4 @@
+import { GlobalService } from './../../shared/global.service';
 import { OrgaoService } from './../shared/orgao.service';
 import { FormBuilder, FormGroup } from '@angular/forms';
 import { Component, OnInit } from '@angular/core';
@@ -15,7 +16,8 @@ export class OrgaoFormComponent implements OnInit {
 
   constructor(private fb: FormBuilder,
               private orgaoService: OrgaoService,
-              private route: ActivatedRoute) { }
+              private route: ActivatedRoute,
+              private globalService: GlobalService) { }
 
   ngOnInit(): void {
 
@@ -40,7 +42,7 @@ export class OrgaoFormComponent implements OnInit {
   onSumit(){
       if (this.orgaoForm.valid){
           this.orgaoService.save(this.orgaoForm.value).subscribe(
-            success => { this.mostrarMens = true }
+            success => { this.globalService.saveShow('Salvo com Sucesso!', 'Orgão') }
           );
       }
       this.orgaoForm.reset();

@@ -30,9 +30,7 @@ export class AppComponent implements OnInit {
   p06: boolean = false;
 
   constructor(private globalService: GlobalService,
-              private router: Router){
-
-  }
+              private router: Router){}
 
   ngOnInit(): void {
 
@@ -183,7 +181,6 @@ export class AppComponent implements OnInit {
         }
       }
     );
-
     this.router.navigate(['/login']);
   }
 

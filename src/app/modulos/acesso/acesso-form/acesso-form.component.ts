@@ -1,3 +1,4 @@
+import { GlobalService } from './../../shared/global.service';
 import { AppComponent } from './../../../app.component';
 import { ActivatedRoute } from '@angular/router';
 import { ServidorService } from './../../servidor/shared/servidor.service';
@@ -34,7 +35,8 @@ export class AcessoFormComponent implements OnInit {
               private unidadeService: UnidadeService,
               private acessoService: AcessoService,
               private servidorService: ServidorService,
-              private route: ActivatedRoute) { }
+              private route: ActivatedRoute,
+              private globalService: GlobalService) { }
 
   ngOnInit(): void {
 
@@ -82,35 +84,6 @@ export class AcessoFormComponent implements OnInit {
       );
   }
 
-  confirmar(){
-      this.matricula = this.acessoForm.get('matricula').value;
-      this.servidor = this.acessoForm.get('servidor').value;
-      this.unidade = this.acessoForm.get('unidade').value;
-      this.role = this.acessoForm.get('role').value;
-
-      if(this.acessoForm.get('senha').value == null){
-        this.acessoForm.get('senha').setValue(this.gerarSenha());
-      }
-      this.senha = this.acessoForm.get('senha').value;
-  }
-
-  gerarSenha() {
-
-    let senha: string;
-
-    if(this.matricula == null){
-
-      let mat: string = "1038885";
-      let p1 = mat.substring(0, 3);
-
-      let cp: string = this.acessoForm.get('servidor').value;
-      let p2 = cp.substring(0, 3);
-
-      senha = p1 + p2;
-    }
-    return senha
-  }
-
   onUpdatePass(){
     this.acessoForm.get('senha').setValue('ati2021');
     this.onSubmit();
@@ -119,7 +92,7 @@ export class AcessoFormComponent implements OnInit {
   onSubmit(){
     if(this.acessoForm.valid){
        this.acessoService.save(this.acessoForm.value).subscribe(
-          success => { this.mostrarMens = true }
+          success => { this.globalService.saveShow("Realizado com Sucesso", "Acesso") }
         );
       }
     this.acessoForm.reset();

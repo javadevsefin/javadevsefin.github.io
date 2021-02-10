@@ -1,3 +1,4 @@
+import { GlobalService } from './../../shared/global.service';
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Guiche } from '../shared/guiche';
@@ -18,7 +19,8 @@ export class GuicheListComponent implements OnInit {
 
   constructor(private guicheService: GuicheService,
               private router: Router,
-              private route: ActivatedRoute) { }
+              private route: ActivatedRoute,
+              private globalService: GlobalService) { }
 
   ngOnInit(): void {
     this.listarGuiche();
@@ -36,7 +38,7 @@ export class GuicheListComponent implements OnInit {
 
   onDelete(){
     this.guicheService.remove(this._id).subscribe(
-      success => {this.mostrarMens = true, this.listarGuiche()}
+      success => {this.globalService.removeShow('Excluido com Sucesso!', 'Guichê'), this.listarGuiche()}
     );
   }
 

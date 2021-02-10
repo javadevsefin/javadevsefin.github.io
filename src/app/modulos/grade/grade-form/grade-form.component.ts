@@ -44,7 +44,7 @@ export class GradeFormComponent implements OnInit {
     const routeParans = this.route.snapshot.params;
     if(routeParans.id != null){
       this.gradeService.loadById(routeParans.id).subscribe((grade: any)=>
-        { this.updateGradeForm(grade), 
+        { this.updateGradeForm(grade),
           this.calcula()});
     }
 
@@ -53,7 +53,7 @@ export class GradeFormComponent implements OnInit {
       calendario: this.fb.group({
         id: ['', []],
         dia: ['',[]]
-      }), 
+      }),
       horaInicial: ['',[]],
       horaFinal: ['',[]],
       intervalo: ['',[]],
@@ -93,7 +93,7 @@ export class GradeFormComponent implements OnInit {
 
       let horaIni2Min = parseInt(horaIni2)*60;
       let horaFin2Int = parseInt(horaFin2);
-      
+
       let totFinMin = horaIni2Min + horaFin2Int;
 
       console.log(totFinMin);
@@ -117,7 +117,7 @@ export class GradeFormComponent implements OnInit {
       this.mediaAtenHora = media;
       this.totAtend = totalQuant;
       this.corrVaga = corVagas;
-    
+
     this.gradeForm.get('quantidade').setValue(totalQuant);
     this.gradeForm.get('correcaoHora').setValue(corVagas);
     //this.gradeForm.get('configurado').setValue("c");
@@ -128,14 +128,14 @@ export class GradeFormComponent implements OnInit {
     this.gradeForm.patchValue(grade);
   }
 
-  
+
   formatarDate(data: string){
     let dataCompleta = "";
-		
+
 			 let dia = data.substring(8,10);
 			 let mes = data.substring(5,7);
        let ano = data.substring(0,4);
-       
+
        if(dia.length == 1){
         dia = "0" + dia;
      }
@@ -144,7 +144,7 @@ export class GradeFormComponent implements OnInit {
        mes = "0" + mes
      }
        dataCompleta = dia+"/"+mes+"/"+ano
-    
+
 		 return dataCompleta;
   }
 
@@ -165,7 +165,7 @@ export class GradeFormComponent implements OnInit {
   onSubmit(){
     if(this.gradeForm.valid){
         this.gradeService.save(this.gradeForm.value).subscribe(
-          success => {this.mostrarMens = true }
+          success => {this.globalService.saveShow("Gerado com Sucesso!", "Grade") }
         )
     }
     this.gradeForm.reset();

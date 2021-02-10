@@ -1,3 +1,4 @@
+import { GlobalService } from './../../shared/global.service';
 import { DetalhamentoServicoService } from './../shared/detalhamento-servico.service';
 import { FormGroup, FormBuilder } from '@angular/forms';
 import { Component, OnInit } from '@angular/core';
@@ -19,7 +20,8 @@ export class DetalhamentoServicoFormComponent implements OnInit {
   constructor(private fb: FormBuilder,
               private detalhamentoServicoService: DetalhamentoServicoService,
               private servicoService: ServicoService,
-              private route: ActivatedRoute) { }
+              private route: ActivatedRoute,
+              private globalService: GlobalService) { }
 
   ngOnInit(): void {
     this.comboBox();
@@ -55,7 +57,7 @@ export class DetalhamentoServicoFormComponent implements OnInit {
   onSumit(){
         if(this.detalhamentoServicoForm.valid){
           this.detalhamentoServicoService.save(this.detalhamentoServicoForm.value).subscribe(
-            success => { this.mostrarMens = true }
+            success => { this.globalService.saveShow('Salvo com Sucesso!', 'Detalhamento de Serviço') }
           )
         }
         this.detalhamentoServicoForm.reset();

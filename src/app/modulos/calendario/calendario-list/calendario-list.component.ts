@@ -1,3 +1,4 @@
+import { GlobalService } from './../../shared/global.service';
 import { FormGroup, FormBuilder } from '@angular/forms';
 import { CalendarioService } from './../shared/calendario.service';
 import { Calendario } from './../shared/calendario';
@@ -21,7 +22,8 @@ export class CalendarioListComponent implements OnInit {
   constructor(private calendarioService: CalendarioService,
               private router: Router,
               private route: ActivatedRoute,
-              private fb: FormBuilder) { }
+              private fb: FormBuilder,
+              private globalService: GlobalService) { }
 
   ngOnInit(): void {
 
@@ -51,7 +53,7 @@ export class CalendarioListComponent implements OnInit {
 
   onDelete(){
     this.calendarioService.remove(this._id).subscribe(
-      success => { this.mostrarMens = true, this.listCalendario() }
+      success => { this.globalService.removeShow('Excluiodo com Sucesso!', 'Calendário'), this.listCalendario() }
     )
   }
 
@@ -84,26 +86,6 @@ export class CalendarioListComponent implements OnInit {
       dataFinal = now.getFullYear() +"-"+monName[now.getMonth()]+"-"+endDay[now.getMonth()];
     }
     return dataFinal;
-  }
-
-  formatarDate(data: string){
-    let dataCompleta = "";
-
-			 let dia = data.substring(8,10);
-			 let mes = data.substring(5,7);
-       let ano = data.substring(0,4);
-
-       if(dia.length == 1){
-        dia = "0" + dia;
-     }
-
-     if(mes.length == 1){
-       mes = "0" + mes
-     }
-
-     dataCompleta = dia+"/"+mes+"/"+ano
-
-		 return dataCompleta;
   }
 
 }

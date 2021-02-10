@@ -9,11 +9,6 @@ import { Agendamento } from './../shared/agendamento';
 import { FormGroup, FormBuilder } from '@angular/forms';
 import { Component, OnInit } from '@angular/core';
 
-interface Quant {
-  value: number;
-  viewValue: number;
-}
-
 @Component({
   selector: 'app-agendamento-list',
   templateUrl: './agendamento-list.component.html',
@@ -41,7 +36,7 @@ export class AgendamentoListComponent implements OnInit {
               private route: ActivatedRoute,
               private globalService: GlobalService ) { }
 
-              
+
   ngOnInit(): void {
     this.comboBox();
     this.listarAgendaPaginada(this.pagina, this.tamanho);
@@ -91,7 +86,7 @@ export class AgendamentoListComponent implements OnInit {
     this.agendamentoService.listAgendaPaginada(page, size).subscribe(
           response => { this.agendamentos = response.content;
                         this.totalElements = response.totalElements;
-                        this.totalPages = response.totalPages; 
+                        this.totalPages = response.totalPages;
                         }
     );
   }
@@ -122,22 +117,6 @@ export class AgendamentoListComponent implements OnInit {
       s = "⌛";
     }
     return s;
-  }
-
-  formatarDate(data: string){
-    let dataCompleta = "";
-			 let dia = data.substring(8,10);
-			 let mes = data.substring(5,7);
-       let ano = data.substring(0,4);
-       
-       if(dia.length == 1){
-        dia = "0" + dia;
-     }
-     if(mes.length == 1){
-       mes = "0" + mes
-     }
-     dataCompleta = dia+"/"+mes+"/"+ano
-		 return dataCompleta;
   }
 
   editUp(id){

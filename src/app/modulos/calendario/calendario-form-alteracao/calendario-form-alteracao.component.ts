@@ -1,3 +1,4 @@
+import { GlobalService } from './../../shared/global.service';
 import { CalendarioService } from './../shared/calendario.service';
 import { FormBuilder, FormGroup } from '@angular/forms';
 import { Component, OnInit } from '@angular/core';
@@ -16,7 +17,8 @@ export class CalendarioFormAlteracaoComponent implements OnInit {
   mess: string = "";
 
   constructor(private fb: FormBuilder,
-              private calendarioService: CalendarioService) { }
+              private calendarioService: CalendarioService,
+              private globalService: GlobalService) { }
 
   ngOnInit(): void {
 
@@ -29,8 +31,8 @@ export class CalendarioFormAlteracaoComponent implements OnInit {
   }
 
   alterarStatus(){
-    this.dataInicial = this.formatarDate(this.calAltForm.get('dataInicial').value);
-    this.dataFinal = this.formatarDate(this.calAltForm.get('dataFinal').value);
+    this.dataInicial = this.globalService.formatarDate(this.calAltForm.get('dataInicial').value);
+    this.dataFinal = this.globalService.formatarDate(this.calAltForm.get('dataFinal').value);
   }
 
   inativar(){
@@ -39,30 +41,9 @@ export class CalendarioFormAlteracaoComponent implements OnInit {
     let dataFinal = this.calAltForm.get('dataFinal').value;
 
     this.calendarioService.inativarDias(dataInicial, dataFinal).subscribe(
-      success => {console.log("nada")},
+      success => {console.log("")},
       erro =>{ this.mostrarMens = !this.mostrarMens,
-               this.mess = "Os dias foram Inativados!" }
+               this.globalService.saveShow('Inativado com Sucesso!', 'Calendário') }
       );
   }
-
-  formatarDate(data: string){
-    let dataCompleta = "";
-
-			 let dia = data.substring(8,10);
-			 let mes = data.substring(5,7);
-       let ano = data.substring(0,4);
-
-       if(dia.length == 1){
-        dia = "0" + dia;
-     }
-
-     if(mes.length == 1){
-       mes = "0" + mes
-     }
-
-     dataCompleta = dia+"/"+mes+"/"+ano
-
-		 return dataCompleta;
-  }
-
 }

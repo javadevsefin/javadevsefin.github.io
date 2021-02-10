@@ -87,9 +87,9 @@
             <td>
               <strong>{{calendario.id}}</strong>
             </td>
-            <td>{{ formatarDate(calendario.dia) }}</td>
-            <td>{{calendario.observacao}}</td>
-            <td>{{calendario.statusCalendario}}</td>
+            <td>{{ calendario.dia | date: 'dd/MM/yyyy' }}</td>
+            <td>{{ calendario.observacao}}</td>
+            <td>{{ calendario.statusCalendario}}</td>
             <td>
               <button (click)="onEdit(calendario.id)" class="btn btn-outline-info btn-sm"><i class="far fa-edit"></i></button>
               <button (click)="pegaDados(calendario.id, calendario.dia)" data-toggle="modal" data-target="#ModalExclusao" class="btn btn-outline-danger btn-sm"><i class="far fa-trash-alt"></i></button>
@@ -99,14 +99,7 @@
       </table>
      </div>
     <!-- Modal -->
-    <div
-    class="modal fade"
-    id="ModalExclusao"
-    tabindex="-1"
-    role="dialog"
-    aria-labelledby="TituloModalCentralizado"
-    aria-hidden="true"
-  >
+    <div class="modal fade" id="ModalExclusao" tabindex="-1" role="dialog" aria-labelledby="TituloModalCentralizado" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered" role="document">
       <div class="modal-content">
         <div class="modal-header">
@@ -117,17 +110,8 @@
         <div class="modal-body" style="font-weight: bold;">
             Deseja excluir o registro do guichê: {{_dia}} ?
         </div>
-        <div class="col-md-12">
-          <div *ngIf ="mostrarMens"  style="text-align: center;"  class="col-10 alert alert-danger" role="alert">
-            <span> Dia excluido com sucesso! </span>
-           </div>
-        </div>
         <div class="modal-footer">
-          <button
-            type="button"
-            class="btn btn-danger"
-            data-dismiss="modal"
-          >
+          <button type="button" class="btn btn-danger" data-dismiss="modal">
             <i class="fas fa-window-close"></i>&nbsp;Fechar
           </button>
           <button class="btn btn-success" (click)="onDelete()">

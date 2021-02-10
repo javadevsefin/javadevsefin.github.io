@@ -1,3 +1,4 @@
+import { GlobalService } from './../../shared/global.service';
 import { Router, ActivatedRoute } from '@angular/router';
 import { ServidorService } from './../shared/servidor.service';
 import { FormGroup, FormBuilder } from '@angular/forms';
@@ -13,19 +14,19 @@ import { Servidor } from '../shared/servidor';
 export class ServidorListComponent implements OnInit {
 
   servidorForm: FormGroup
-  _descricao: String;
-  _matricula: String;
+  _descricao: string;
+  _matricula: string;
   mostrarMens: boolean = false;
   servidores: Servidor[];
 
-  constructor(private fb: FormBuilder, 
+
+  constructor(private fb: FormBuilder,
               private router: Router,
               private route: ActivatedRoute,
-              private servidorService: ServidorService ) { }
+              private servidorService: ServidorService,
+              private globalService: GlobalService ) { }
 
   ngOnInit(): void {
-
-    //this.listServidor();
 
     this.servidorForm = this.fb.group({
       matricula: ["", []],
@@ -54,7 +55,7 @@ export class ServidorListComponent implements OnInit {
 
 
   formatarCpf(cpf){
-    let str:string = cpf; 
+    let str:string = cpf;
     let p1 = str.substring(0, 3);
     let p2 = str.substring(3, 6);
     let p3 = str.substring(6, 9);
@@ -64,7 +65,7 @@ export class ServidorListComponent implements OnInit {
    }
 
    onEdit(id){
-      this.router.navigate(['editar', id], {relativeTo: this.route});  
+      this.router.navigate(['editar', id], {relativeTo: this.route});
    }
 
    pegaDados(matricula, descricao){
@@ -72,12 +73,12 @@ export class ServidorListComponent implements OnInit {
       this._matricula = matricula;
       this._descricao = descricao;
 
-      
+
    }
 
    onDelete(){
       this.servidorService.remove(this._matricula).subscribe(
-        success => { this.mostrarMens = true }
+        success => { this.globalService.removeShow("Inativado com Sucesso!", "Servidor: "+ this._descricao)}
       );
    }
 }

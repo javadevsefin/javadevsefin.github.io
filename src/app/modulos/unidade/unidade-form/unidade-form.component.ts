@@ -1,3 +1,4 @@
+import { GlobalService } from './../../shared/global.service';
 import { UnidadeService } from './../shared/unidade.service';
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
@@ -11,13 +12,14 @@ import { ActivatedRoute } from '@angular/router';
 export class UnidadeFormComponent implements OnInit {
 
   mostrarMens: boolean = false;
-  unidadeForm: FormGroup;   
+  unidadeForm: FormGroup;
 
   constructor(private fb: FormBuilder,
               private unidadeService: UnidadeService,
-              private route: ActivatedRoute) { }
+              private route: ActivatedRoute,
+              private globalService: GlobalService) { }
 
-          
+
 
   ngOnInit(): void {
 
@@ -45,7 +47,7 @@ export class UnidadeFormComponent implements OnInit {
   onSumit(){
       if(this.unidadeForm.valid){
           this.unidadeService.save(this.unidadeForm.value).subscribe(
-            success => { this.mostrarMens = true }
+            success => { this.globalService.saveShow('Salvo com Sucesso!', 'Unidade') }
           )
       }
       this.unidadeForm.reset();

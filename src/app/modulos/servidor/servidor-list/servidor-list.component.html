@@ -27,9 +27,9 @@
         <div class="card-header">
             <div class="row col-12 ml-1">
             <label for="nDoTermo">Filtro para Listagem de Servidor:</label>
-            </div>	
+            </div>
         </div>
-        <div class="card-body">	
+        <div class="card-body">
         <div class="row col-12">
             <div class="form-group col-md-2">
                 <label for="mat">Matrícula:</label>
@@ -42,15 +42,15 @@
             <div class="form-group col-md-3">
                 <label for="cpf">CPF/CNPJ:</label>
                 <input id="cpf" type="text" class="form-control" formControlName="cpf" (input)="pesquisar()"/>
-            </div> 
+            </div>
         </div>
         </div>
         </div>
         </div>
     </div>
     </form>
-     <div class="col-12">
-      <table class="table table-hover" style="box-shadow: 5px 5px 10px #000;" *ngIf="servidores">
+     <div >
+      <table class="table table-hover table-responsive-xl" style="box-shadow: 5px 5px 10px #000;" *ngIf="servidores">
         <thead>
           <tr class="bg-success text-light">
             <th>Matrícula</th>
@@ -121,7 +121,6 @@
                 <button
                   type="button"
                   class="btn btn-danger"
-                  
                   data-dismiss="modal"
                 >
                   <i class="fas fa-window-close"></i>&nbsp;Fechar

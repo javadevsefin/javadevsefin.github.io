@@ -51,7 +51,6 @@
                 {{unidade.telefone}}
            </td>
             <td>
-              <!--a [routerLink]="[2, 'edit']" class="btn btn-outline-info btn-sm">Editar</a-->
               <button (click)="onEdit(unidade.id)" class="btn btn-outline-info btn-sm"><i class="far fa-edit"></i></button>
               <button (click)="pegaDados(unidade.id ,unidade.descricao)" data-toggle="modal" data-target="#ModalExclusao" class="btn btn-outline-danger btn-sm"><i class="far fa-trash-alt"></i></button>
             </td>
@@ -59,44 +58,20 @@
         </tbody>
       </table>
     </div>
-        <!-- Modal -->
-    <div
-    class="modal fade"
-    id="ModalExclusao"
-    tabindex="-1"
-    role="dialog"
-    aria-labelledby="TituloModalCentralizado"
-    aria-hidden="true"
-  >
+    <!-- Modal -->
+    <div class="modal fade" id="ModalExclusao" tabindex="-1" role="dialog" aria-labelledby="TituloModalCentralizado" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered" role="document">
       <div class="modal-content">
         <div class="modal-header">
           <h5 class="modal-title" id="TituloModalCentralizado">
             Vamos lá!
           </h5>
-          <!--button
-            type="button"
-            class="close"
-            data-dismiss="modal"
-            aria-label="Fechar"
-          >
-            <span aria-hidden="true">&times;</span>
-          </button-->
         </div>
         <div class="modal-body" style="font-weight: bold;">
           Deseja excluir o registro de {{_descricao}} ?
         </div>
-        <div class="col-md-12">
-          <div *ngIf ="mostrarMens" style="text-align: center;"  class="col-10 alert alert-danger" role="alert">
-            <span> Registro excluido com sucesso! </span>
-           </div>
-        </div>
         <div class="modal-footer">
-          <button
-            type="button"
-            class="btn btn-danger"
-            data-dismiss="modal"
-          >
+          <button type="button" class="btn btn-danger" data-dismiss="modal">
             <i class="fas fa-window-close"></i>&nbsp;Fechar
           </button>
           <button class="btn btn-success" (click)="onDelete()">

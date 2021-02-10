@@ -1,3 +1,4 @@
+import { GlobalService } from './../../shared/global.service';
 import { UnidadeService } from './../shared/unidade.service';
 import { Unidade } from './../shared/unidade';
 import { Component, OnInit } from '@angular/core';
@@ -10,7 +11,7 @@ import { ActivatedRoute, Router } from '@angular/router';
   preserveWhitespaces: true
 })
 export class UnidadeListComponent implements OnInit {
-  
+
   unidades: Unidade[];
   _id: string =  "";
   _descricao: string = "";
@@ -18,7 +19,8 @@ export class UnidadeListComponent implements OnInit {
 
   constructor(private unidadeService: UnidadeService,
               private router: Router,
-              private route: ActivatedRoute) { }
+              private route: ActivatedRoute,
+              private globalService: GlobalService) { }
 
   ngOnInit(): void {
     this.listUnidade();
@@ -41,7 +43,7 @@ export class UnidadeListComponent implements OnInit {
 
   onDelete(){
     this.unidadeService.remove(this._id).subscribe(
-      success => { this.mostrarMens =  true, this.listUnidade() }
+      success => { this.globalService.removeShow('Excluido com Sucesso!', 'Unidade'), this.listUnidade() }
     )
   }
 }

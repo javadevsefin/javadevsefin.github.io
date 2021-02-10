@@ -1,3 +1,4 @@
+import { GlobalService } from './../../shared/global.service';
 import { ActivatedRoute } from '@angular/router';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { Component, OnInit } from '@angular/core';
@@ -18,7 +19,8 @@ export class ServidorFormComponent implements OnInit {
 
   constructor(private fb: FormBuilder,
               private route: ActivatedRoute,
-              private servidorService: ServidorService) { }
+              private servidorService: ServidorService,
+              private globalService: GlobalService) { }
 
   ngOnInit(): void {
 
@@ -50,7 +52,7 @@ export class ServidorFormComponent implements OnInit {
   onSubmit(){
     if(this.servForm.valid){
       this.servidorService.create(this.servForm.value).subscribe(
-        success => { this.mostrarMens = true }
+        success => { this.globalService.saveShow("Salvo com Sucesso!","Servidor") }
       );
     }
     this.servForm.reset();
@@ -59,7 +61,7 @@ export class ServidorFormComponent implements OnInit {
   onUpdate(){
     if(this.servForm.valid){
       this.servidorService.update(this.servForm.value).subscribe(
-        success => { this.mostrarMens = true }
+        success => { this.globalService.saveShow("Alteração feita Sucesso!","Servidor") }
       );
     }
     this.servForm.reset();

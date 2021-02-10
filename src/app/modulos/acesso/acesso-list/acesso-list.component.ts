@@ -1,3 +1,4 @@
+import { GlobalService } from './../../shared/global.service';
 import { ActivatedRoute, Router } from '@angular/router';
 import { AcessoService } from './../shared/acesso.service';
 import { Acesso } from './../shared/acesso';
@@ -13,8 +14,9 @@ export class AcessoListComponent implements OnInit {
   acessos: Acesso[];
 
   constructor(private acessoService: AcessoService,
-              private router: Router, 
-              private route: ActivatedRoute) { }
+              private router: Router,
+              private route: ActivatedRoute,
+              private globalService: GlobalService) { }
 
   ngOnInit(): void {
     this.listarAcesso();

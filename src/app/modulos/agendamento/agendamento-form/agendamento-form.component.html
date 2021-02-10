@@ -6,12 +6,6 @@
         <li class="breadcrumb-item active">Agendamento</li>
       </ol>
     </nav>
-    <div *ngIf ="mostrarMens" class="alert alert-success" role="alert">
-      <a type="button" class="close" data-dismiss="alert" aria-label="Fechar">
-        <span aria-hidden="true">&times;</span>
-      </a>
-      Operação realizada com sucesso!!!
-    </div>
     <div class="row mb-4">
       <div class="col-md">
         <h1 class="h3 border-left pl-2">
@@ -31,38 +25,38 @@
         <div class="card-body">
           <div class="form-row col-md-12 d-flex justify-content-center">
             <div class="form-group col-md-2">
-                <label>IDENTIFICADOR:</label>  
-                <span> {{ id }}</span>    
+                <label>IDENTIFICADOR:</label>
+                <span> {{ id }}</span>
             </div>
             <div class="form-group col-md-2">
-                <label>DIA:</label>  
-                <span> {{ dia }} </span>    
+                <label>DIA:</label>
+                <span> {{ dia }} </span>
             </div>
             <div class="form-group col-md-2">
-                <label>HORA INICIAL:</label>  
-                <span> {{ hIn }}</span>    
+                <label>HORA INICIAL:</label>
+                <span> {{ hIn }}</span>
             </div>
             <div class="form-group col-md-2">
-                <label>HORA FINAL:</label>  
-                <span> {{ hFin }}</span>    
+                <label>HORA FINAL:</label>
+                <span> {{ hFin }}</span>
             </div>
-          </div>  
+          </div>
           <div class="form-row col-md-12 d-flex justify-content-center">
             <div class="form-group col-md-2">
-                <label>INTERVALO:</label>  
-                <span> {{ inter }} Min.</span>    
+                <label>INTERVALO:</label>
+                <span> {{ inter }} Min.</span>
             </div>
             <div class="form-group col-md-2">
-                <label>UNIDADE:</label>  
-                <span> {{ uni }} </span>    
+                <label>UNIDADE:</label>
+                <span> {{ uni }} </span>
             </div>
             <div class="form-group col-md-2">
-                <label>SERVIÇO:</label>  
-                <span> {{ serv }} </span>    
+                <label>SERVIÇO:</label>
+                <span> {{ serv }} </span>
             </div>
             <div class="form-group col-md-2">
-                <label>QUANTIDADE:</label>  
-                <span> {{ quant }} </span>    
+                <label>QUANTIDADE:</label>
+                <span> {{ quant }} </span>
             </div>
           </div>
           <div class="form-row col-md-12 d-flex justify-content-center">
@@ -75,7 +69,7 @@
             <button type="button" class="btn btn-success" *ngIf="ger == 'g' ">
                 <i class="fa fa-thumbs-o-up" aria-hidden="true"></i> Vagas Geradas com sucesso!
             </button>
-          </div> 
+          </div>
       </div>
       <!-- Modal -->
       <div
@@ -96,62 +90,57 @@
                     <div class="form-row col-md-12">
                         <div class="form-group col-md-6">
                             IDENTIFICADOR: {{ id }}
-                        </div> 
-                        <div class="form-group col-md-6">
-                            DIA: {{ dia }} 
-                        </div> 
-                    </div>
-                    <div class="form-row col-md-12">
-                        <div class="form-group col-md-6">
-                            HORA INICIAL:  
-                            {{ hIn }}                        
                         </div>
                         <div class="form-group col-md-6">
-                            HORA FINAL:  
-                             {{ hFin }}    
+                            DIA: {{ dia | date: 'dd/MM/yyyy' }}
                         </div>
                     </div>
                     <div class="form-row col-md-12">
                         <div class="form-group col-md-6">
-                            INTERVALO:  
-                            {{ inter }} Min.                      
+                            HORA INICIAL:
+                            {{ hIn }}
                         </div>
                         <div class="form-group col-md-6">
-                            UNIDADE:  
-                            {{ uni }}   
+                            HORA FINAL:
+                             {{ hFin }}
                         </div>
-                    </div>  
+                    </div>
                     <div class="form-row col-md-12">
                         <div class="form-group col-md-6">
-                            SERVIÇO:  
-                            {{ serv }}                     
+                            INTERVALO:
+                            {{ inter }} Min.
                         </div>
                         <div class="form-group col-md-6">
-                            QUANTIDADE:  
-                            {{ quant }}    
+                            UNIDADE:
+                            {{ uni }}
                         </div>
-                    </div> 
+                    </div>
+                    <div class="form-row col-md-12">
+                        <div class="form-group col-md-6">
+                            SERVIÇO:
+                            {{ serv }}
+                        </div>
+                        <div class="form-group col-md-6">
+                            QUANTIDADE:
+                            {{ quant }}
+                        </div>
+                    </div>
                   </div>
                   </div>
-                    <div class="col-md-12 d-flex justify-content-center">
-                      <div *ngIf ="mostrarMens" style="text-align: center;"  class="col-10 alert alert-success" role="alert">
-                        <span> Resgistro salvo com sucesso!! </span>
-                       </div>
-                    </div>
                   <div class="modal-footer">
                     <button type="button" class="btn btn-danger" data-dismiss="modal">
                       <i class="fas fa-window-close"></i>&nbsp;Fechar
                     </button>
-                    <button class="btn btn-success" (click)="confirmar(id)" *ngIf="ger == 'n' ">
+                    <button class="btn btn-success" (click)="confirmar(id)" *ngIf="ger == 'n' " data-toggle="modal" data-target="#teste">
                         <i class="fas fa-save"></i> &nbsp;Confirmar
                     </button>
                   </div>
                 </div>
               </div>
             </div>
-            <!--Fim da modal-->         
+            <!--Fim da modal-->
             </div>
-            <button type="submit" id="modal" class="btn btn-success float-right mt-3" data-toggle="modal" data-target="#ModalSalvar" *ngIf="ger == 'n' "> 
+            <button type="submit" id="modal" class="btn btn-success float-right mt-3" data-toggle="modal" data-target="#ModalSalvar" *ngIf="ger == 'n' ">
                 <i class="fas fa-save"></i> &nbsp;Gerar Agendamento
             </button>
         </div>

@@ -6,12 +6,6 @@
         <li class="breadcrumb-item active">Grade</li>
       </ol>
     </nav>
-    <div *ngIf ="mostrarMens" class="alert alert-success" role="alert">
-      <a type="button" class="close" data-dismiss="alert" aria-label="Fechar">
-        <span aria-hidden="true">&times;</span>
-      </a>
-        Operação realizada com sucesso!!!
-    </div>
     <div class="row mb-4">
       <div class="col-md">
         <h1 class="h3 border-left pl-2">
@@ -128,11 +122,6 @@
             </div>
             <div class="modal-body" style="font-weight: bold;">
               Confirmar geração da grade de atendimento?
-            </div>
-            <div class="col-md-12 d-flex justify-content-center">
-              <div *ngIf ="mostrarMens" style="text-align: center;"  class="col-10 alert alert-success" role="alert">
-                <span> Resgistro salvo com sucesso!! </span>
-               </div>
             </div>
             <div class="modal-footer">
               <button

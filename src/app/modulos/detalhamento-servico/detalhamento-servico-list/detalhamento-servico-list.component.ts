@@ -23,7 +23,7 @@ export class DetalhamentoServicoListComponent implements OnInit {
 
   ngOnInit(): void {
     this.listDetalhamentoServico();
-    
+
   }
 
   listDetalhamentoServico(){
@@ -34,6 +34,11 @@ export class DetalhamentoServicoListComponent implements OnInit {
 
   onEdit(id){
     this.router.navigate(['editar', id], {relativeTo: this.route});
+  }
+
+  pegarDados(id, descricao){
+    this._id = id;
+    this._descricao = descricao;
   }
 
   onDelete(){

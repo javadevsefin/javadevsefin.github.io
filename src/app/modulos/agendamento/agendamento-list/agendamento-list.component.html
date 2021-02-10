@@ -11,7 +11,6 @@
           Listagem de Agendamento
         </h1>
       </div>
-  
     </div>
     <form class="needs-validation" novalidate [formGroup]="buscaForm">
 		<div class="col-12 mb-2">
@@ -23,9 +22,9 @@
       <div class="card-header">
          <div class="row col-12 ml-1">
           <label for="nDoTermo">Filtro para Listagem das Vagas de Agendamento:</label>
-        </div>	
+        </div>
       </div>
-      <div class="card-body">	
+      <div class="card-body">
       <div class="row col-12">
         <div class="form-group col-md-2">
           <label for="dataIn">Data Inicial:</label>
@@ -34,7 +33,7 @@
         <div class="form-group col-md-2">
           <label for="dataOut">Data Final:</label>
           <input id="dataOut" type="date" class="form-control" formControlName="dataFinal"/>
-        </div> 
+        </div>
         <div class="form-group col-md-3">
           <label for="unidade">Unidades:</label>
           <select  class="form-control" id="unidade" formControlName="unidade">
@@ -61,10 +60,10 @@
               <option value="Finalizado">Finalizado</option>
           </select>
       </div>
-        <div class="row col-12"> 
+        <div class="row col-12">
           <div class="col-2">
             <button (click)="pesquisar()" class="btn btn-info float-left" >
-              <i class="fas fa-search"></i> Pesquisar 
+              <i class="fas fa-search"></i> Pesquisar
             </button>
           </div>
         </div>
@@ -102,17 +101,17 @@
             <td>{{ agendamento.grade.id }}</td>
             <td>{{ agendamento.grade.unidade.sigla }}</td>
             <td>{{ agendamento.grade.servico.sigla }}</td>
-            <td>{{ formatarDate(agendamento.grade.calendario.dia) }}</td>
+            <td>{{ agendamento.grade.calendario.dia | date: 'dd/MM/yyyy' }}</td>
             <td>
               <button (click)="editUp(agendamento.id)" class="btn btn-outline-info btn-sm" data-toggle="tooltip" data-placement="top" title="Editar agendamento?"><i class="far fa-edit"></i></button>
-             
+
             </td>
           </tr>
         </tbody>
       </table>
     </div>
     <form class="needs-validation" novalidate [formGroup]="paginaForm" style="margin-top: -15px;">
-    <div class="row col-12 d-flex justify-content-center align-items-center" style="font-size: 10pt;">   
+    <div class="row col-12 d-flex justify-content-center align-items-center" style="font-size: 10pt;">
         <button type="button" data-toggle="tooltip" data-placement="top" title="Menor" class="btn btn-info" (click)="paginaMenor()">
             <i class="fas fa-minus"></i> Anterior
           </button>
@@ -131,6 +130,6 @@
       <span class="float-right">Total de registro: {{ totalElements }}</span>
   </div>
   </form>
-  
+
 
 
