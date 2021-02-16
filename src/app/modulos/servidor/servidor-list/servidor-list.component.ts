@@ -24,7 +24,7 @@ export class ServidorListComponent implements OnInit {
               private router: Router,
               private route: ActivatedRoute,
               private servidorService: ServidorService,
-              private globalService: GlobalService ) { }
+              protected globalService: GlobalService ) { }
 
   ngOnInit(): void {
 
@@ -52,17 +52,6 @@ export class ServidorListComponent implements OnInit {
     );
 
   }
-
-
-  formatarCpf(cpf){
-    let str:string = cpf;
-    let p1 = str.substring(0, 3);
-    let p2 = str.substring(3, 6);
-    let p3 = str.substring(6, 9);
-    let p4 = str.substring(9, 11);
-      cpf = p1 + "." + p2 + "." + p3 + "-" + p4;
-    return cpf
-   }
 
    onEdit(id){
       this.router.navigate(['editar', id], {relativeTo: this.route});

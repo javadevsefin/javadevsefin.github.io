@@ -7,11 +7,14 @@ import { Component, OnInit } from '@angular/core';
 @Component({
   selector: 'app-acesso-list',
   templateUrl: './acesso-list.component.html',
-  styleUrls: ['./acesso-list.component.css']
+  styleUrls: ['./acesso-list.component.css'],
+  preserveWhitespaces: true
 })
 export class AcessoListComponent implements OnInit {
 
   acessos: Acesso[];
+  _id: string;
+  _descricao: string;
 
   constructor(private acessoService: AcessoService,
               private router: Router,
@@ -30,6 +33,11 @@ export class AcessoListComponent implements OnInit {
 
   onEdit(id){
     this.router.navigate(['editar', id], {relativeTo: this.route});
+  }
+
+  pegarDados(id, descricao){
+      this._id = id;
+      this._descricao = descricao
   }
 
 }

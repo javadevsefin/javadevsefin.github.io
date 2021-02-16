@@ -1,3 +1,4 @@
+import { GlobalService } from './../../shared/global.service';
 import { PerfilAtendimentoService } from './../shared/perfil-atendimento.service';
 import { DetalhamentoServicoService } from './../../detalhamento-servico/shared/detalhamento-servico.service';
 import { FormBuilder, FormGroup } from '@angular/forms';
@@ -20,11 +21,14 @@ export class PerfilAtendimentoFormComponent implements OnInit {
   delServicos: DetalhamentoServico[];
   perfilAtendimentos: PerfilAtendimento[];
   pegarMaricula: string;
+  _id: number;
+  _detalhamento: string;
 
   constructor(private fb: FormBuilder,
               private servidorService: ServidorService,
               private detalhamentoServicoService: DetalhamentoServicoService,
-              private perfilAtendimentoService: PerfilAtendimentoService) { }
+              private perfilAtendimentoService: PerfilAtendimentoService,
+              protected globalService: GlobalService) { }
 
   ngOnInit(): void {
 
@@ -39,17 +43,16 @@ export class PerfilAtendimentoFormComponent implements OnInit {
 
   combobox(){
     this.servidorService.listServidor().subscribe(
-      dados => this.servidores = dados,
-      
+      dados => this.servidores = dados
     );
     this.detalhamentoServicoService.listDetalhamentoServico().subscribe(
       dados => this.delServicos = dados
-    );  
+    );
   }
 
   listarPerfil(matricula){
     this.perfilAtendimentoService.loadById(matricula).subscribe(
-      dados => this.perfilAtendimentos = dados  
+      dados => this.perfilAtendimentos = dados
     );
   }
 
@@ -60,20 +63,23 @@ export class PerfilAtendimentoFormComponent implements OnInit {
 
     servico.forEach(element => {
       this.perfilAtendimentoService.createPerfil(matricula, element).subscribe(
-        success => { 
-          this.listarPerfil(matricula), 
-          this.mostrarMens = true;
-        }
-      );
+        success => {
+          this.listarPerfil(matricula)
+        });
     });
-    
-    this.mostrarMens = false;
+     this.globalService.saveShow("Salvo com Sucesso!", "Perfil")
   }
 
-  onDelete(id){
-    this.perfilAtendimentoService.remove(id).subscribe(
+  pegarDados(id, detalhamento){
+    this._id = id;
+    this._detalhamento = detalhamento;
+  }
+
+  onDelete(){
+    this.perfilAtendimentoService.remove(this._id).subscribe(
       success => {
-        this.listarPerfil(this.perfilForm.get('matricula').value)
+        this.listarPerfil(this.perfilForm.get('matricula').value),
+        this.globalService.removeShow("Removido com Sucesso!", this._detalhamento)
       }
     );
   }

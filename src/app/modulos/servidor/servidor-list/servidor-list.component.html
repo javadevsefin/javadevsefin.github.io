@@ -26,7 +26,7 @@
         <div style="box-shadow: 5px 5px 10px #000;" class="card">
         <div class="card-header">
             <div class="row col-12 ml-1">
-            <label for="nDoTermo">Filtro para Listagem de Servidor:</label>
+            <label for="nDoTermo">Filtro para Listagem de Servidor</label>
             </div>
         </div>
         <div class="card-body">
@@ -49,8 +49,9 @@
         </div>
     </div>
     </form>
-     <div >
-      <table class="table table-hover table-responsive-xl" style="box-shadow: 5px 5px 10px #000;" *ngIf="servidores">
+    <div class="d-flex justify-content-center mt-5" style="font-size: 14pt; font-weight: bold;" *ngIf="!servidores">USE O FILTRO ACIMA PARA GERAR A LISTA.</div>
+     <div id="tbsd" class="table-responsive">
+      <table class="table table-hover"  *ngIf="servidores">
         <thead>
           <tr class="bg-success text-light">
             <th>Matrícula</th>
@@ -71,7 +72,7 @@
                 {{servidor.nome}}
             </td>
             <td>
-                {{ formatarCpf(servidor.cpf)}}
+                {{ this.globalService.formatarCpf(servidor.cpf)}}
             </td>
             <td>
                 {{servidor.email}}

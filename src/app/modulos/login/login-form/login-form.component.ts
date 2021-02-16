@@ -22,7 +22,9 @@ export class LoginFormComponent implements OnInit {
   confereNovaSenha: boolean = false;
   confereConfirmaNovaSenha: boolean = false;
 
-  constructor(private fb: FormBuilder, private globalService: GlobalService, private router: Router) { }
+  constructor(private fb: FormBuilder,
+              private globalService: GlobalService,
+              private router: Router) { }
 
   ngOnInit(): void {
     this.loginForm = this.fb.group({
@@ -109,7 +111,7 @@ export class LoginFormComponent implements OnInit {
       let confirmarNovaSenha = this.loginAlteraForm.get('confirmarNovaSenha').value
 
       this.globalService.alterarSenha(matricula, senha, novaSenha, confirmarNovaSenha).subscribe(
-        (success: any )=> { this.mostrarMens = true,
+        (success: any )=> { this.globalService.saveShow("Alterada com Sucesso!", "Senha"),
                             this.confereNovaSenha = false,
                             this.confereConfirmaNovaSenha = false
                           },

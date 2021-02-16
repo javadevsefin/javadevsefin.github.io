@@ -1,3 +1,4 @@
+import { GlobalService } from './../../shared/global.service';
 import { CalendarioService } from './../shared/calendario.service';
 import { FormGroup, FormBuilder } from '@angular/forms';
 import { Component, OnInit } from '@angular/core';
@@ -11,11 +12,11 @@ import { ActivatedRoute } from '@angular/router';
 export class CalendarioFormComponent implements OnInit {
 
   calendarioForm: FormGroup;
-  mostrarMens: boolean = false;
 
   constructor(private fb: FormBuilder,
               private calendarioService: CalendarioService,
-              private route: ActivatedRoute) { }
+              private route: ActivatedRoute,
+              private globalService: GlobalService) { }
 
   ngOnInit(): void {
 
@@ -42,7 +43,7 @@ export class CalendarioFormComponent implements OnInit {
   onSumit(){
     if(this.calendarioForm.valid){
         this.calendarioService.save(this.calendarioForm.value).subscribe(
-          success => { this.mostrarMens = true }
+          success => { this.globalService.saveShow("Salvo com Sucesso!", "Dia") }
         );
     }
     this.calendarioForm.reset();

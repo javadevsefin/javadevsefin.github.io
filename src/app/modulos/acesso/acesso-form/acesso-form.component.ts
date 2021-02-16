@@ -29,8 +29,6 @@ export class AcessoFormComponent implements OnInit {
   role: string;
   senha: string;
 
-
-
   constructor(private fb: FormBuilder,
               private unidadeService: UnidadeService,
               private acessoService: AcessoService,

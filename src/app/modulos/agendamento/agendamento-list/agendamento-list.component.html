@@ -1,4 +1,3 @@
-<div class="col-12">
     <nav>
       <ol class="breadcrumb">
         <li class="breadcrumb-item"><a routerLink="/">Início</a></li>
@@ -73,8 +72,8 @@
     </div>
     </div>
   </form>
-     <div class="col-12" *ngIf="agendamentos">
-      <table class="table table-hover" style="box-shadow: 5px 5px 10px #000;">
+     <div id="tbsd" class="table-responsive" *ngIf="agendamentos">
+      <table class="table table-hover">
         <thead>
           <tr class="bg-success text-light">
             <th>#</th>
@@ -104,32 +103,32 @@
             <td>{{ agendamento.grade.calendario.dia | date: 'dd/MM/yyyy' }}</td>
             <td>
               <button (click)="editUp(agendamento.id)" class="btn btn-outline-info btn-sm" data-toggle="tooltip" data-placement="top" title="Editar agendamento?"><i class="far fa-edit"></i></button>
-
             </td>
           </tr>
         </tbody>
       </table>
     </div>
-    <form class="needs-validation" novalidate [formGroup]="paginaForm" style="margin-top: -15px;">
-    <div class="row col-12 d-flex justify-content-center align-items-center" style="font-size: 10pt;">
-        <button type="button" data-toggle="tooltip" data-placement="top" title="Menor" class="btn btn-info" (click)="paginaMenor()">
-            <i class="fas fa-minus"></i> Anterior
-          </button>
-          <div class="form-group col-md-1" style="margin-top: 15px; text-align: center;"><span>Pág. {{ pagina + 1}}  de {{ totalPages  }}</span></div>
-          <button type="button" data-toggle="tooltip" data-placement="top" title="Maior" class="btn btn-info" (click)="paginaMaior()">
-            <i class="fas fa-plus"></i> Próximo
-          </button>
-          <div class="form-group col-md-1" style="margin-top: 15px; text-align: center;">
-            <select class="form-control" id="pegaTamanho" name="quantPag" formControlName="quantPag" (change)="atualizaPagina()">
-                <option value=5>5</option>
-                <option value=10>10</option>
-                <option value=25>25</option>
-                <option value=50>50</option>
-            </select>
-          </div>
-      <span class="float-right">Total de registro: {{ totalElements }}</span>
-  </div>
+    <form class="needs-validation" novalidate [formGroup]="paginaForm" style="margin-top: 15px;">
+      <div class="row col-12 d-flex justify-content-center align-items-center" style="font-size: 10pt;">
+          <button type="button" data-toggle="tooltip" data-placement="top" title="Menor" class="btn btn-info" (click)="paginaMenor()">
+              <i class="fas fa-minus"></i> Anterior
+            </button>
+            <div class="form-group col-md-1" style="margin-top: 15px; text-align: center;"><span>Pág. {{ pagina + 1}}  de {{ totalPages  }}</span></div>
+            <button type="button" data-toggle="tooltip" data-placement="top" title="Maior" class="btn btn-info" (click)="paginaMaior()">
+              <i class="fas fa-plus"></i> Próximo
+            </button>
+            <div class="form-group col-md-1" style="margin-top: 15px; text-align: center;">
+              <select class="form-control" id="pegaTamanho" name="quantPag" formControlName="quantPag" (change)="atualizaPagina()">
+                  <option value=5>5</option>
+                  <option value=10>10</option>
+                  <option value=25>25</option>
+                  <option value=50>50</option>
+              </select>
+            </div>
+        <span class="float-right">Total de registro: {{ totalElements }}</span>
+    </div>
   </form>
+
 
 
 

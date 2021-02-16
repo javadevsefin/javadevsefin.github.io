@@ -6,13 +6,13 @@
               {{title}}
             </div>
               <nav class="d-flex justify-content-end col-5">
-                 SEFIN/ATI
+                 SICTEC
               </nav>
           </div>
    </header>
   <div class="col-12">
     <section style="min-height: 750px">
-        <div class="row" style="min-height: 830px; margin-top:3px">
+        <div class="row" style="min-height: 860px; margin-top:3px">
             <nav *ngIf="mostrarMenu" class="col-md-2" id="sidebar" style="box-shadow: 1px 1px 1px #000;">
             <div class="sidebar-header">
               <h5>{{ unidade | uppercase }}</h5>
@@ -47,10 +47,10 @@
                   </div>
                   <div *ngIf="visCont" class="btn-group dropdown mt-2" style="width: 240px;" id="btn-menu">
                     <button type="button" style="width: 230px;" class="btn btn-success my-2 my-sm-0 dropdown-toggle ml-4" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                      Contribuinte
+                      Usuários
                     </button>
                     <div  class="dropdown-menu" style="width: 275px;" id="menu">
-                        <a  class="dropdown-item " routerLink="/contribuinte" id="cad"><i class="fas fa-user-check"></i>&nbsp;Cadastro de contribuinte</a>
+                        <a  class="dropdown-item " routerLink="/contribuinte" id="cad"><i class="fas fa-user-check"></i>&nbsp;Cadastro de Usuário</a>
                     </div>
                   </div>
                   <div *ngIf="visConf" class="btn-group dropdown mt-2" style="width: 240px;" id="btn-menu">
@@ -101,8 +101,8 @@
                   </div>
               </nav>
               <main class="col-md-10">
-                  <h4 *ngIf="mostrarMenu" class="text-center mt-4">e-AtendeFacil</h4>
-                  <h6 *ngIf="mostrarMenu" class="text-center">Agendamento, atendimento e controle de senha</h6>
+                  <h4 *ngIf="mostrarMenu" class="text-center mt-4">AtendeFácilWeb</h4>
+                  <h6 *ngIf="mostrarMenu" class="text-center">Agendamento, Atendimento e Controle de Senhas</h6>
                   <div>
                     <router-outlet></router-outlet>
                   </div>
@@ -110,13 +110,9 @@
           </div>
       </section>
     </div>
-  <!-- Cabeçalho - Fim -->
-  <!-- Rodape - Inicio -->
-      <footer class="text-white" style="height: 50px; margin-top:2px; box-shadow: 1px 1px 2px #000;">
-          <div class="container">
-              <div class="text-center" style="font-size: 10pt;">
-                 Secretaria de Finanças - Assessoria de Tecnologia da Informação - 2020.
-              </div>
-          </div>
-      </footer>
+  <footer class="text-white d-flex justify-content-center align-items-center" style="height: 50px;  box-shadow: 1px 1px 2px #000;">
+    <div style="font-size: 10pt;">
+      Secretaria Municipal de Inovação, Ciência e Tecnologia - 2021.
+    </div>
+  </footer>
   </div>

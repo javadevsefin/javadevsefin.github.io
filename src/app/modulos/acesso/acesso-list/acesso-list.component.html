@@ -17,8 +17,8 @@
         </button>
       </div>
     </div>
-     <div class="col-12">
-      <table class="table table-hover" style="box-shadow: 5px 5px 10px #000;">
+     <div id="tbsd" class="table-responsive">
+      <table class="table table-hover">
         <thead>
           <tr class="bg-success text-light">
             <th>ID</th>
@@ -44,7 +44,7 @@
             </td>
             <td>
               <button (click)="onEdit(acesso.id)" class="btn btn-outline-info btn-sm"><i class="far fa-edit"></i></button>
-              <button (click)="pegaDados(orgao.id, orgao.descricao)" data-toggle="modal" data-target="#ModalExclusao" class="btn btn-outline-danger btn-sm"><i class="far fa-trash-alt"></i></button>
+              <button (click)="pegarDados(acesso.id, acesso.servidor.nome)" data-toggle="modal" data-target="#ModalExclusao" class="btn btn-outline-danger btn-sm"><i class="far fa-trash-alt"></i></button>
             </td>
           </tr>
         </tbody>

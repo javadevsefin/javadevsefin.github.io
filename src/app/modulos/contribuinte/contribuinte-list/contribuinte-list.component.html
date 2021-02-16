@@ -8,28 +8,28 @@
     <div class="row mb-4">
       <div class="col-md">
         <h1 class="h3 border-left pl-2">
-          Listagem de Contribuintes
+          Listagem de Usuário
         </h1>
       </div>
       <div class="col-md">
         <button type="button" routerLink="new" class="btn btn-success float-right">
-          <i class="fas fa-user-plus"></i> Cadastrar Contribuinte
+          <i class="fas fa-user-plus"></i> Cadastrar Usuário
         </button>
       </div>
     </div>
     <form class="needs-validation" novalidate [formGroup]="contribuinteForm">
     <div class="col-12 mb-2">
         <button class="btn btn-info mb-2" type="button" data-toggle="collapse" data-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample">
-            Pesquisar Contribuinte
+            Pesquisar Usuário
         </button>
         <div class="collapse " id="collapseExample">
         <div style="box-shadow: 5px 5px 10px #000;" class="card">
         <div class="card-header">
             <div class="row col-12 ml-1">
-            <label for="nDoTermo">Filtro para listagem de Atendimento:</label>
-            </div>	
+            <label for="nDoTermo">Filtro para Listagem de Usuário:</label>
+            </div>
         </div>
-        <div class="card-body">	
+        <div class="card-body">
         <div class="row col-12">
             <div class="form-group col-md-5">
                 <label for="nome">Nome:</label>
@@ -38,18 +38,19 @@
             <div class="form-group col-md-3">
                 <label for="cpf">CPF/CNPJ:</label>
                 <input id="cpf" type="text" class="form-control" formControlName="cpfCnpj" (input)="pesquisar()"/>
-            </div> 
+            </div>
         </div>
         </div>
         </div>
         </div>
     </div>
     </form>
-     <div class="col-12">
-      <table class="table table-hover" style="box-shadow: 5px 5px 10px #000;" *ngIf="contribuintes">
+    <div class="d-flex justify-content-center mt-5" style="font-size: 14pt; font-weight: bold;" *ngIf="!contribuintes">USE O FILTRO ACIMA PARA GERAR A LISTA.</div>
+     <div id="tbsd" class="table-responsive" *ngIf="contribuintes">
+      <table class="table table-hover" *ngIf="contribuintes">
         <thead>
           <tr class="bg-success text-light">
-            <th>#</th>
+            <th>ID</th>
             <th>Nome</th>
             <th>CPF/CNPJ</th>
             <th>E-mail</th>
@@ -66,7 +67,7 @@
                 {{contribuinte.nome}}
             </td>
             <td>
-                {{ formatarPessoas(contribuinte.cpfCnpj)}}
+                {{ globalService.formatarPessoas(contribuinte.cpfCnpj)}}
             </td>
             <td>
                 {{contribuinte.email}}
@@ -76,21 +77,14 @@
            </td>
             <td>
               <button (click)="onEdit(contribuinte.id)" class="btn btn-outline-info btn-sm"><i class="far fa-edit"></i></button>
-              <button (click)="pegaDados(unidade.id ,unidade.descricao)" data-toggle="modal" data-target="#ModalExclusao" class="btn btn-outline-danger btn-sm"><i class="far fa-trash-alt"></i></button>
+              <button (click)="pegarDados(contribuinte.id ,contribuinte.nome)" data-toggle="modal" data-target="#ModalExclusao" class="btn btn-outline-danger btn-sm"><i class="far fa-trash-alt"></i></button>
             </td>
           </tr>
         </tbody>
       </table>
     </div>
         <!-- Modal -->
-    <div
-    class="modal fade"
-    id="ModalExclusao"
-    tabindex="-1"
-    role="dialog"
-    aria-labelledby="TituloModalCentralizado"
-    aria-hidden="true"
-  >
+    <div class="modal fade" id="ModalExclusao" tabindex="-1" role="dialog" aria-labelledby="TituloModalCentralizado" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered" role="document">
       <div class="modal-content">
         <div class="modal-header">
@@ -101,17 +95,8 @@
         <div class="modal-body" style="font-weight: bold;">
           Deseja excluir o registro de {{_descricao}} ?
         </div>
-        <div class="col-md-12 ">
-          <div *ngIf ="mostrarMens" style="text-align: center;"  class="col-10 alert alert-danger" role="alert">
-            <span> Registro excluido com sucesso! </span>
-           </div>
-        </div>
         <div class="modal-footer">
-          <button
-            type="button"
-            class="btn btn-danger"
-            data-dismiss="modal"
-          >
+          <button type="button" class="btn btn-danger" data-dismiss="modal">
             <i class="fas fa-window-close"></i>&nbsp;Fechar
           </button>
           <button class="btn btn-success" (click)="onDelete()">
@@ -122,7 +107,6 @@
     </div>
   </div>
   </div>
-<pre>
-</pre>
+
 
 

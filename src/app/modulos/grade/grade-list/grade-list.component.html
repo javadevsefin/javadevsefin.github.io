@@ -26,7 +26,7 @@
       <div style="box-shadow: 5px 5px 10px #000;" class="card">
       <div class="card-header">
          <div class="row col-12 ml-1">
-          <label for="nDoTermo">Filtro para listagem das grades de atendiemento:</label>
+          <label for="nDoTermo">Filtro para Listagem das Grades de Atendiemento:</label>
         </div>
       </div>
       <div class="card-body">
@@ -66,8 +66,9 @@
     </div>
     </div>
   </form>
-     <div class="col-12" *ngIf="grades">
-      <table class="table table-hover" style="box-shadow: 5px 5px 10px #000;">
+  <div class="d-flex justify-content-center mt-5" style="font-size: 14pt; font-weight: bold;" *ngIf="!grades">USE O FILTRO ACIMA PARA GERAR A LISTA.</div>
+     <div id="tbsd" class="table-responsive" *ngIf="grades">
+      <table class="table table-hover">
         <thead>
           <tr class="bg-success text-light">
             <th>#</th>
@@ -107,9 +108,11 @@
             </td>
             <td>
               <button (click)="onEdit(grade.id)" class="btn btn-outline-info btn-sm" data-toggle="tooltip"
-              data-placement="top" title="Editar grade de atendimento?" [disabled]="grade.gerado == 'g'"><i class="far fa-edit"></i></button>
+                data-placement="top" title="Editar grade de atendimento?" [disabled]="grade.gerado == 'g'"><i class="far fa-edit"></i>
+              </button>
               <button (click)="gerarAgendamento(grade.id)" class="btn btn-outline-success btn-sm"
-              data-toggle="tooltip" data-placement="top" title="Gerar vagas de agendamento?"><i class="fas fa-list-ol"></i></button>
+                data-toggle="tooltip" data-placement="top" title="Gerar vagas de agendamento?"><i class="fas fa-list-ol"></i>
+              </button>
             </td>
           </tr>
         </tbody>
