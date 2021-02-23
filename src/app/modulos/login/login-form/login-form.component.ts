@@ -42,7 +42,6 @@ export class LoginFormComponent implements OnInit {
 
   fechar(){
     this.msgError = false;
-
   }
 
   logar(){

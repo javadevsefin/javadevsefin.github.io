@@ -83,7 +83,7 @@ export class AcessoFormComponent implements OnInit {
   }
 
   onUpdatePass(){
-    this.acessoForm.get('senha').setValue('ati2021');
+    this.acessoForm.get('senha').setValue('sictec2021');
     this.onSubmit();
   }
 

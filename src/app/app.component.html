@@ -2,8 +2,11 @@
   <header class="text-white d-flex" style="box-shadow: 1px 1px 1px #000;">
           <div class="d-flex align-items-center col-12" style="font-size: 14pt; font-weight: bold;">
                <img src="assets/atende_facil.jpg" id="logo" style="height: 60px; width: 60px; margin-left: -10px; border-radius: 100%;" alt="Prefeitura de Goiânia"/>
-            <div class="col-6">
+            <div class="col-2">
               {{title}}
+            </div>
+            <div class="col-4">
+              <a type="button" *ngIf="visPan" (click)="ampliarTela()"><i class="fas fa-align-justify"></i></a>
             </div>
               <nav class="d-flex justify-content-end col-5">
                  SICTEC
@@ -68,6 +71,7 @@
                         <a  class="dropdown-item" routerLink="/acesso" id="ace"><i class="far fa-id-card"></i>&nbsp;Acessos</a>
                         <a  class="dropdown-item" routerLink="/servidor" id="serv"><i class="fas fa-user-edit"></i>&nbsp;Servidores</a>
                         <a  class="dropdown-item" routerLink="/perfilatendimento" id="per"><i class="fas fa-tasks"></i>&nbsp;Perfil de atendimento</a>
+                        <a  class="dropdown-item" routerLink="/mural" id="per"><i class="fas fa-edit"></i>&nbsp;Mural</a>
                     </div>
                   </div>
                   <div *ngIf="visRel" class="btn-group dropdown mt-2" style="width: 240px;" id="btn-menu">

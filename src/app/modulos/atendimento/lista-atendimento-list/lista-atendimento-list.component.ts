@@ -13,7 +13,7 @@ import { AtendimentoService } from '../shared/atendimento.service';
 })
 export class ListaAtendimentoListComponent implements OnInit {
 
-  constructor(private globalService: GlobalService,
+  constructor(public globalService: GlobalService,
               private atendimentoService: AtendimentoService,
               private router: Router) { }
 

@@ -188,5 +188,9 @@ export class AppComponent implements OnInit {
     document.location.reload();
   }
 
+  ampliarTela(){
+    this.mostrarMenu = !this.mostrarMenu;
+  }
+
   title = 'Prefeitura de Goiânia';
 }

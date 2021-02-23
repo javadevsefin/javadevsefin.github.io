@@ -17,6 +17,7 @@ import {  } from './modulos/painel/painel.module';
 import {  } from './modulos/login/login.module';
 import {  } from './modulos/relatorios/relatorios.module';
 import {  } from './modulos/upload/upload.module';
+import {  } from './modulos/mural/mural.module';
 
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
@@ -39,6 +40,7 @@ const routes: Routes = [
   { path: 'painel', loadChildren: './modulos/painel/painel.module#PainelModule', canActivate:[AuthGuard]},
   { path: 'relatorios', loadChildren: './modulos/relatorios/relatorios.module#RelatoriosModule',  canActivate:[AuthGuard]},
   { path: 'upload', loadChildren: './modulos/upload/upload.module#UploadModule', canActivate:[AuthGuard]},
+  { path: 'mural', loadChildren: './modulos/mural/mural.module#MuralModule', canActivate:[AuthGuard]},
   { path: 'login', loadChildren: './modulos/login/login.module#LoginModule'}
 ];
 
