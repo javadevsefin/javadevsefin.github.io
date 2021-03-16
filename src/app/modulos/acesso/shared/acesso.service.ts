@@ -1,6 +1,7 @@
+import { AcessoPaginado } from './acesso-paginado';
 import { take } from 'rxjs/operators';
 import { Role } from './role';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpParams } from '@angular/common/http';
 import { environment } from './../../../../environments/environment';
 import { Injectable } from '@angular/core';
 import { Acesso } from './acesso';
@@ -22,6 +23,13 @@ export class AcessoService {
 
   listAcesso(){
     return this.http.get<Acesso[]>(`${this.API}/acesso`).pipe(
+      take(1)
+    );
+  }
+
+  listAcessoPaginado(page, size){
+    const params = new HttpParams().set('page', page).set('size', size);
+    return this.http.get<AcessoPaginado>(`${this.API}/acesso/acessoPage?${params.toString()}`).pipe(
       take(1)
     );
   }

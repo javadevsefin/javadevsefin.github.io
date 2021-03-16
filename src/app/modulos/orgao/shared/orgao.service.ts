@@ -1,8 +1,9 @@
+import { OrgaoPaginada } from './orgao-paginada';
 import { tap, take } from 'rxjs/operators';
 import { Orgao } from './orgao';
 import { environment } from './../../../../environments/environment';
 import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpParams } from '@angular/common/http';
 
 @Injectable({
   providedIn: 'root'
@@ -15,6 +16,13 @@ export class OrgaoService {
 
   listOrgao(){
     return this.http.get<Orgao[]>(`${this.API}`).pipe(
+      take(1)
+    );
+  }
+
+  listOrgaoPaginada(page, size){
+    const params = new HttpParams().set('page', page).set('size', size);
+    return this.http.get<OrgaoPaginada>(`${this.API}/orgaoPage?${params.toString()}`).pipe(
       take(1)
     );
   }

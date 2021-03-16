@@ -14,7 +14,7 @@
         </h1>
       </div>
       <div class="col-md">
-        <button type="button" routerLink="/atendimento/listaAtendimento" class="btn btn-warning float-right">
+        <button type="button" routerLink="/atendimento/listaAtendimento/{{ servidor }}/{{ statusAtendente }}" class="btn btn-warning float-right">
           <i class="fas fa-backward"></i>&nbsp;Voltar
         </button>
       </div>
@@ -33,7 +33,7 @@
                       <div class="form-row col-md-12">
                         <div class="col-md-3">
                             <label style="color: blue; font-weight: bold; font-size: 12pt;">Matrícula:&#160;</label><span>{{ matricula }}</span>
-                        </div>    
+                        </div>
                         <div class="col-md-9">
                             <label style="color: blue; font-weight: bold; font-size: 12pt;">Servidor:&#160;</label><span>{{ servidor }}</span>
                         </div>
@@ -43,7 +43,7 @@
                             <label style="color: blue; font-weight: bold; font-size: 12pt;">Status:&#160;</label><span>{{ statusAtendente }}</span>
                         </div>
                         <div class="col-md-3">
-                            <label style="color: blue; font-weight: bold; font-size: 12pt;">Guichê:&#160;</label><span>{{ guiche }}</span> 
+                            <label style="color: blue; font-weight: bold; font-size: 12pt;">Guichê:&#160;</label><span>{{ guiche }}</span>
                         </div>
                       </div>
                       <div class="form-row col-md-12">
@@ -52,12 +52,12 @@
                       <div class="form-row col-md-12">
                         <div class="col-md-3">
                             <label style="color: blue; font-weight: bold; font-size: 12pt;">Fila:&#160;</label><span>{{ id }}</span>
-                        </div>    
+                        </div>
                         <div class="col-md-3">
                             <label style="color: blue; font-weight: bold; font-size: 12pt;">Identificador:&#160;</label><span>{{ identificador }}</span>
                         </div>
                         <div class="col-md-3">
-                            <label style="color: blue; font-weight: bold; font-size: 12pt;">Data:&#160;</label><span> {{ data }} </span> 
+                            <label style="color: blue; font-weight: bold; font-size: 12pt;">Data:&#160;</label><span> {{ data }} </span>
                         </div>
                         <div class="col-md-3">
                             <label style="color: blue; font-weight: bold; font-size: 12pt;">Horário:&#160;</label><span>{{ horario }}</span>
@@ -102,7 +102,7 @@
                                 <option *ngFor="let delServico of delServicos" [value]="delServico.id">{{delServico.descricao}}</option>
                             </select>
                         </div>
-                        <div *ngIf ="mostrarMens" class="form-group col-md-6">                         
+                        <div *ngIf ="mostrarMens" class="form-group col-md-6">
                             <label></label>
                             <div class="alert alert-success" role="alert">
                                     Incluido com sucesso!
@@ -111,7 +111,7 @@
                                 </a>
                             </div>
                         </div>
-                        </div>    
+                        </div>
                         <div class="form-row col-md-12">
                             <div class="form-group col-md-12">
                                 <label for="desc">Descrição</label>
@@ -136,16 +136,7 @@
                                 <option *ngFor="let delServico of delServicos" [value]="delServico.id">{{delServico.descricao}}</option>
                             </select>
                         </div>
-                        <div *ngIf ="_mostrarMens" class="form-group col-md-6">                         
-                            <label></label>
-                            <div class="alert alert-success" role="alert">
-                                    Reagendado com sucessos!
-                                <a type="button" class="close" data-dismiss="alert" aria-label="Fechar">
-                                    <span aria-hidden="true">&times;</span>
-                                </a>
-                            </div>
                         </div>
-                        </div>    
                         <div class="form-row col-md-12">
                             <div class="form-group col-md-12">
                                 <button type="button" class="btn btn-success" (click)="onIncludeNew()"><i class="fas fa-play"></i>&#160;Incluir novamente</button>
@@ -164,8 +155,8 @@
       </div>
     </form>
     <div>
-    </div>  
+    </div>
   </div>
- 
- 
+
+
 

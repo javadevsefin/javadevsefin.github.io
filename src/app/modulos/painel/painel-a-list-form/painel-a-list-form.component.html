@@ -19,22 +19,22 @@
                             </div>
                             <div class="form-row col-md-12 mt-4">
                                 <div class="col-md-12 text-center">
-                                    <span class="painel">GUICHÊ: {{ guiche | uppercase }}</span> 
+                                    <span class="painel">GUICHÊ: {{ guiche | uppercase }}</span>
                                 </div>
                             </div>
                             <div class="form-row col-md-12 mt-4">
                                 <div class="col-md-12 text-center">
-                                    <span class="painel">SERVIÇO: {{ servico | uppercase }}</span> 
+                                    <span class="painel">SERVIÇO: {{ servico | uppercase }}</span>
                                 </div>
                             </div>
                             <div class="form-row col-md-12 mt-4">
                                 <div class="col-md-12 text-center">
-                                    <span class="painel">CHAMADA: {{ data }} - {{ hora }}</span> 
+                                    <span class="painel">CHAMADA: {{ data }} - {{ hora }}</span>
                                 </div>
-                            </div>    
+                            </div>
                             <div class="form-row col-md-12 mt-4">
                                 <div class="col-md-12 text-center">
-                                    <span class="painel">UNIDADE: {{ unidade | uppercase }}</span> 
+                                    <span class="painel">UNIDADE: {{ unidade | uppercase }}</span>
                                 </div>
                             </div>
                             <div class="form-row col-md-12 mt-4">
@@ -43,7 +43,7 @@
                                 </div>
                             </div>
                         </div>
-                    </div>   
+                    </div>
                 </div>
                 <div class="col-md-6" >
                     <div class="text-center">
@@ -56,7 +56,7 @@
                             <th>Guichê</th>
                             <th>Chamada</th>
                             <th>Serviço</th>
-                            <th>Unidade</th>                            
+                            <th>Unidade</th>
                           </tr>
                         </thead>
                         <tbody>
@@ -68,7 +68,7 @@
                                 {{painel.guiche}}
                             </td>
                             <td>
-                                <small>{{ formatarHora(painel.chamada)}} - {{ formatarData(painel.chamada) }}</small> 
+                                <small>{{ formatarHora(painel.chamada)}} - {{ formatarData(painel.chamada) }}</small>
                             </td>
                             <td>
                                 {{painel.servico}}
@@ -88,7 +88,7 @@
             </div>
         </div>
       </div>
-    </form> 
+    </form>
   </div>
- 
+
 

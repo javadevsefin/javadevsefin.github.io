@@ -1,3 +1,4 @@
+import { UnidadePaginada } from './unidade-paginada';
 import { Unidade } from './unidade';
 import { HttpClient, HttpParams } from '@angular/common/http';
 import { environment } from './../../../../environments/environment';
@@ -21,7 +22,7 @@ export class UnidadeService {
   }
 
   listUnidadeGenerica(role, unidadeId){
-    
+
     const httpParams = new HttpParams()
     .set("role", role)
     .set("unidadeId", unidadeId)
@@ -29,6 +30,13 @@ export class UnidadeService {
     const url = this.API + "/unidadeGenerica?" + httpParams;
 
     return this.http.get<Unidade[]>(url).pipe(
+      take(1)
+    );
+  }
+
+  listUnidadePaginada(page, size){
+    const params = new HttpParams().set('page', page).set('size', size);
+    return this.http.get<UnidadePaginada>(`${this.API}/unidadePage?${params.toString()}`).pipe(
       take(1)
     );
   }
@@ -55,7 +63,7 @@ export class UnidadeService {
       if(unidade.id){
           return this.update(unidade);
       } else {
-          return this.create(unidade);    
+          return this.create(unidade);
       }
   }
 

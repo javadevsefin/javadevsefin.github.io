@@ -1,4 +1,4 @@
-import { FormGroup } from '@angular/forms';
+import { FormGroup, FormBuilder } from '@angular/forms';
 import { DetalhamentoServicoService } from './../shared/detalhamento-servico.service';
 import { DetalhamentoServico } from './../shared/detalhamento-servico';
 import { Component, OnInit } from '@angular/core';
@@ -16,13 +16,23 @@ export class DetalhamentoServicoListComponent implements OnInit {
   _id: string = "";
   _descricao: string = "";
   detalhamentoServicos: DetalhamentoServico[];
+  paginaForm: FormGroup;
+  totalElements = 0;
+  totalPages = 0;
+  pagina = 0;
+  tamanho = 5;
 
   constructor(private detalhamentoServicoService: DetalhamentoServicoService,
               private router: Router,
-              private route: ActivatedRoute) { }
+              private route: ActivatedRoute,
+              private fb: FormBuilder) { }
 
   ngOnInit(): void {
-    this.listDetalhamentoServico();
+    this.listarDetalhamentoServicoPaginado(this.pagina, this.tamanho);
+
+    this.paginaForm = this.fb.group({
+      quantPag: [ 5 ]
+    });
 
   }
 
@@ -43,6 +53,34 @@ export class DetalhamentoServicoListComponent implements OnInit {
 
   onDelete(){
 
+  }
+
+  listarDetalhamentoServicoPaginado(page, size){
+    this.detalhamentoServicoService.listDetalhamentoServicoPaginado(page, size).subscribe(
+          response => { this.detalhamentoServicos = response.content;
+                        this.totalElements = response.totalElements;
+                        this.totalPages = response.totalPages;
+                        }
+    );
+  }
+
+  paginaMenor(){
+    if(this.pagina <= 0){
+      this.pagina = 0;
+    } else {
+      this.pagina = this.pagina - 1;
+    }
+     return this.listarDetalhamentoServicoPaginado(this.pagina, this.paginaForm.get('quantPag').value);
+  }
+
+  paginaMaior(){
+    this.pagina = this.pagina + 1;
+    return this.listarDetalhamentoServicoPaginado(this.pagina, this.paginaForm.get('quantPag').value);
+  }
+
+  atualizaPagina(){
+    this.pagina = 0
+    return this.listarDetalhamentoServicoPaginado(this.pagina, this.paginaForm.get('quantPag').value);
   }
 
 }

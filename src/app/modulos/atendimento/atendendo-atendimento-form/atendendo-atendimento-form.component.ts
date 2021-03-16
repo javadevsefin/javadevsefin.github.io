@@ -12,7 +12,7 @@ import { Component, OnInit } from '@angular/core';
   selector: 'app-atendendo-atendimento-form',
   templateUrl: './atendendo-atendimento-form.component.html',
   styleUrls: ['./atendendo-atendimento-form.component.css'],
-  
+
 })
 export class AtendendoAtendimentoFormComponent implements OnInit {
 
@@ -62,7 +62,7 @@ export class AtendendoAtendimentoFormComponent implements OnInit {
        descricao: ['', []],
        servidor: ['', []],
        detalhamentoServico: ['', []],
-       fila: ['', []] 
+       fila: ['', []]
     });
   }
 
@@ -98,11 +98,11 @@ export class AtendendoAtendimentoFormComponent implements OnInit {
     let servidor = this.atendimentoForm.get('servidor').value;
 
     this.atendimentoService.createChamar(fila, servidor).subscribe(
-      success => { console.log("Deu certo")});
-    this.btnComecar = true;
-    this.btnFinalizar = true;
-    this.cont = this.cont + 1;
-    
+      success => { this.globalService.alertShow(this.cont + "X","Chamando...") });
+
+        this.btnComecar = true;
+        this.btnFinalizar = true;
+        this.cont = this.cont + 1;
   }
 
   onStart(){
@@ -117,7 +117,7 @@ export class AtendendoAtendimentoFormComponent implements OnInit {
 
   onInclude(){
     this.atendimentoService.createAtendimento(this.atendimentoForm.value).subscribe(
-      success => { this.mostrarMens = true }
+      success => { this.globalService.saveShow("Incluido com Sucesso!","Serviço") }
     );
 
     this.atendimentoForm.get('descricao').setValue("");
@@ -130,7 +130,7 @@ export class AtendendoAtendimentoFormComponent implements OnInit {
     let detalhamentoServico = this.atendimentoForm.get('detalhamentoServico').value;
 
     this.atendimentoService.createReagendar(fila, detalhamentoServico).subscribe(
-      success => { console.log("Reagendado"), this._mostrarMens = true, this.btnFinalizar = false}
+      success => { this.globalService.infoShow("Incluido com Sucesso!","Re-agendamento"), this.btnFinalizar = false}
     );
   }
 
@@ -138,7 +138,7 @@ export class AtendendoAtendimentoFormComponent implements OnInit {
     let fila = this.atendimentoForm.get('fila').value;
 
     this.atendimentoService.createFinalizar(fila).subscribe(
-      success => { this.btnComecar = false, this.btnChamar = false, this.reagendar = true, this.mostrarForm = false;}
+      success => { this.btnComecar = false, this.btnChamar = false, this.reagendar = true, this.mostrarForm = false, this.globalService.infoShow("Finalizado com Sucesso!", "Atendimento")}
     );
   }
 

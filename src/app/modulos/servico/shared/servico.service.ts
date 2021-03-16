@@ -1,5 +1,6 @@
+import { ServicoPaginado } from './servico-paginado';
 import { take, tap } from 'rxjs/operators';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpParams } from '@angular/common/http';
 import { environment } from './../../../../environments/environment';
 import { Injectable } from '@angular/core';
 import { Servico } from './servico';
@@ -19,10 +20,18 @@ export class ServicoService {
     );
   }
 
+  listServicoPaginado(page, size){
+    const params = new HttpParams().set('page', page).set('size', size);
+    return this.http.get<ServicoPaginado>(`${this.API}/servicoPage?${params.toString()}`).pipe(
+      take(1)
+    );
+  }
+
+
   loadById(id){
     return this.http.get(`${this.API}/${id}`).pipe(
       take(1)
-    ); 
+    );
   }
 
   private create(servico){

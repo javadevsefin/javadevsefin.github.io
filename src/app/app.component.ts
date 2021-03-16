@@ -9,11 +9,14 @@ import { Component, OnInit } from '@angular/core';
 })
 export class AppComponent implements OnInit {
 
+  title = 'Prefeitura de Goiânia';
   mat: string = '';
   nome: string = '';
   role: string = '';
   unidade: string = '';
   mostrarMenu: boolean = false;
+  btnRedimensionar: boolean = false;
+  telaAmpliada: boolean = false;
   visGrade: boolean = false;
   visRecep: boolean = false;
   visAtend: boolean = false;
@@ -68,6 +71,7 @@ export class AppComponent implements OnInit {
           this.p04 = true
           this.p05 = true
           this.p06 = true
+          this.btnRedimensionar = true
         } else if(tipo === "Operador"){
           this.visGrade = true
           this.visRecep = false
@@ -76,6 +80,7 @@ export class AppComponent implements OnInit {
           this.visConf =  true
           this.visRel = true
           this.visPan = false
+          this.btnRedimensionar = true
         } else if(tipo === "Coordenação"){
           this.visGrade = false
           this.visRecep = true
@@ -84,6 +89,7 @@ export class AppComponent implements OnInit {
           this.visConf =  false
           this.visRel = true
           this.visPan = false
+          this.btnRedimensionar = true
         } else if(tipo === "Supervisão"){
           this.visGrade = true
           this.visRecep = true
@@ -92,6 +98,7 @@ export class AppComponent implements OnInit {
           this.visConf =  true
           this.visRel = true
           this.visPan = true
+          this.btnRedimensionar = true
         } else if(tipo === "Apoio Administrativo"){
           this.visGrade = true
           this.visRecep = false
@@ -100,6 +107,7 @@ export class AppComponent implements OnInit {
           this.visConf =  false
           this.visRel = false
           this.visPan = true
+          this.btnRedimensionar = true
         } else if(tipo === "Apoio de Informática"){
           this.visGrade = true
           this.visRecep = false
@@ -108,6 +116,7 @@ export class AppComponent implements OnInit {
           this.visConf =  false
           this.visRel = true
           this.visPan = false
+          this.btnRedimensionar = true
         } else if(tipo === "Recepção/Informação"){
           this.visGrade = false
           this.visRecep = true
@@ -116,6 +125,7 @@ export class AppComponent implements OnInit {
           this.visConf =  false
           this.visRel = false
           this.visPan = true
+          this.btnRedimensionar = true
         } else if(tipo === "Atendente"){
           this.visGrade = false
           this.visRecep = false
@@ -133,6 +143,7 @@ export class AppComponent implements OnInit {
           this.visRel = false
           this.visPan = true
           this.p01 = true
+          this.btnRedimensionar = true
         } else if (tipo === "Painel02"){
           this.visGrade = false
           this.visRecep = false
@@ -142,6 +153,7 @@ export class AppComponent implements OnInit {
           this.visRel = false
           this.visPan = true
           this.p02 = true
+          this.btnRedimensionar = true
         } else if (tipo === "Painel03"){
           this.visGrade = false
           this.visRecep = false
@@ -151,6 +163,7 @@ export class AppComponent implements OnInit {
           this.visRel = false
           this.visPan = true
           this.p03 = true
+          this.btnRedimensionar = true
         } else if (tipo === "Painel04"){
           this.visGrade = false
           this.visRecep = false
@@ -160,6 +173,7 @@ export class AppComponent implements OnInit {
           this.visRel = false
           this.visPan = true
           this.p04 = true
+          this.btnRedimensionar = true
         } else if (tipo === "Painel05"){
           this.visGrade = false
           this.visRecep = false
@@ -169,6 +183,7 @@ export class AppComponent implements OnInit {
           this.visRel = false
           this.visPan = true
           this.p05 = true
+          this.btnRedimensionar = true
         } else if (tipo === "Painel06"){
           this.visGrade = false
           this.visRecep = false
@@ -178,6 +193,7 @@ export class AppComponent implements OnInit {
           this.visRel = false
           this.visPan = true
           this.p06 = true
+          this.btnRedimensionar = true
         }
       }
     );
@@ -190,7 +206,6 @@ export class AppComponent implements OnInit {
 
   ampliarTela(){
     this.mostrarMenu = !this.mostrarMenu;
+    this.telaAmpliada = !this.telaAmpliada;
   }
-
-  title = 'Prefeitura de Goiânia';
 }

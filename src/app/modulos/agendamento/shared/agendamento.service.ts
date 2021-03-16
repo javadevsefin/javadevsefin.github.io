@@ -1,4 +1,4 @@
-import { AgendaPaginada } from './agendaPaginada';
+import { AgendaPaginada } from './agenda-paginada';
 import { Agendamento } from './agendamento';
 import { tap, take } from 'rxjs/operators';
 import { environment } from './../../../../environments/environment';
@@ -40,7 +40,7 @@ export class AgendamentoService {
 }
 
   listAgendaPaginada(page, size){
-    const params = new HttpParams().set('page', page).set('size', size); 
+    const params = new HttpParams().set('page', page).set('size', size);
     return this.http.get<AgendaPaginada>(`${this.API}/agendaPage?${params.toString()}`).pipe(
       take(1)
     );

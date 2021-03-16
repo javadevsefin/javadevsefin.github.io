@@ -1,6 +1,7 @@
+import { DetalhamentoServicoPaginado } from './detalhamento-servico-paginado';
 import { take } from 'rxjs/operators';
 import { DetalhamentoServico } from './detalhamento-servico';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpParams } from '@angular/common/http';
 import { environment } from './../../../../environments/environment';
 import { Injectable } from '@angular/core';
 import { pipe } from 'rxjs';
@@ -16,6 +17,13 @@ export class DetalhamentoServicoService {
 
   listDetalhamentoServico(){
     return this.http.get<DetalhamentoServico[]>(`${this.API}`).pipe(
+      take(1)
+    );
+  }
+
+  listDetalhamentoServicoPaginado(page, size){
+    const params = new HttpParams().set('page', page).set('size', size);
+    return this.http.get<DetalhamentoServicoPaginado>(`${this.API}/detalhamentoServicoPage?${params.toString()}`).pipe(
       take(1)
     );
   }

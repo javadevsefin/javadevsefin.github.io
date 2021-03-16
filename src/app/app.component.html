@@ -6,22 +6,22 @@
               {{title}}
             </div>
             <div class="col-4">
-              <a type="button" *ngIf="visPan" (click)="ampliarTela()"><i class="fas fa-align-justify"></i></a>
+              <a type="button" *ngIf="btnRedimensionar" (click)="ampliarTela()" data-toggle="tooltip" data-placement="right" title="Click para aumentar ou diminuir a tela."><i class="fas fa-align-justify"></i></a>
             </div>
               <nav class="d-flex justify-content-end col-5">
                  SICTEC
               </nav>
           </div>
    </header>
-  <div class="col-12">
+  <div class="col-md-12">
     <section style="min-height: 750px">
-        <div class="row" style="min-height: 860px; margin-top:3px">
+        <div class="row" style="min-height: 835px; margin-top:3px">
             <nav *ngIf="mostrarMenu" class="col-md-2" id="sidebar" style="box-shadow: 1px 1px 1px #000;">
             <div class="sidebar-header">
               <h5>{{ unidade | uppercase }}</h5>
             </div>
             <h6>Olá, <span style="color: green;">{{ nome }}</span> seu acesso e tipo <span style="color:blue;">{{ role }}</span> </h6>
-                 <div  *ngIf="visGrade" class="btn-group dropdown mt-2" style="width: 240px;" id="btn-menu">
+                 <div  *ngIf="visGrade" class="col-md-2 btn-group dropdown mt-2" style="max-width: 240px;" id="btn-menu">
                     <button type="button" style="width: 230px;" class="btn btn-success my-2 my-sm-0 dropdown-toggle ml-4" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                       Grade
                     </button>
@@ -30,7 +30,7 @@
                         <a class="dropdown-item " routerLink="/agendamento" id="age"><i class="fas fa-list-alt"></i>&nbsp;Listar Agendamento</a>
                     </div>
                   </div>
-                  <div *ngIf="visRecep" class="btn-group dropdown mt-2" style="width: 240px;" id="btn-menu">
+                  <div *ngIf="visRecep" class="col-md-2 btn-group dropdown mt-2" style="max-width: 240px;" id="btn-menu">
                     <button type="button" style="width: 230px;" class="btn btn-success my-2 my-sm-0 dropdown-toggle ml-4" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                       Recepção
                     </button>
@@ -40,7 +40,7 @@
                         <a  class="dropdown-item" routerLink="/ativacao/listarfila" id="ati"><i class="fas fa-list-alt"></i>&nbsp;Consultar ativados</a>
                     </div>
                   </div>
-                  <div *ngIf="visAtend"  class="btn-group dropdown mt-2" style="width: 240px;" id="btn-menu">
+                  <div *ngIf="visAtend"  class="col-md-2 btn-group dropdown mt-2" style="max-width: 240px;" id="btn-menu">
                     <button type="button" style="width: 230px;" class="btn btn-success my-2 my-sm-0 dropdown-toggle ml-4" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                       Atendimento
                     </button>
@@ -48,7 +48,7 @@
                         <a  class="dropdown-item " routerLink="/atendimento" id="cad"><i class="fas fa-users"></i>&nbsp;Iniciar Atendimento</a>
                     </div>
                   </div>
-                  <div *ngIf="visCont" class="btn-group dropdown mt-2" style="width: 240px;" id="btn-menu">
+                  <div *ngIf="visCont" class="col-md-2 btn-group dropdown mt-2" style="max-width: 240px;" id="btn-menu">
                     <button type="button" style="width: 230px;" class="btn btn-success my-2 my-sm-0 dropdown-toggle ml-4" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                       Usuários
                     </button>
@@ -56,7 +56,7 @@
                         <a  class="dropdown-item " routerLink="/contribuinte" id="cad"><i class="fas fa-user-check"></i>&nbsp;Cadastro de Usuário</a>
                     </div>
                   </div>
-                  <div *ngIf="visConf" class="btn-group dropdown mt-2" style="width: 240px;" id="btn-menu">
+                  <div *ngIf="visConf" class="col-md-2 btn-group dropdown mt-2" style="max-width: 240px;" id="btn-menu">
                     <button type="button" style="width: 230px;" class="btn btn-success my-2 my-sm-0 dropdown-toggle ml-4" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                       Configurações
                     </button>
@@ -74,7 +74,7 @@
                         <a  class="dropdown-item" routerLink="/mural" id="per"><i class="fas fa-edit"></i>&nbsp;Mural</a>
                     </div>
                   </div>
-                  <div *ngIf="visRel" class="btn-group dropdown mt-2" style="width: 240px;" id="btn-menu">
+                  <div *ngIf="visRel" class="col-md-2 btn-group dropdown mt-2" style="max-width: 240px;" id="btn-menu">
                     <button type="button" style="width: 230px;" class="btn btn-success my-2 my-sm-0 dropdown-toggle ml-4" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                       Relatórios
                     </button>
@@ -84,7 +84,7 @@
                       <a  class="dropdown-item " routerLink="/relatorioatendimento" id="relagend"><i class="fas fa-print"></i>&nbsp;Relatório de Atendimentos</a>
                     </div>
                   </div>
-                  <div *ngIf="visPan" class="btn-group dropdown mt-2" style="width: 240px;" id="btn-menu">
+                  <div *ngIf="visPan" class="col-md-2  btn-group dropdown mt-2" style="max-width: 240px;" id="btn-menu">
                     <button type="button" style="width: 230px;" class="btn btn-success my-2 my-sm-0 dropdown-toggle ml-4" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                       Painéis
                     </button>
@@ -97,25 +97,31 @@
                         <a *ngIf="p06" class="dropdown-item" routerLink="/painel/06" id="p6"><i class="fas fa-solar-panel"></i>&nbsp;Painel CRC</a>
                     </div>
                   </div>
-                  <div *ngIf="visUp" class="btn-group dropdown mt-2" style="width: 240px;" id="btn-menu">
+                  <div *ngIf="visUp" class="col-md-2 btn-group dropdown mt-2" style="max-width: 240px;" id="btn-menu">
                     <button type="button" style="width: 240px;" routerLink="/upload/uploadfile" class="btn btn-success my-2 my-sm-0  ml-4">Upload</button>
                   </div>
-                  <div class="btn-group dropdown mt-2" style="width: 240px;" id="btn-menu">
+                  <div class="col-md-2 btn-group dropdown mt-2" style="max-width: 240px;" id="btn-menu">
                       <button type="button" style="width: 240px;" class="btn btn-success my-2 my-sm-0  ml-4" (click)="exit()">Sair</button>
                   </div>
+              </nav>
+              <nav *ngIf="telaAmpliada" class="col-md-1" id="sidebar">
               </nav>
               <main class="col-md-10">
                   <h4 *ngIf="mostrarMenu" class="text-center mt-4">AtendeFácilWeb</h4>
                   <h6 *ngIf="mostrarMenu" class="text-center">Agendamento, Atendimento e Controle de Senhas</h6>
+                  <h4 *ngIf="telaAmpliada" class="text-center mt-4">AtendeFácilWeb</h4>
+                  <h6 *ngIf="telaAmpliada" class="text-center">Agendamento, Atendimento e Controle de Senhas</h6>
                   <div>
                     <router-outlet></router-outlet>
                   </div>
               </main>
+              <nav *ngIf="telaAmpliada" class="col-md-1" id="sidebar">
+              </nav>
           </div>
       </section>
     </div>
   <footer class="text-white d-flex justify-content-center align-items-center" style="height: 50px;  box-shadow: 1px 1px 2px #000;">
-    <div style="font-size: 10pt;">
+    <div style="font-size: 10pt; font-weight: bold;">
       Secretaria Municipal de Inovação, Ciência e Tecnologia - 2021.
     </div>
   </footer>

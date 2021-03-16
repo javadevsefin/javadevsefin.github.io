@@ -1,9 +1,10 @@
 
 import { Guiche } from './guiche';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpParams } from '@angular/common/http';
 import { environment } from './../../../../environments/environment';
 import { Injectable } from '@angular/core';
 import { tap, take } from 'rxjs/operators';
+import { GuichePaginado } from './guiche-paginado';
 
 
 @Injectable({
@@ -17,12 +18,19 @@ export class GuicheService {
 
   listGuiche(){
     return this.http.get<Guiche[]>(`${this.API}`).pipe(
-     take(1) 
+     take(1)
     );
   }
 
   loadById(id){
     return this.http.get(`${this.API}/${id}`).pipe(
+      take(1)
+    );
+  }
+
+  listGuicheServicoPaginado(page, size){
+    const params = new HttpParams().set('page', page).set('size', size);
+    return this.http.get<GuichePaginado>(`${this.API}/guichePage?${params.toString()}`).pipe(
       take(1)
     );
   }
@@ -52,5 +60,5 @@ export class GuicheService {
         take(1)
       );
   }
-  
+
 }

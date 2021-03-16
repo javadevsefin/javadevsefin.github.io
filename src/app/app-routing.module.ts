@@ -41,7 +41,9 @@ const routes: Routes = [
   { path: 'relatorios', loadChildren: './modulos/relatorios/relatorios.module#RelatoriosModule',  canActivate:[AuthGuard]},
   { path: 'upload', loadChildren: './modulos/upload/upload.module#UploadModule', canActivate:[AuthGuard]},
   { path: 'mural', loadChildren: './modulos/mural/mural.module#MuralModule', canActivate:[AuthGuard]},
-  { path: 'login', loadChildren: './modulos/login/login.module#LoginModule'}
+  { path: 'home', loadChildren: './modulos/home/home.module#HomeModule' , canActivate:[AuthGuard]},
+  { path: 'login', loadChildren: './modulos/login/login.module#LoginModule'},
+
 ];
 
 @NgModule({

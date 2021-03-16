@@ -8,7 +8,8 @@ import { Component, OnInit } from '@angular/core';
 @Component({
   selector: 'app-contribuinte-form',
   templateUrl: './contribuinte-form.component.html',
-  styleUrls: ['./contribuinte-form.component.css']
+  styleUrls: ['./contribuinte-form.component.css'],
+  preserveWhitespaces: true
 })
 export class ContribuinteFormComponent implements OnInit {
 
@@ -88,6 +89,11 @@ export class ContribuinteFormComponent implements OnInit {
         )
       }
       this.contribuinteForm.reset();
+    }
+
+    onUpdatePass(){
+      this.contribuinteForm.get('senha').setValue(this.gerarSenha());
+      this.onSumit();
     }
 
 }
