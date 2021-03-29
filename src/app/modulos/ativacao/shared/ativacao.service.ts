@@ -3,6 +3,7 @@ import { take, tap } from 'rxjs/operators';
 import { environment } from './../../../../environments/environment';
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
+import { DetalhamentoServico } from '../../detalhamento-servico/shared/detalhamento-servico';
 
 @Injectable({
   providedIn: 'root'
@@ -19,8 +20,8 @@ export class AtivacaoService {
     );
   }
 
-  reclassificarPrioridade(id, prioridade){
-    return this.http.get(`${this.API}/agendamento/reclassificarPrioridade/${id}/${prioridade}`).pipe(
+  atualizarAgendamento(id, prioridade, detalhamentoServicoId){
+    return this.http.get(`${this.API}/agendamento/atualizaragendamento/${id}/${prioridade}/${detalhamentoServicoId}`).pipe(
       take(1)
     );
   }
@@ -32,6 +33,12 @@ export class AtivacaoService {
 
   updateAgendamento(id){
     return this.http.get(`${this.API}/agendamento/agendamentoFila/${id}`).pipe(
+      take(1)
+    );
+  }
+
+  listDetalhamentoServico(servico){
+    return this.http.get<DetalhamentoServico[]>(`${this.API}/detalhamentoservico/select/${servico}`).pipe(
       take(1)
     );
   }

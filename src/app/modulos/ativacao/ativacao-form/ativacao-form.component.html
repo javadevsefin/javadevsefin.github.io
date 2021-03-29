@@ -32,10 +32,17 @@
                         </div>
                     </div>
                     <div class="form-row col-md-12" *ngIf="mostra">
-                        <div class="col-md-8">
-                          <label for="unidade">Reclassificar Prioridade:</label>
+                      <div class="form-group col-md-12" >
+                        <label for="calendario">Detalhamento do Serviço:</label>
+                          <select  class="form-control" id="calendario" formControlName="detalhamentoServicoId">
+                            <option *ngFor="let detalhamentoServico of detalhamentoServicos" [value]="detalhamentoServico.id">{{detalhamentoServico.descricao}}</option>
+                          </select>
+                        </div>
+                    </div>
+                    <div class="form-row col-md-12" *ngIf="mostra">
+                        <div class="col-md-12">
+                          <label for="unidade">Prioridade:</label>
                           <select  class="form-control" id="unidade" formControlName="prioridade">
-                              <option value="" selected>Escolha a priodidade</option>
                               <option value="Normal">Normal</option>
                               <option value="Idoso">Idoso</option>
                               <option value="Gestante">Gestante</option>
@@ -45,8 +52,10 @@
                               <option value="Obeso">Obeso</option>
                           </select>
                         </div>
-                        <div class="col-md-2" style="margin-top: 31px;">
-                          <button class="btn btn-primary" (click)="reclassificarPrioridade()">Alterar Prioridade</button>
+                        <div class="form-row col-md-12">
+                          <div class="col-md-2" style="margin-top: 31px;">
+                            <button class="btn btn-primary" [disabled]="!ativaForm.valid" (click)="atualizarAgendamento()">Atualizar Agendamento</button>
+                          </div>
                         </div>
                   </div>
                 </div>
@@ -95,7 +104,7 @@
                                     SERVIÇO:&#160; {{ servico }}
                                 </div>
                                 <div class="form-row col-12  d-flex justify-content-center">
-                                    DETALHAMENTO:&#160; {{ detalhamentoServico }}
+                                    DETALHAMENTO:&#160; <span style="font-weight: bold;">{{ detalhamentoServico }}</span>
                                 </div>
                                 <div class="form-row col-12  d-flex justify-content-center">
                                     STATUS:&#160;<span style="font-weight: bold;">{{ statusAgendamento }}</span>
@@ -109,6 +118,7 @@
                         </div>
                         <div class="d-flex justify-content-center" *ngIf="statusAgendamento == 'Agendado' ">
                             <button type="button"
+                                    *ngIf ="btnAtivarSenha"
                                     class="btn btn-primary mb-3 ml-1"
                                      (click)="ativar()">
                             <i class="fas fa-tasks"></i>&#160; Ativar Senha
@@ -122,9 +132,7 @@
       </div>
     </form>
   </div>
-  <!-- pre>
-      {{ ativaForm.value | json }}
-  </pre -->
+
 
 
 

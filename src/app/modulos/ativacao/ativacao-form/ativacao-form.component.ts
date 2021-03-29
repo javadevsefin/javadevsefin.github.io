@@ -1,6 +1,8 @@
+import { AgendamentoService } from './../../agendamento/shared/agendamento.service';
 import { AtivacaoService } from './../shared/ativacao.service';
-import { FormBuilder, FormGroup } from '@angular/forms';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Component, OnInit } from '@angular/core';
+import { DetalhamentoServico } from '../../detalhamento-servico/shared/detalhamento-servico';
 
 @Component({
   selector: 'app-ativacao-form',
@@ -25,9 +27,11 @@ export class AtivacaoFormComponent implements OnInit {
   prioridade: string;
   mostra: boolean = false;
   proximo: boolean = false;
+  btnAtivarSenha: boolean = false;
+  detalhamentoServicos: DetalhamentoServico[];
 
   constructor(private fb: FormBuilder,
-              private ativacaoService: AtivacaoService) { }
+              private ativacaoService: AtivacaoService ) { }
 
   ngOnInit(): void {
 
@@ -42,9 +46,10 @@ export class AtivacaoFormComponent implements OnInit {
       data: ['', []],
       horario: ['', []],
       servico: ['', []],
+      detalhamentoServicoId: ['', [Validators.required]],
       detalhamentoServico: ['', []],
       statusAgendamento: ['', []],
-      prioridade: ['', []],
+      prioridade: ['', [Validators.required]],
     });
   }
 
@@ -65,6 +70,7 @@ export class AtivacaoFormComponent implements OnInit {
           this.prioridade = senha.prioridade;
           this.mostra = true;
           this.carregarDados(senha);
+          this.combobox(this.servico);
     }
     );
   }
@@ -73,12 +79,19 @@ export class AtivacaoFormComponent implements OnInit {
     this.ativaForm.patchValue(senha);
   }
 
-  reclassificarPrioridade(){
+  atualizarAgendamento(){
     let identificador = this.ativaForm.get('identificador').value;
     let prioridade = this.ativaForm.get('prioridade').value;
+    let detalhamentoServicoId: number = this.ativaForm.get('detalhamentoServicoId').value;
 
-    this.ativacaoService.reclassificarPrioridade(identificador, prioridade).subscribe(
-        success => { "FOI" }
+    this.ativacaoService.atualizarAgendamento(identificador, prioridade, detalhamentoServicoId).subscribe(
+        success => { this.btnAtivarSenha = true, this.senhaById() }
+    );
+  }
+
+  combobox(servico){
+    this.ativacaoService.listDetalhamentoServico(servico).subscribe(
+      dados => this.detalhamentoServicos = dados
     );
   }
 
