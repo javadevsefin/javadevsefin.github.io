@@ -61,17 +61,17 @@
                       Configurações
                     </button>
                     <div  class="dropdown-menu" style="width: 275px;" id="menu">
-                        <a  class="dropdown-item " routerLink="/orgao" id="org"><i class="fas fa-building"></i>&nbsp;Orgãos</a>
-                        <a  class="dropdown-item" routerLink="/unidade" id="uni"><i class="fas fa-warehouse"></i>&nbsp;Unidades</a>
-                        <a  class="dropdown-item" routerLink="/servico" id="ser"><i class="fas fa-cogs"></i>&nbsp;Serviços</a>
-                        <a  class="dropdown-item" routerLink="/detalhamentoservico" id="delSer"><i class="fas fa-list-ol"></i>&nbsp;Detalhamento de serviços</a>
-                        <a  class="dropdown-item" routerLink="/guiche" id="gui"><i class="fas fa-clipboard-check"></i>&nbsp;Guichês</a>
-                        <a  class="dropdown-item" routerLink="/calendario" id="cal"><i class="far fa-calendar-alt"></i>&nbsp;Calendário</a>
-                        <a  class="dropdown-item" routerLink="/calendario/alteracao" id="cal"><i class="far fa-calendar-alt"></i>&nbsp;Inativar Calendário</a>
-                        <a  class="dropdown-item" routerLink="/acesso" id="ace"><i class="far fa-id-card"></i>&nbsp;Acessos</a>
-                        <a  class="dropdown-item" routerLink="/servidor" id="serv"><i class="fas fa-user-edit"></i>&nbsp;Servidores</a>
-                        <a  class="dropdown-item" routerLink="/perfilatendimento" id="per"><i class="fas fa-tasks"></i>&nbsp;Perfil de atendimento</a>
-                        <a  class="dropdown-item" routerLink="/mural" id="per"><i class="fas fa-edit"></i>&nbsp;Mural</a>
+                        <a  *ngIf="vco" class="dropdown-item " routerLink="/orgao" id="org"><i class="fas fa-building"></i>&nbsp;Orgãos</a>
+                        <a  *ngIf="vcu" class="dropdown-item" routerLink="/unidade" id="uni"><i class="fas fa-warehouse"></i>&nbsp;Unidades</a>
+                        <a  *ngIf="vcs" class="dropdown-item" routerLink="/servico" id="ser"><i class="fas fa-cogs"></i>&nbsp;Serviços</a>
+                        <a  *ngIf="vcds" class="dropdown-item" routerLink="/detalhamentoservico" id="delSer"><i class="fas fa-list-ol"></i>&nbsp;Detalhamento de serviços</a>
+                        <a  *ngIf="vcg" class="dropdown-item" routerLink="/guiche" id="gui"><i class="fas fa-clipboard-check"></i>&nbsp;Guichês</a>
+                        <a  *ngIf="vcc" class="dropdown-item" routerLink="/calendario" id="cal"><i class="far fa-calendar-alt"></i>&nbsp;Calendário</a>
+                        <a  *ngIf="vcic" class="dropdown-item" routerLink="/calendario/alteracao" id="cal"><i class="far fa-calendar-alt"></i>&nbsp;Inativar Calendário</a>
+                        <a  *ngIf="vca" class="dropdown-item" routerLink="/acesso" id="ace"><i class="far fa-id-card"></i>&nbsp;Acessos</a>
+                        <a  *ngIf="vcsr" class="dropdown-item" routerLink="/servidor" id="serv"><i class="fas fa-user-edit"></i>&nbsp;Servidores</a>
+                        <a  *ngIf="vcpa" class="dropdown-item" routerLink="/perfilatendimento" id="per"><i class="fas fa-tasks"></i>&nbsp;Perfil de atendimento</a>
+                        <a  *ngIf="vcm" class="dropdown-item" routerLink="/mural" id="per"><i class="fas fa-edit"></i>&nbsp;Mural</a>
                     </div>
                   </div>
                   <div *ngIf="visRel" class="col-md-2 btn-group dropdown mt-2" style="max-width: 240px;" id="btn-menu">
