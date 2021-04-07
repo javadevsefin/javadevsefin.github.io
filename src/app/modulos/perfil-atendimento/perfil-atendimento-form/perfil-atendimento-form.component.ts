@@ -7,6 +7,7 @@ import { Servidor } from '../../servidor/shared/servidor';
 import { ServidorService } from '../../servidor/shared/servidor.service';
 import { DetalhamentoServico } from '../../detalhamento-servico/shared/detalhamento-servico';
 import { PerfilAtendimento } from '../shared/perfil-atendimento';
+import { HttpErrorResponse } from '@angular/common/http';
 
 @Component({
   selector: 'app-perfil-atendimento-form',
@@ -16,6 +17,8 @@ import { PerfilAtendimento } from '../shared/perfil-atendimento';
 export class PerfilAtendimentoFormComponent implements OnInit {
 
   mostrarMens: boolean = false;
+  resOk: boolean = false;
+  resError: string = null;
   perfilForm: FormGroup;
   servidores: Servidor[];
   delServicos: DetalhamentoServico[];
@@ -52,7 +55,7 @@ export class PerfilAtendimentoFormComponent implements OnInit {
 
   listarPerfil(matricula){
     this.perfilAtendimentoService.loadById(matricula).subscribe(
-      dados => this.perfilAtendimentos = dados
+      dados => {this.perfilAtendimentos = dados, this.resError = null }
     );
   }
 
@@ -63,11 +66,9 @@ export class PerfilAtendimentoFormComponent implements OnInit {
 
     servico.forEach(element => {
       this.perfilAtendimentoService.createPerfil(matricula, element).subscribe(
-        success => {
-          this.listarPerfil(matricula)
-        });
+        success => { this.listarPerfil(matricula) }, (error: any)=>{ this.resError = "O SERVIDOR AINDA NÃO POSSUE ACESSO DEFINIDO!" } );
     });
-     this.globalService.saveShow("Salvo com Sucesso!", "Perfil")
+        this.globalService.saveShow("Salvo com Sucesso!", "Perfil")
   }
 
   pegarDados(id, detalhamento){

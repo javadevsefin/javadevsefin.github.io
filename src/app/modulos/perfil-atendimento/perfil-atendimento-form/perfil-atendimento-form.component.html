@@ -37,12 +37,17 @@
                     <div class="form-row col-md-12">
                         <div class="form-group col-md-12">
                            <span style="font-weight: bold; color: blue;"> Confira a matrícula: <span style="color: red">{{perfilForm.get('matricula').value}}</span></span>
+                           <div class="d-flex justify-content-center mt-2" style="font-size: 12pt; font-weight: bold; margin-bottom: -20px;" *ngIf="resError != null">
+                            <div class="alert alert-danger" role="alert">
+                              {{ resError }}
+                            </div>
+                          </div>
                         </div>
                     </div>
                     <div class="form-row col-md-12">
                         <div class="form-group col-md-12">
                             <label for="detalheServico">Detalhamento de Serviços:</label>
-                            <select multiple class="form-control" id="detalheServico" formControlName="servico" size="10">
+                            <select multiple class="form-control" id="detalheServico" formControlName="servico" size="12">
                                 <option *ngFor="let delServico of delServicos" [value]="delServico.id">{{delServico.descricao}}</option>
                             </select>
                             <small class="form-text text-muted">Para multipla seleção mantenha a tecla Ctrl pressionada.</small>
