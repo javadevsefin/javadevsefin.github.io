@@ -26,8 +26,10 @@
                       Grade
                     </button>
                     <div  class="dropdown-menu" style="width: 275px;">
-                        <a class="dropdown-item " routerLink="/grade" id="cad"><i class="fas fa-edit"></i>&nbsp;Grade de Atendimento</a>
+                        <a class="dropdown-item " routerLink="/grade" id="gra"><i class="fas fa-edit"></i>&nbsp;Grade de Atendimento</a>
                         <a class="dropdown-item " routerLink="/agendamento" id="age"><i class="fas fa-list-alt"></i>&nbsp;Listar Agendamento</a>
+                        <a class="dropdown-item " routerLink="/excluiragendamento" id="excage"><i class="fas fa-trash-alt"></i>&nbsp;Excluir Agendamento</a>
+                        <a *ngIf="libGrade" class="dropdown-item " routerLink="/liberargrade" id="libgra"><i class="fas fa-lock-open"></i>&nbsp;Liberar Grade</a>
                     </div>
                   </div>
                   <div *ngIf="visRecep" class="col-md-2 btn-group dropdown mt-2" style="max-width: 240px;" id="btn-menu">

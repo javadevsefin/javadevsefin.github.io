@@ -18,6 +18,7 @@ export class AppComponent implements OnInit {
   btnRedimensionar: boolean = false;
   telaAmpliada: boolean = false;
   visGrade: boolean = false;
+  libGrade: boolean = false;
   visRecep: boolean = false;
   visAtend: boolean = false;
   visCont: boolean = false;
@@ -69,6 +70,7 @@ export class AppComponent implements OnInit {
 
         if(tipo === "Administrador"){
           this.visGrade = true;
+              this.libGrade = true;
           this.visRecep = true;
           this.visAtend = true;
           this.visCont = true;
@@ -96,6 +98,7 @@ export class AppComponent implements OnInit {
           this.btnRedimensionar = true;
         } else if(tipo === "Operador"){
           this.visGrade = true;
+              this.libGrade = true;
           this.visRecep = false;
           this.visAtend = false;
           this.visCont = true;
@@ -117,57 +120,59 @@ export class AppComponent implements OnInit {
           this.btnRedimensionar = true;
         } else if(tipo === "Coordenação"){
           this.visGrade = true;
+              this.libGrade = true;
           this.visRecep = true;
           this.visAtend = true;
           this.visCont = true;
           this.visConf =  true;
-              this.vco = true;
-              this.vcu = true;
-              this.vcs = true;
-              this.vcds = true;
-              this.vcg = true;
-              this.vcc = true;
-              this.vcic = true;
+              this.vco = false;
+              this.vcu = false;
+              this.vcs = false;
+              this.vcds = false;
+              this.vcg = false;
+              this.vcc = false;
+              this.vcic = false;
               this.vca = true;
               this.vcsr = true;
               this.vcpa = true;
-              this.vcm = true;
+              this.vcm = false;
           this.visRel = true;
           this.visPan = false;
           this.btnRedimensionar = true;
         } else if(tipo === "Supervisão"){
           this.visGrade = true;
+              this.libGrade = true;
           this.visRecep = true;
           this.visAtend = true;
           this.visCont = true;
           this.visConf =  true;
-              this.vco = true;
-              this.vcu = true;
-              this.vcs = true;
-              this.vcds = true;
-              this.vcg = true;
-              this.vcc = true;
-              this.vcic = true;
+              this.vco = false;
+              this.vcu = false;
+              this.vcs = false;
+              this.vcds = false;
+              this.vcg = false;
+              this.vcc = false;
+              this.vcic = false;
               this.vca = true;
               this.vcsr = true;
               this.vcpa = true;
-              this.vcm = true;
+              this.vcm = false;
           this.visRel = true;
-          this.visPan = true;
+          this.visPan = false;
           this.btnRedimensionar = true;
         } else if(tipo === "Apoio Administrativo"){
-          this.visGrade = true;
-          this.visRecep = false;
-          this.visAtend = false;
+          this.visGrade = false;
+          this.visRecep = true;
+          this.visAtend = true;
           this.visCont = true;
           this.visConf =  false;
-          this.visRel = false;
-          this.visPan = true;
+          this.visRel = true;
+          this.visPan = false;
           this.btnRedimensionar = true;
         } else if(tipo === "Apoio de Informática"){
           this.visGrade = true;
-          this.visRecep = false;
-          this.visAtend = false;
+          this.visRecep = true;
+          this.visAtend = true;
           this.visCont = true;
           this.visConf =  true;
                 this.vco = false;
@@ -191,11 +196,11 @@ export class AppComponent implements OnInit {
           this.visCont = true;
           this.visConf =  false;
           this.visRel = false;
-          this.visPan = true;
+          this.visPan = false;
           this.btnRedimensionar = true;
         } else if(tipo === "Atendente"){
           this.visGrade = false;
-          this.visRecep = false;
+          this.visRecep = true;
           this.visAtend = true;
           this.visCont = true;
           this.visConf =  false;
